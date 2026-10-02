@@ -60,7 +60,8 @@ export function Footer() {
       </div>
       <div className="border-t border-white/10">
         <p className="mx-auto max-w-6xl px-5 py-5 text-xs text-white/50 sm:px-8">
-          © {year} Rohub. Toate drepturile rezervate. Fotografii via Unsplash.
+          © {year} Rohub. Toate drepturile rezervate. Fotografii: Wikimedia
+          Commons (România).
         </p>
       </div>
     </footer>

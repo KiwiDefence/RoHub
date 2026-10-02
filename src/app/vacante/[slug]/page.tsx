@@ -95,13 +95,41 @@ export default async function RegionPage({ params }: PageProps) {
               </p>
 
               <h3 className="mt-10 font-display text-2xl font-bold text-ink">
-                Ce include tipic un circuit
+                Pentru ce e renumită
               </h3>
               <ul className="mt-4 space-y-3">
-                {region.highlights.map((item) => (
+                {region.famousFor.map((item) => (
                   <li
                     key={item}
                     className="border-l-2 border-dawn pl-4 text-stone"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <h3 className="mt-10 font-display text-2xl font-bold text-ink">
+                Ce să vezi
+              </h3>
+              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                {region.attractions.map((item) => (
+                  <li
+                    key={item}
+                    className="bg-mist px-4 py-3 text-sm leading-relaxed text-ink"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <h3 className="mt-10 font-display text-2xl font-bold text-ink">
+                Mâncare & băutură
+              </h3>
+              <ul className="mt-4 space-y-3">
+                {region.food.map((item) => (
+                  <li
+                    key={item}
+                    className="border-l-2 border-moss pl-4 text-stone"
                   >
                     {item}
                   </li>
@@ -115,7 +143,7 @@ export default async function RegionPage({ params }: PageProps) {
                 {region.experiences.map((item) => (
                   <li
                     key={item}
-                    className="bg-mist px-4 py-3 text-sm leading-relaxed text-ink"
+                    className="bg-white px-4 py-3 text-sm leading-relaxed text-ink ring-1 ring-stone/15"
                   >
                     {item}
                   </li>
@@ -129,6 +157,9 @@ export default async function RegionPage({ params }: PageProps) {
               </p>
               <p className="mt-4 text-base leading-relaxed text-white/90">
                 {region.bestFor}
+              </p>
+              <p className="mt-6 text-sm text-white/75">
+                Durată tipică: <span className="text-white">{region.days}</span>
               </p>
               <a
                 href="#contact"

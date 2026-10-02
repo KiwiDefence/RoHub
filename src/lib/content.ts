@@ -8,7 +8,9 @@ export type Region = {
   seoTitle: string;
   seoDescription: string;
   intro: string;
-  highlights: string[];
+  famousFor: string[];
+  food: string[];
+  attractions: string[];
   experiences: string[];
   bestFor: string;
 };
@@ -18,163 +20,241 @@ export const regions: Region[] = [
     slug: "oltenia",
     name: "Oltenia",
     days: "3–5 zile",
-    blurb: "Mănăstiri, dealuri și mese la cramă, aproape de viața satului.",
-    image:
-      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1600&q=80",
-    heroAlt: "Dealuri verzi și peisaj rural din Oltenia",
-    seoTitle: "Vacanțe în Oltenia",
+    blurb: "Mănăstiri, ceramică de Horezu și mese pe la crame.",
+    image: "/regions/oltenia.jpg",
+    heroAlt: "Mănăstirea Horezu din Oltenia, România",
+    seoTitle: "Vacanțe în Oltenia — mănăstiri, crame și gastronomie",
     seoDescription:
-      "Tururi și experiențe autentice în Oltenia: mănăstiri, gastronomie locală, crame și natură. Circuit personalizat cu Rohub.",
+      "Descoperă Oltenia cu Rohub: Horezu, Cozia, Olteț, vinuri și mâncare oltenească. Circuite autentice în România.",
     intro:
-      "Oltenia e o regiune cu ritm lent și povești vechi — de la mănăstirile din nord până la dealurile cu vii. Te ducem acolo unde încă se trăiește: la masă cu gazda, pe poteci și pe la crame mici.",
-    highlights: [
-      "Mănăstiri și peisaje de deal",
-      "Degustări la crame locale",
-      "Gastronomie oltenească autentică",
-      "Excursii scurte, potrivite și pentru grupuri",
+      "Oltenia e regiunea din sud-vestul României unde tradiția se vede pe masă și pe zidurile mănăstirilor. De la Horezu UNESCO la valea Oltului, te ducem acolo unde încă se trăiește — nu doar unde se fotografiază.",
+    famousFor: [
+      "Ceramica de Horezu (UNESCO)",
+      "Mănăstiri pe valea Oltului (Horezu, Cozia)",
+      "Vinuri și crame oltenești",
+      "Obiceiuri de sat și meșteșuguri",
+    ],
+    food: [
+      "Ciorbă de potroace / ciorbă oltenească",
+      "Sarmale în foi de viță",
+      "Pâine de casă și brânzeturi locale",
+      "Plăcinte și dulcețuri de casă",
+      "Vinuri albe și roșii de la crame din zonă",
+    ],
+    attractions: [
+      "Mănăstirea Horezu",
+      "Mănăstirea Cozia",
+      "Ateliere de ceramică la Horezu",
+      "Crame și vii pe dealurile oltenești",
+      "Trasee scurte pe valea Oltului",
     ],
     experiences: [
-      "Tur gastronomic cu producători locali",
-      "Vizită la crame și degustare de vinuri",
-      "Activități tradiționale în gospodărie",
-      "Circuit cultural pe trasee mai puțin aglomerate",
+      "Vizită la atelier de ceramică",
+      "Degustare la cramă cu producător local",
+      "Masă tradițională la pensiune",
+      "Circuit mănăstiri pe Olt",
     ],
-    bestFor: "Cupluri, familii și team-building-uri mici care vor liniște și gust.",
+    bestFor: "Cupluri, familii și grupuri mici care vor cultură, gust și ritm liniștit.",
   },
   {
     slug: "muntenia",
     name: "Muntenia",
     days: "2–4 zile",
-    blurb: "De la București la munte: palate, vii și weekend-uri cu sens.",
-    image:
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80",
-    heroAlt: "Peisaj de munte și natură din Muntenia",
-    seoTitle: "Vacanțe în Muntenia",
+    blurb: "Peleș, București și weekend-uri pe Prahova.",
+    image: "/regions/muntenia.jpg",
+    heroAlt: "Castelul Peleș din Sinaia, Muntenia, România",
+    seoTitle: "Vacanțe în Muntenia — Peleș, București și munte",
     seoDescription:
-      "Vacanțe și circuite în Muntenia: cultură, natură, vii și experiențe aproape de București. Planificate cu Rohub.",
+      "Vacanțe în Muntenia cu Rohub: Castelul Peleș, București, Valea Prahovei, gastronomie și escapade de weekend.",
     intro:
-      "Muntenia e poarta spre România pe care o trăiești, nu doar o vizitezi. Combinăm orașul cu munte, palate și degustări — ideal pentru weekend-uri scurte sau oaspeți din diaspora.",
-    highlights: [
-      "Escapade de weekend aproape de București",
-      "Palate, castele și patrimoniu",
-      "Vii și meniuri locale",
-      "Potrivit pentru oaspeți corporate",
+      "Muntenia e poarta spre România pe care o trăiești aproape de capitală: palate regale, munte pe Prahova și mese bune. Ideală pentru diaspora, weekend-uri și oaspeți corporate.",
+    famousFor: [
+      "Castelul Peleș (Sinaia)",
+      "București — centre istorice și cultură",
+      "Valea Prahovei (Sinaia, Bușteni, Azuga)",
+      "Podgorii și vinuri din Dealurile Munteniei",
+    ],
+    food: [
+      "Mici cu muștar",
+      "Ciorbă de burtă",
+      "Șaorma / street food bucureștean",
+      "Brânzeturi și preparate de munte",
+      "Vinuri de Dealu Mare",
+    ],
+    attractions: [
+      "Castelul Peleș & Pelișor",
+      "Centrul Vechi din București",
+      "Palatul Parlamentului (opțional)",
+      "Trasee ușoare în Bucegi",
+      "Crame pe Dealu Mare",
     ],
     experiences: [
-      "Circuit cultural pe trasee clasice și alternative",
-      "Weekend la munte cu ghid local",
-      "Degustări și mese la pensiuni partenere",
-      "Programe de team-building pe natură",
+      "Weekend Sinaia + Peleș",
+      "Tur gastronomic București",
+      "Degustare Dealu Mare",
+      "Team-building pe Valea Prahovei",
     ],
-    bestFor: "Bucureșteni, diaspora și companii care caută ieșiri scurte, bine structurate.",
+    bestFor: "Bucureșteni, oaspeți din diaspora și companii cu programe scurte.",
   },
   {
     slug: "maramures",
     name: "Maramureș",
     days: "4–6 zile",
-    blurb: "Porți de lemn, tradiții vii și mese pe la stână.",
-    image:
-      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80",
-    heroAlt: "Pădure și peisaj tradițional din Maramureș",
-    seoTitle: "Vacanțe în Maramureș",
+    blurb: "Porți de lemn, Săpânța și mese pe la stână.",
+    image: "/regions/maramures.jpg",
+    heroAlt: "Cimitirul Vesel din Săpânța, Maramureș, România",
+    seoTitle: "Vacanțe în Maramureș — tradiții, stâne și gastronomie",
     seoDescription:
-      "Vacanțe în Maramureș: tradiții, gastronomie, natură și experiențe la stână. Tururi autentice cu Rohub.",
+      "Tururi în Maramureș: Săpânța, biserici de lemn, stâne, brânzeturi și experiențe autentice cu Rohub.",
     intro:
-      "În Maramureș, fiecare vale are o poveste. Te ducem unde încă se trăiește: biserici de lemn, gospodării, stâne și mese care nu seamănă cu un meniu de hotel.",
-    highlights: [
-      "Biserici de lemn și sate autentice",
-      "Experiențe la stână și în gospodărie",
-      "Trasee pe natură, fără aglomerație",
-      "Gastronomie și produse locale",
+      "Maramureșul e locul în care lemnul, cimitirul vesel și stânele încă spun povești. Te ducem pe văi unde tradiția nu e museum-piece — e viață de zi cu zi.",
+    famousFor: [
+      "Cimitirul Vesel din Săpânța",
+      "Biserici de lemn (UNESCO)",
+      "Porți maramureșene sculptate",
+      "Viața de stână și păstorit",
+    ],
+    food: [
+      "Balmoș și mămăligă cu brânză",
+      "Ciorbă de vacă / de miel",
+      "Brânzeturi de oaie (caș, urdă)",
+      "Horincă / pălincă locală",
+      "Plăcinte și gogoși de casă",
+    ],
+    attractions: [
+      "Săpânța — Cimitirul Vesel",
+      "Mănăstirea Bârsana",
+      "Biserici de lemn pe văile Izei / Marei",
+      "Piețe și târguri locale",
+      "Stâne și peisaje de munte",
     ],
     experiences: [
-      "Vizită la stână: brânzeturi, oi, ritm de munte",
-      "Ateliere și activități tradiționale",
-      "Circuit cultural pe sate",
-      "Drumeții ușoare cu ghid local",
+      "Vizită la stână cu degustare de brânzeturi",
+      "Circuit biserici de lemn",
+      "Atelier meșteșugăresc (unde e posibil)",
+      "Masă tradițională la gazdă",
     ],
-    bestFor: "Călători 30–55 și 60+ care vor autenticitate, nu checklist turistic.",
+    bestFor: "Călători 30–55 și 60+ care vor autenticitate, nu checklist.",
   },
   {
     slug: "transilvania",
     name: "Transilvania",
     days: "5–7 zile",
-    blurb: "Sate săsești, castele și mese lungi pe la pensiuni.",
-    image:
-      "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1600&q=80",
-    heroAlt: "Castel și peisaj din Transilvania",
-    seoTitle: "Vacanțe în Transilvania",
+    blurb: "Bran, Sighișoara, sate săsești și mese lungi.",
+    image: "/regions/transilvania.jpg",
+    heroAlt: "Castelul Bran din Transilvania, România",
+    seoTitle: "Vacanțe în Transilvania — Bran, Sighișoara și sate săsești",
     seoDescription:
-      "Circuite și vacanțe în Transilvania: castele, sate săsești, gastronomie și natură. Experiențe Rohub.",
+      "Circuite în Transilvania: Castelul Bran, Sighișoara, Brașov, sate săsești, vinuri și gastronomie cu Rohub.",
     intro:
-      "Transilvania e regiunea în care poveștile se văd pe stradă: fortificații, case colorate, dealuri și crame. Construim itinerarii personale, nu pachete generice.",
-    highlights: [
-      "Castele și centre medievale",
-      "Sate săsești și pensiuni locale",
-      "Vinuri și gastronomie transilvăneană",
-      "Circuite flexibile pe ritmul tău",
+      "Transilvania e regiunea pe care o cunoști din povești — și merită trăită pe teren: castele, centre medievale, dealuri și mese la pensiuni. Construim itinerarii pe ritmul tău.",
+    famousFor: [
+      "Castelul Bran",
+      "Sighișoara medievală (UNESCO)",
+      "Brașov și zona Bârsei",
+      "Sate săsești fortificate",
+    ],
+    food: [
+      "Ciorbă ardelenească",
+      "Varză a la Cluj",
+      "Kurtos kalacs (cozonac secuiesc)",
+      "Brânzeturi și preparate de munte",
+      "Vinuri de Târnave / Jidvei",
+    ],
+    attractions: [
+      "Castelul Bran",
+      "Cetatea Sighișoara",
+      "Centrul istoric Brașov",
+      "Sate săsești (Viscri, Biertan — la cerere)",
+      "Trasee ușoare în dealuri",
     ],
     experiences: [
-      "Circuit castele + sate",
-      "Tur gastronomic și crame",
-      "Drumeții ușoare în dealuri",
-      "Programe corporate / team-building",
+      "Circuit Bran + Brașov",
+      "Zi în Sighișoara",
+      "Tur gastronomic / crame",
+      "Programe corporate pe natură",
     ],
-    bestFor: "Turisti români și internaționali care vor cultură + natură într-un singur drum.",
+    bestFor: "Turisti români și internaționali care vor cultură + peisaj.",
   },
   {
     slug: "bucovina",
     name: "Bucovina",
     days: "4–6 zile",
-    blurb: "Fresce pe exterior, păduri și mese ca acasă.",
-    image:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80",
-    heroAlt: "Munți și păduri din Bucovina",
-    seoTitle: "Vacanțe în Bucovina",
+    blurb: "Mănăstiri pictate, păduri și mese ca acasă.",
+    image: "/regions/bucovina.jpg",
+    heroAlt: "Mănăstirea Voroneț din Bucovina, România",
+    seoTitle: "Vacanțe în Bucovina — mănăstiri pictate și gastronomie",
     seoDescription:
-      "Vacanțe în Bucovina: mănăstiri pictate, natură, gastronomie locală și tururi personalizate cu Rohub.",
+      "Vacanțe în Bucovina: Voroneț, Sucevița, Moldovița, natură și mâncare locală. Tururi Rohub.",
     intro:
-      "Bucovina te încetinește frumos: mănăstiri, păduri și oameni care încă păstrează obiceiuri. Ideală pentru o săptămână de liniște, cultură și masă bună.",
-    highlights: [
-      "Mănăstiri pictate și patrimoniu UNESCO",
-      "Natură de munte și aer curat",
-      "Mese tradiționale la pensiuni",
-      "Ritm relaxat, potrivit și pensionarilor",
+      "Bucovina te încetinește: fresce pe exterior, păduri și mese care durează. Ideală pentru o săptămână de cultură, aer curat și odihnă fără grabă.",
+    famousFor: [
+      "Mănăstiri pictate UNESCO (Voroneț, Sucevița, Moldovița)",
+      "Albastrul de Voroneț",
+      "Peisaje de munte și pădure",
+      "Meșteșuguri și tradiții locale",
+    ],
+    food: [
+      "Tochitură bucovineană",
+      "Ciorbă rădăuțeană",
+      "Poale-n brâu",
+      "Jumări și preparate afumate",
+      "Țuică și siropuri de casă",
+    ],
+    attractions: [
+      "Mănăstirea Voroneț",
+      "Mănăstirea Sucevița",
+      "Mănăstirea Moldovița",
+      "Suceava — cetate și centru",
+      "Drumeții ușoare în zonă",
     ],
     experiences: [
-      "Circuit mănăstiri cu ghid",
-      "Excursii pe natură",
-      "Ateliere meșteșugărești / tradiționale",
-      "Sejur gastronomic regional",
+      "Circuit mănăstiri pictate",
+      "Masă tradițională la pensiune",
+      "Excursie pe natură",
+      "Atelier meșteșugăresc (la cerere)",
     ],
-    bestFor: "Familii, cupluri și călători 60+ care vor frumos fără grabă.",
+    bestFor: "Familii, cupluri și călători 60+ care vor frumos fără agitație.",
   },
   {
     slug: "dobrogea",
     name: "Dobrogea & Delta",
     days: "3–5 zile",
-    blurb: "Apusuri pe apă, pești la grătar și liniște de deltă.",
-    image:
-      "https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1600&q=80",
-    heroAlt: "Lac și peisaj acvatic din Dobrogea",
+    blurb: "Pelicani, canale și pește pe grătar.",
+    image: "/regions/dobrogea.jpg",
+    heroAlt: "Pelicani în Delta Dunării, Dobrogea, România",
     seoTitle: "Vacanțe în Dobrogea și Delta Dunării",
     seoDescription:
-      "Vacanțe în Dobrogea și Delta Dunării: natură, gastronomie, croaziere ușoare și experiențe locale cu Rohub.",
+      "Vacanțe în Delta Dunării și Dobrogea: canale, pelicani, pește proaspăt și natură. Experiențe Rohub.",
     intro:
-      "Dobrogea și Delta sunt despre apă, păsări și mese pe mal. Te ducem pe canale, la pește proaspăt și la locuri unde turismul încă respectă ritmul local.",
-    highlights: [
-      "Delta Dunării și peisaje pe apă",
-      "Gastronomie de pește și produse locale",
-      "Natură și birdwatching ușor",
-      "Sejururi scurte sau de weekend prelungit",
+      "Dobrogea și Delta sunt despre apă, păsări și mese pe mal. Te ducem pe canale, la pește proaspăt și la locuri unde ritmul e al deltei — nu al litoralului aglomerat.",
+    famousFor: [
+      "Delta Dunării (UNESCO / rezervație)",
+      "Pelicani și biodiversitate",
+      "Culturi mixte (români, lipoveni, turci, tătari)",
+      "Peisaje pe apă și la malul Mării Negre",
+    ],
+    food: [
+      "Storceag / ciorbă de pește",
+      "Saramură de pește",
+      "Plachie de crap",
+      "Pește la grătar cu mămăligă",
+      "Preparări lipovenești (unde e cazul)",
+    ],
+    attractions: [
+      "Tur pe canale în Deltă",
+      "Zone de birdwatching",
+      "Sate de pescari (ex. Mila 23 — la cerere)",
+      "Tulcea ca poartă spre Deltă",
+      "Escapade scurte pe litoral (opțional)",
     ],
     experiences: [
-      "Tur pe canale cu ghid local",
-      "Degustări și mese pe mal",
-      "Circuit Dobrogea culturală (unde e cazul)",
-      "Programe pentru grupuri mici",
+      "Croazieră ușoară pe canale",
+      "Masă cu pește proaspăt",
+      "Observare păsări cu ghid",
+      "Sejur pentru grupuri mici",
     ],
-    bestFor: "Iubitorii de natură, cupluri și grupuri care vor altceva decât litoral aglomerat.",
+    bestFor: "Iubitorii de natură și cupluri care vor altceva decât plajă aglomerată.",
   },
 ];
 
@@ -201,8 +281,5 @@ export const experiences = [
   },
 ] as const;
 
-export const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2400&q=80";
-
-export const ABOUT_IMAGE =
-  "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1600&q=80";
+export const HERO_IMAGE = "/regions/hero.jpg";
+export const ABOUT_IMAGE = "/regions/about.jpg";
