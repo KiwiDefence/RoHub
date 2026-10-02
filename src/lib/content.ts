@@ -15,13 +15,20 @@ export type Region = {
   bestFor: string;
 };
 
+/** Prefix public assets for GitHub Pages (next/image unoptimized skips basePath). */
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+export function asset(path: string): string {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${basePath}${normalized}`;
+}
+
 export const regions: Region[] = [
   {
     slug: "oltenia",
     name: "Oltenia",
     days: "3–5 zile",
     blurb: "Mănăstiri, ceramică de Horezu și mese pe la crame.",
-    image: "/regions/oltenia.jpg",
+    image: asset("/regions/oltenia.jpg"),
     heroAlt: "Mănăstirea Horezu din Oltenia, România",
     seoTitle: "Vacanțe în Oltenia — mănăstiri, crame și gastronomie",
     seoDescription:
@@ -61,7 +68,7 @@ export const regions: Region[] = [
     name: "Muntenia",
     days: "2–4 zile",
     blurb: "Peleș, București și weekend-uri pe Prahova.",
-    image: "/regions/muntenia.jpg",
+    image: asset("/regions/muntenia.jpg"),
     heroAlt: "Castelul Peleș din Sinaia, Muntenia, România",
     seoTitle: "Vacanțe în Muntenia — Peleș, București și munte",
     seoDescription:
@@ -101,7 +108,7 @@ export const regions: Region[] = [
     name: "Maramureș",
     days: "4–6 zile",
     blurb: "Porți de lemn, Săpânța și mese pe la stână.",
-    image: "/regions/maramures.jpg",
+    image: asset("/regions/maramures.jpg"),
     heroAlt: "Cimitirul Vesel din Săpânța, Maramureș, România",
     seoTitle: "Vacanțe în Maramureș — tradiții, stâne și gastronomie",
     seoDescription:
@@ -141,7 +148,7 @@ export const regions: Region[] = [
     name: "Transilvania",
     days: "5–7 zile",
     blurb: "Bran, Sighișoara, sate săsești și mese lungi.",
-    image: "/regions/transilvania.jpg",
+    image: asset("/regions/transilvania.jpg"),
     heroAlt: "Castelul Bran din Transilvania, România",
     seoTitle: "Vacanțe în Transilvania — Bran, Sighișoara și sate săsești",
     seoDescription:
@@ -181,7 +188,7 @@ export const regions: Region[] = [
     name: "Bucovina",
     days: "4–6 zile",
     blurb: "Mănăstiri pictate, păduri și mese ca acasă.",
-    image: "/regions/bucovina.jpg",
+    image: asset("/regions/bucovina.jpg"),
     heroAlt: "Mănăstirea Voroneț din Bucovina, România",
     seoTitle: "Vacanțe în Bucovina — mănăstiri pictate și gastronomie",
     seoDescription:
@@ -221,7 +228,7 @@ export const regions: Region[] = [
     name: "Dobrogea & Delta",
     days: "3–5 zile",
     blurb: "Pelicani, canale și pește pe grătar.",
-    image: "/regions/dobrogea.jpg",
+    image: asset("/regions/dobrogea.jpg"),
     heroAlt: "Pelicani în Delta Dunării, Dobrogea, România",
     seoTitle: "Vacanțe în Dobrogea și Delta Dunării",
     seoDescription:
@@ -281,5 +288,5 @@ export const experiences = [
   },
 ] as const;
 
-export const HERO_IMAGE = "/regions/hero.jpg";
-export const ABOUT_IMAGE = "/regions/about.jpg";
+export const HERO_IMAGE = asset("/regions/hero.jpg");
+export const ABOUT_IMAGE = asset("/regions/about.jpg");
