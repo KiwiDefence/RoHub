@@ -29,6 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.95,
     },
+    {
+      url: `${siteUrl}/servicii-b2b/`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
     ...regionPages,
   ];
 }
