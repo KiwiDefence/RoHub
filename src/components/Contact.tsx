@@ -215,10 +215,6 @@ export function Contact() {
           >
             Trimite mesajul
           </button>
-          <p className="text-xs leading-relaxed text-stone">
-            Formularul deschide aplicația ta de email. Nu stocăm date pe
-            server — site-ul e static și securizat pentru GitHub Pages.
-          </p>
         </form>
       </div>
     </section>

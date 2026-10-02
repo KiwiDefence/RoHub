@@ -33,7 +33,7 @@ export const destinations = [
     days: "8 zile",
     blurb: "Souk-uri, riaduri și desertul Atlas.",
     image:
-      "https://images.unsplash.com/photo-1489749798305-4efa32f9c9d9?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=1400&q=80",
   },
   {
     id: "bali",
