@@ -12,7 +12,7 @@ export function About() {
         <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[5/6]">
           <Image
             src={ABOUT_IMAGE}
-            alt="Călători pe drum, bagaje pregătite pentru următoarea aventură"
+            alt="Drum prin natură în România, pregătit pentru următoarea experiență Rohub"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
@@ -24,13 +24,13 @@ export function About() {
             Despre Rohub
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-5xl">
-            Turism făcut pe oameni, nu pe liste
+            Turism românesc, pe oameni și pe locuri reale
           </h2>
           <p className="mt-5 text-base leading-relaxed text-white/85 sm:text-lg">
-            Rohub e o agenție de turism mică, atentă la detalii. Vorbeam cu
-            clienți care voiau mai puțin zgomot și mai multă claritate — așa a
-            apărut modul nostru de lucru: ascultăm, propunem, rezervăm, rămânem
-            aproape.
+            Rohub e agenție de turism axată pe România: circuite, experiențe
+            autentice, gastronomie, crame și programe pentru companii. Lucrăm cu
+            ghiduri locale, pensiuni și parteneri verificați — ca să trăiești
+            regiunea, nu doar să o treci pe listă.
           </p>
 
           <ul className="mt-10 space-y-6">

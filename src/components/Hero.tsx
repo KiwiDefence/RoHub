@@ -9,7 +9,7 @@ export function Hero() {
     >
       <Image
         src={HERO_IMAGE}
-        alt="Drum de munte la apus, drumul spre următoarea vacanță"
+        alt="Peisaj de munte din România, drum spre o vacanță autentică"
         fill
         priority
         sizes="100vw"
@@ -28,22 +28,22 @@ export function Hero() {
         <p className="animate-fade-up font-display text-5xl font-extrabold tracking-tight text-white sm:text-7xl md:text-8xl lg:text-9xl">
           Rohub
         </p>
-        <h1 className="animate-fade-up delay-1 mt-4 max-w-xl text-2xl font-medium leading-snug text-white sm:text-3xl md:text-4xl">
-          Vacanțe cu sens, nu doar cu peisaje.
+        <h1 className="animate-fade-up delay-1 mt-4 max-w-2xl text-2xl font-medium leading-snug text-white sm:text-3xl md:text-4xl">
+          Nu vizitezi România. O trăiești.
         </h1>
-        <p className="animate-fade-up delay-2 mt-4 max-w-md text-base leading-relaxed text-white/85 sm:text-lg">
-          Agenție de turism din România. Itinerarii clare, experiențe locale,
-          liniște de la primul mesaj.
+        <p className="animate-fade-up delay-2 mt-4 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
+          Fiecare regiune are o poveste — te ducem acolo unde încă se trăiește.
+          Circuite, gastronomie, crame și experiențe locale.
         </p>
         <div className="animate-fade-up delay-3 mt-8 flex flex-wrap gap-3">
           <a
-            href="#destinatii"
+            href="/vacante/"
             className="rounded-sm bg-dawn px-6 py-3 text-sm font-semibold text-ink transition hover:brightness-110"
           >
-            Vezi destinațiile
+            Vacanțe pe regiuni
           </a>
           <a
-            href="#contact"
+            href="/#contact"
             className="rounded-sm border border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
           >
             Scrie-ne

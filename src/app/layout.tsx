@@ -34,18 +34,20 @@ const csp = [
 
 export const metadata: Metadata = {
   title: {
-    default: "Rohub — Agenție de Turism",
+    default: "Rohub — Vacanțe autentice în România",
     template: "%s · Rohub",
   },
   description:
-    "Rohub este agenția ta de turism pentru vacanțe memorabile în România și în lume. Destinații selectate, ghid local, experiențe autentice.",
+    "Rohub: agenție de turism pentru vacanțe și circuite în România. Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea — experiențe locale, gastronomie, crame.",
   keywords: [
-    "agenție de turism",
+    "agenție de turism România",
     "Rohub",
-    "vacanțe",
-    "România",
-    "sejururi",
-    "călătorii",
+    "vacanțe România",
+    "circuite România",
+    "Oltenia",
+    "Muntenia",
+    "Maramureș",
+    "turism autentic",
   ],
   authors: [{ name: "Rohub" }],
   creator: "Rohub",
@@ -57,9 +59,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ro_RO",
     siteName: "Rohub",
-    title: "Rohub — Agenție de Turism",
+    title: "Rohub — Vacanțe autentice în România",
     description:
-      "Vacanțe memorabile în România și în lume. Destinații selectate, ghid local, experiențe autentice.",
+      "Nu vizitezi România. O trăiești. Circuite și experiențe pe regiuni.",
   },
   other: {
     "Content-Security-Policy": csp,

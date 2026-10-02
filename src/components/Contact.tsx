@@ -9,6 +9,10 @@ type FormState = {
   message: string;
 };
 
+type ContactProps = {
+  defaultDestination?: string;
+};
+
 const initial: FormState = {
   name: "",
   email: "",
@@ -24,8 +28,11 @@ function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-export function Contact() {
-  const [form, setForm] = useState<FormState>(initial);
+export function Contact({ defaultDestination = "" }: ContactProps) {
+  const [form, setForm] = useState<FormState>({
+    ...initial,
+    destination: defaultDestination,
+  });
   const [error, setError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
 
@@ -69,7 +76,7 @@ export function Contact() {
 
     window.location.href = `mailto:hello@rohub.ro?subject=${subject}&body=${body}`;
     setSent(true);
-    setForm(initial);
+    setForm({ ...initial, destination: defaultDestination });
   }
 
   return (
@@ -83,7 +90,8 @@ export function Contact() {
             Hai să planificăm următorul drum
           </h2>
           <p className="mt-4 text-base leading-relaxed text-stone sm:text-lg">
-            Spune-ne unde vrei să ajungi. Răspundem în maxim o zi lucrătoare.
+            Spune-ne regiunea din România pe care vrei să o trăiești. Răspundem
+            în maxim o zi lucrătoare.
           </p>
 
           <dl className="mt-10 space-y-5 text-sm sm:text-base">
@@ -165,7 +173,7 @@ export function Contact() {
               htmlFor="destination"
               className="block text-sm font-medium text-ink"
             >
-              Destinație dorită
+              Destinație / regiune
             </label>
             <input
               id="destination"
@@ -174,7 +182,7 @@ export function Contact() {
               maxLength={120}
               value={form.destination}
               onChange={(e) => update("destination", e.target.value)}
-              placeholder="ex. Santorini, 7 zile"
+              placeholder="ex. Maramureș, 5 zile"
               className="mt-2 w-full border-0 border-b border-stone/30 bg-transparent px-0 py-3 text-ink outline-none transition placeholder:text-stone/50 focus:border-pine"
             />
           </div>
