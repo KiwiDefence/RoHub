@@ -107,25 +107,41 @@ export default async function RegionPage({ params }: PageProps) {
               <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
                 Trăiește {region.name} cu RoHubTravel
               </h2>
-              <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
-                {region.intro}
-              </p>
+              <div className="mt-5 space-y-4 text-base leading-relaxed text-stone sm:text-lg">
+                {region.intro.map((paragraph) => (
+                  <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+                ))}
+              </div>
 
-              <h3 className="mt-10 font-display text-2xl font-bold text-ink">
+              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
+                De ce {region.name}
+              </h3>
+              <ul className="mt-6 space-y-6">
+                {region.highlights.map((item) => (
+                  <li key={item.title} className="border-l-2 border-dawn pl-4">
+                    <p className="font-semibold text-ink">{item.title}</p>
+                    <p className="mt-1 text-base leading-relaxed text-stone">
+                      {item.text}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+
+              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
                 Pentru ce e renumită {region.name}
               </h3>
               <ul className="mt-4 space-y-3">
                 {region.famousFor.map((item) => (
                   <li
                     key={item}
-                    className="border-l-2 border-dawn pl-4 text-stone"
+                    className="border-l-2 border-moss pl-4 text-stone"
                   >
                     {item}
                   </li>
                 ))}
               </ul>
 
-              <h3 className="mt-10 font-display text-2xl font-bold text-ink">
+              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
                 Ce să vezi în {region.name}
               </h3>
               <ul className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -139,22 +155,22 @@ export default async function RegionPage({ params }: PageProps) {
                 ))}
               </ul>
 
-              <h3 className="mt-10 font-display text-2xl font-bold text-ink">
-                Mâncare & băutură în {region.name}
+              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
+                Mâncare și băutură în {region.name}
               </h3>
               <ul className="mt-4 space-y-3">
                 {region.food.map((item) => (
                   <li
                     key={item}
-                    className="border-l-2 border-moss pl-4 text-stone"
+                    className="border-l-2 border-dawn pl-4 text-stone"
                   >
                     {item}
                   </li>
                 ))}
               </ul>
 
-              <h3 className="mt-10 font-display text-2xl font-bold text-ink">
-                Experiențe pe care le putem organiza
+              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
+                Experiențe pe care le organizăm
               </h3>
               <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                 {region.experiences.map((item) => (
@@ -166,9 +182,40 @@ export default async function RegionPage({ params }: PageProps) {
                   </li>
                 ))}
               </ul>
+
+              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
+                Exemplu de program
+              </h3>
+              <ol className="mt-4 space-y-3">
+                {region.sampleDays.map((item, index) => (
+                  <li
+                    key={item}
+                    className="flex gap-3 text-base leading-relaxed text-stone"
+                  >
+                    <span className="font-semibold text-pine">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ol>
+
+              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
+                Când să mergi
+              </h3>
+              <p className="mt-4 text-base leading-relaxed text-stone sm:text-lg">
+                {region.whenToGo}
+              </p>
+
+              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
+                Cum lucrăm cu tine
+              </h3>
+              <p className="mt-4 text-base leading-relaxed text-stone sm:text-lg">
+                {region.howWeWork}
+              </p>
             </div>
 
-            <aside className="h-fit bg-pine px-6 py-8 text-white">
+            <aside className="h-fit bg-pine px-6 py-8 text-white lg:sticky lg:top-24">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-dawn">
                 Pentru cine e
               </p>
@@ -176,7 +223,8 @@ export default async function RegionPage({ params }: PageProps) {
                 {region.bestFor}
               </p>
               <p className="mt-6 text-sm text-white/75">
-                Durată tipică: <span className="text-white">{region.days}</span>
+                Durată tipică:{" "}
+                <span className="text-white">{region.days}</span>
               </p>
               <a
                 href="#contact"
@@ -190,11 +238,17 @@ export default async function RegionPage({ params }: PageProps) {
               </p>
               <p className="mt-6 text-sm text-white/70">
                 Vezi și{" "}
-                <Link href="/servicii-b2b/" className="text-dawn underline-offset-4 hover:underline">
-                  retreat-uri Services pentru companii
+                <Link
+                  href="/servicii-b2b/"
+                  className="text-dawn underline-offset-4 hover:underline"
+                >
+                  Services pentru companii
                 </Link>{" "}
                 sau{" "}
-                <Link href="/vacante/" className="text-dawn underline-offset-4 hover:underline">
+                <Link
+                  href="/vacante/"
+                  className="text-dawn underline-offset-4 hover:underline"
+                >
                   toate vacanțele în România
                 </Link>
                 .
