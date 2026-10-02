@@ -53,6 +53,11 @@ export function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/harta-site/" className="hover:text-white">
+                Harta site
+              </Link>
+            </li>
+            <li>
               <Link href="/#despre" className="hover:text-white">
                 Despre
               </Link>

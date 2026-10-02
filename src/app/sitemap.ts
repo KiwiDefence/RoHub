@@ -1,40 +1,19 @@
 import type { MetadataRoute } from "next";
-import { regions } from "@/lib/content";
+import { getAllRoutes } from "@/lib/routes";
 
-const siteUrl =
+const rawSiteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://rohubtravel.com";
+const siteUrl = rawSiteUrl.replace(/\/$/, "");
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  const regionPages = regions.map((region) => ({
-    url: `${siteUrl}/vacante/${region.slug}/`,
+  return getAllRoutes().map((route) => ({
+    url: `${siteUrl}${route.path}`,
     lastModified,
-    changeFrequency: "weekly" as const,
-    priority: 0.9,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
   }));
-
-  return [
-    {
-      url: `${siteUrl}/`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${siteUrl}/vacante/`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.95,
-    },
-    {
-      url: `${siteUrl}/servicii-b2b/`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.95,
-    },
-    ...regionPages,
-  ];
 }
