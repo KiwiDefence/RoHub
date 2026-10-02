@@ -30,11 +30,11 @@ export const regions: Region[] = [
     blurb: "Mănăstiri, ceramică de Horezu și mese pe la crame.",
     image: asset("/regions/oltenia.jpg"),
     heroAlt: "Mănăstirea Horezu din Oltenia, România",
-    seoTitle: "Vacanțe în Oltenia — mănăstiri, crame și gastronomie",
+    seoTitle: "Vacanțe în Oltenia - mănăstiri, crame și gastronomie",
     seoDescription:
       "Vacanțe și circuite în Oltenia cu RoHubTravel: Mănăstirea Horezu UNESCO, Cozia, ceramică, crame și gastronomie oltenească. Experiențe autentice în sud-vestul României.",
     intro:
-      "Oltenia e regiunea din sud-vestul României unde tradiția se vede pe masă și pe zidurile mănăstirilor. De la Horezu UNESCO la valea Oltului, te ducem acolo unde încă se trăiește — nu doar unde se fotografiază.",
+      "Oltenia e regiunea din sud-vestul României unde tradiția se vede pe masă și pe zidurile mănăstirilor. De la Horezu UNESCO la valea Oltului, te ducem acolo unde încă se trăiește - nu doar unde se fotografiază.",
     famousFor: [
       "Ceramica de Horezu (UNESCO)",
       "Mănăstiri pe valea Oltului (Horezu, Cozia)",
@@ -70,14 +70,14 @@ export const regions: Region[] = [
     blurb: "Peleș, București și weekend-uri pe Prahova.",
     image: asset("/regions/muntenia.jpg"),
     heroAlt: "Castelul Peleș din Sinaia, Muntenia, România",
-    seoTitle: "Vacanțe în Muntenia — Peleș, București și munte",
+    seoTitle: "Vacanțe în Muntenia - Peleș, București și munte",
     seoDescription:
       "Vacanțe în Muntenia cu RoHubTravel: Castelul Peleș, București, Valea Prahovei, Dealu Mare și escapade de weekend. Circuite scurte lângă capitală.",
     intro:
       "Muntenia e poarta spre România pe care o trăiești aproape de capitală: palate regale, munte pe Prahova și mese bune. Ideală pentru diaspora, weekend-uri și oaspeți corporate.",
     famousFor: [
       "Castelul Peleș (Sinaia)",
-      "București — centre istorice și cultură",
+      "București - centre istorice și cultură",
       "Valea Prahovei (Sinaia, Bușteni, Azuga)",
       "Podgorii și vinuri din Dealurile Munteniei",
     ],
@@ -110,11 +110,11 @@ export const regions: Region[] = [
     blurb: "Porți de lemn, Săpânța și mese pe la stână.",
     image: asset("/regions/maramures.jpg"),
     heroAlt: "Cimitirul Vesel din Săpânța, Maramureș, România",
-    seoTitle: "Vacanțe în Maramureș — tradiții, stâne și gastronomie",
+    seoTitle: "Vacanțe în Maramureș - tradiții, stâne și gastronomie",
     seoDescription:
       "Tururi și vacanțe în Maramureș cu RoHubTravel: Săpânța, biserici de lemn UNESCO, stâne, brânzeturi și tradiții autentice. Circuite în nordul României.",
     intro:
-      "Maramureșul e locul în care lemnul, cimitirul vesel și stânele încă spun povești. Te ducem pe văi unde tradiția nu e museum-piece — e viață de zi cu zi.",
+      "Maramureșul e locul în care lemnul, cimitirul vesel și stânele încă spun povești. Te ducem pe văi unde tradiția nu e museum-piece - e viață de zi cu zi.",
     famousFor: [
       "Cimitirul Vesel din Săpânța",
       "Biserici de lemn (UNESCO)",
@@ -129,7 +129,7 @@ export const regions: Region[] = [
       "Plăcinte și gogoși de casă",
     ],
     attractions: [
-      "Săpânța — Cimitirul Vesel",
+      "Săpânța - Cimitirul Vesel",
       "Mănăstirea Bârsana",
       "Biserici de lemn pe văile Izei / Marei",
       "Piețe și târguri locale",
@@ -150,11 +150,11 @@ export const regions: Region[] = [
     blurb: "Bran, Sighișoara, sate săsești și mese lungi.",
     image: asset("/regions/transilvania.jpg"),
     heroAlt: "Castelul Bran din Transilvania, România",
-    seoTitle: "Vacanțe în Transilvania — Bran, Sighișoara și sate săsești",
+    seoTitle: "Vacanțe în Transilvania - Bran, Sighișoara și sate săsești",
     seoDescription:
       "Circuite în Transilvania cu RoHubTravel: Castelul Bran, Sighișoara UNESCO, Brașov, sate săsești, vinuri și gastronomie. Vacanțe culturale în inima României.",
     intro:
-      "Transilvania e regiunea pe care o cunoști din povești — și merită trăită pe teren: castele, centre medievale, dealuri și mese la pensiuni. Construim itinerarii pe ritmul tău.",
+      "Transilvania e regiunea pe care o cunoști din povești - și merită trăită pe teren: castele, centre medievale, dealuri și mese la pensiuni. Construim itinerarii pe ritmul tău.",
     famousFor: [
       "Castelul Bran",
       "Sighișoara medievală (UNESCO)",
@@ -172,7 +172,7 @@ export const regions: Region[] = [
       "Castelul Bran",
       "Cetatea Sighișoara",
       "Centrul istoric Brașov",
-      "Sate săsești (Viscri, Biertan — la cerere)",
+      "Sate săsești (Viscri, Biertan - la cerere)",
       "Trasee ușoare în dealuri",
     ],
     experiences: [
@@ -190,7 +190,7 @@ export const regions: Region[] = [
     blurb: "Mănăstiri pictate, păduri și mese ca acasă.",
     image: asset("/regions/bucovina.jpg"),
     heroAlt: "Mănăstirea Voroneț din Bucovina, România",
-    seoTitle: "Vacanțe în Bucovina — mănăstiri pictate și gastronomie",
+    seoTitle: "Vacanțe în Bucovina - mănăstiri pictate și gastronomie",
     seoDescription:
       "Vacanțe în Bucovina cu RoHubTravel: mănăstiri pictate Voroneț, Sucevița, Moldovița, natură și gastronomie locală. Circuite UNESCO în nord-estul României.",
     intro:
@@ -212,7 +212,7 @@ export const regions: Region[] = [
       "Mănăstirea Voroneț",
       "Mănăstirea Sucevița",
       "Mănăstirea Moldovița",
-      "Suceava — cetate și centru",
+      "Suceava - cetate și centru",
       "Drumeții ușoare în zonă",
     ],
     experiences: [
@@ -234,7 +234,7 @@ export const regions: Region[] = [
     seoDescription:
       "Vacanțe în Delta Dunării și Dobrogea cu RoHubTravel: canale, birdwatching, pește proaspăt și sate de pescari. Tururi natură UNESCO în estul României.",
     intro:
-      "Dobrogea și Delta sunt despre apă, păsări și mese pe mal. Te ducem pe canale, la pește proaspăt și la locuri unde ritmul e al deltei — nu al litoralului aglomerat.",
+      "Dobrogea și Delta sunt despre apă, păsări și mese pe mal. Te ducem pe canale, la pește proaspăt și la locuri unde ritmul e al deltei - nu al litoralului aglomerat.",
     famousFor: [
       "Delta Dunării (UNESCO / rezervație)",
       "Pelicani și biodiversitate",
@@ -251,7 +251,7 @@ export const regions: Region[] = [
     attractions: [
       "Tur pe canale în Deltă",
       "Zone de birdwatching",
-      "Sate de pescari (ex. Mila 23 — la cerere)",
+      "Sate de pescari (ex. Mila 23 - la cerere)",
       "Tulcea ca poartă spre Deltă",
       "Escapade scurte pe litoral (opțional)",
     ],
@@ -276,7 +276,7 @@ export function getAllRegionSlugs(): string[] {
 export const experiences = [
   {
     title: "Tururi personalizate",
-    text: "Fiecare regiune are o poveste — construim itinerarii pe ritmul tău, nu pachete generice.",
+    text: "Fiecare regiune are o poveste - construim itinerarii pe ritmul tău, nu pachete generice.",
   },
   {
     title: "Experiențe autentice",
@@ -284,7 +284,7 @@ export const experiences = [
   },
   {
     title: "Aproape pe tot drumul",
-    text: "WhatsApp, email și telefon — de la primul mesaj până te întorci acasă.",
+    text: "WhatsApp, email și telefon - de la primul mesaj până te întorci acasă.",
   },
 ] as const;
 
@@ -295,27 +295,27 @@ export const ABOUT_IMAGE = asset("/regions/about.jpg");
 export const SERVICE_IMAGES = {
   hero: {
     src: asset("/regions/hero.jpg"),
-    alt: "Transfăgărășan în Munții Făgăraș, România — drum de munte pentru retreat-uri",
+    alt: "Transfăgărășan în Munții Făgăraș, România - drum de munte pentru retreat-uri",
   },
   escape: {
     src: asset("/regions/oltenia.jpg"),
-    alt: "Mănăstirea Horezu din Oltenia, România — experiență culturală de o zi",
+    alt: "Mănăstirea Horezu din Oltenia, România - experiență culturală de o zi",
   },
   experience: {
     src: asset("/regions/muntenia.jpg"),
-    alt: "Castelul Peleș din Sinaia, Muntenia, România — retreat de o noapte",
+    alt: "Castelul Peleș din Sinaia, Muntenia, România - retreat de o noapte",
   },
   retreat: {
     src: asset("/regions/dobrogea.jpg"),
-    alt: "Pelicani în Delta Dunării, Dobrogea, România — deconectare în natură",
+    alt: "Pelicani în Delta Dunării, Dobrogea, România - deconectare în natură",
   },
   custom: {
     src: asset("/regions/about.jpg"),
-    alt: "Piața Mare din Sibiu, Transilvania, România — experiență custom pentru companii",
+    alt: "Piața Mare din Sibiu, Transilvania, România - experiență custom pentru companii",
   },
   why: {
     src: asset("/regions/bucovina.jpg"),
-    alt: "Mănăstirea Voroneț din Bucovina, România — cultură și tradiție",
+    alt: "Mănăstirea Voroneț din Bucovina, România - cultură și tradiție",
   },
   gallery: [
     {

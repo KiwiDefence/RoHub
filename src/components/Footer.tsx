@@ -14,7 +14,7 @@ export function Footer() {
             RoHubTravel
           </p>
           <p className="mt-2 max-w-sm text-sm text-white/70">
-            Agenție de turism pentru vacanțe și circuite autentice în România —
+            Agenție de turism pentru vacanțe și circuite autentice în România - 
             Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea.
           </p>
           <p className="mt-4 text-sm text-white/60">
@@ -91,7 +91,7 @@ export function Footer() {
             Commons (România).
           </p>
 
-          {/* Pictograme ANPC SAL/SOL — Ordin 449/2022, 250×50px
+          {/* Pictograme ANPC SAL/SOL - Ordin 449/2022, 250×50px
               Ghid: https://kitamaru.ro/blog/cum-folosesc-pictogramele-anpc/ */}
           <div className="flex flex-wrap items-center gap-2 sm:justify-end">
             <a

@@ -1,6 +1,6 @@
 # RoHubTravel
 
-Agenție de turism — site static Next.js, pregătit pentru **GitHub Pages**.
+Agenție de turism - site static Next.js, pregătit pentru **GitHub Pages**.
 
 ## Dezvoltare locală
 

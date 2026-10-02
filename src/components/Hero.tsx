@@ -33,7 +33,7 @@ export function Hero() {
         </h1>
         <p className="animate-fade-up delay-2 mt-4 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
           Agenție de turism pentru vacanțe în România: circuite pe regiuni,
-          gastronomie, crame și experiențe locale — de la Oltenia la Delta
+          gastronomie, crame și experiențe locale - de la Oltenia la Delta
           Dunării.
         </p>
         <div className="animate-fade-up delay-3 mt-8 flex flex-wrap gap-3">

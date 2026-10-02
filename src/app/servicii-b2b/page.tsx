@@ -15,9 +15,9 @@ import {
 } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
-  title: "Services — Retreat-uri pentru angajați în România",
+  title: "Services - Retreat-uri pentru angajați în România",
   description:
-    "Retreat-uri RoHubTravel pentru companii: Escape 24h, Experience 36h, Retreat 48h și programe custom. Natură, gastronomie și experiențe locale — nu team-building clasic.",
+    "Retreat-uri RoHubTravel pentru companii: Escape 24h, Experience 36h, Retreat 48h și programe custom. Natură, gastronomie și experiențe locale - nu team-building clasic.",
   path: "/servicii-b2b/",
   image: SERVICE_IMAGES.hero.src,
   keywords: [
@@ -193,7 +193,7 @@ export default function ServiciiB2BPage() {
               Retreat-uri pentru angajați. Experiențe care te scot din rutină.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">
-              Natură, gastronomie și locuri reale din România — timp pentru oameni,
+              Natură, gastronomie și locuri reale din România - timp pentru oameni,
               nu încă o activitate de echipă.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
@@ -329,7 +329,7 @@ export default function ServiciiB2BPage() {
               </p>
               <p className="mt-3 max-w-xl text-base leading-relaxed text-stone sm:text-lg">
                 Nu alegi doar o destinație. Construim împreună întreaga experiență
-                — din Oltenia până în Delta Dunării.
+ - din Oltenia până în Delta Dunării.
               </p>
 
               <p className="mt-10 text-sm font-semibold uppercase tracking-[0.16em] text-dawn">
@@ -399,7 +399,7 @@ export default function ServiciiB2BPage() {
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">
               Transformăm o simplă excursie într-o experiență care îi apropie pe
-              oameni de România — de la mănăstiri și sate la deltă și munte.
+              oameni de România - de la mănăstiri și sate la deltă și munte.
             </p>
 
             <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -430,7 +430,7 @@ export default function ServiciiB2BPage() {
               Noi ne ocupăm de restul.
             </p>
             <p className="mt-8 text-sm text-stone">
-              RoHubTravel — Discover Romania. Experience Romania.
+              RoHubTravel - Discover Romania. Experience Romania.
             </p>
           </div>
         </section>

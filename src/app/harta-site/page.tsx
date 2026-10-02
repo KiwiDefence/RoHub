@@ -7,7 +7,7 @@ import { getAllRoutes } from "@/lib/routes";
 import { breadcrumbJsonLd, buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
-  title: "Harta site — toate paginile RoHubTravel",
+  title: "Harta site - toate paginile RoHubTravel",
   description:
     "Sitemap HTML RoHubTravel: vacanțe pe regiuni în România, Services (retreat-uri angajați) și contact. Index complet al paginilor.",
   path: "/harta-site/",

@@ -33,7 +33,7 @@ export default function VacanteIndexPage() {
   const itemList = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Vacanțe în România pe regiuni — RoHubTravel",
+    name: "Vacanțe în România pe regiuni - RoHubTravel",
     itemListElement: regions.map((region, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -69,7 +69,7 @@ export default function VacanteIndexPage() {
             Regiuni pe care le poți trăi, nu doar vizita
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-stone sm:text-lg">
-            Fiecare pagină e un circuit RoHubTravel pe regiune — făcut pentru
+            Fiecare pagină e un circuit RoHubTravel pe regiune - făcut pentru
             oameni care vor povești locale, gastronomie, crame și natură în
             Oltenia, Muntenia, Maramureș, Transilvania, Bucovina sau Dobrogea.
           </p>

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Syne } from "next/font/google";
+import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import { FloatingActions } from "@/components/FloatingActions";
 import { JsonLd } from "@/components/JsonLd";
 import {
@@ -15,8 +15,8 @@ import {
 } from "@/lib/seo";
 import "./globals.css";
 
-const syne = Syne({
-  variable: "--font-syne",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   weight: ["600", "700", "800"],
   display: "swap",
@@ -48,7 +48,7 @@ const csp = [
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Vacanțe autentice în România`,
+    default: `${SITE_NAME} - Vacanțe autentice în România`,
     template: `%s · ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -88,20 +88,20 @@ export const metadata: Metadata = {
     locale: "ro_RO",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} — Vacanțe autentice în România`,
+    title: `${SITE_NAME} - Vacanțe autentice în România`,
     description: `${SITE_TAGLINE} Circuite și experiențe pe regiuni: Oltenia, Muntenia, Maramureș, Transilvania, Bucovina, Dobrogea.`,
     images: [
       {
         url: absoluteUrl(DEFAULT_OG_IMAGE),
         width: 1200,
         height: 630,
-        alt: `${SITE_NAME} — vacanțe autentice în România`,
+        alt: `${SITE_NAME} - vacanțe autentice în România`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} — Vacanțe autentice în România`,
+    title: `${SITE_NAME} - Vacanțe autentice în România`,
     description: SITE_TAGLINE,
     images: [absoluteUrl(DEFAULT_OG_IMAGE)],
   },
@@ -125,7 +125,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ro"
-      className={`${syne.variable} ${plusJakarta.variable} h-full`}
+      className={`${outfit.variable} ${plusJakarta.variable} h-full`}
     >
       <head>
         <meta httpEquiv="Content-Security-Policy" content={csp} />

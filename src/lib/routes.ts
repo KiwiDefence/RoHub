@@ -21,19 +21,19 @@ export function getAllRoutes(): SiteRoute[] {
     },
     {
       path: "/vacante/",
-      label: "Vacanțe în România — index",
+      label: "Vacanțe în România - index",
       priority: 0.95,
       changeFrequency: "weekly",
     },
     {
       path: "/servicii-b2b/",
-      label: "Services — retreat-uri pentru angajați",
+      label: "Services - retreat-uri pentru angajați",
       priority: 0.95,
       changeFrequency: "weekly",
     },
     {
       path: "/harta-site/",
-      label: "Harta site — toate paginile",
+      label: "Harta site - toate paginile",
       priority: 0.3,
       changeFrequency: "monthly",
     },

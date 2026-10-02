@@ -8,7 +8,7 @@ export const SITE_URL = (
 export const SITE_NAME = "RoHubTravel";
 export const SITE_TAGLINE = "Nu vizitezi România. O trăiești.";
 export const SITE_DESCRIPTION =
-  "Agenție de turism RoHubTravel: vacanțe și circuite autentice în România — Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea. Gastronomie, crame, natură și retreat-uri pentru companii.";
+  "Agenție de turism RoHubTravel: vacanțe și circuite autentice în România - Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea. Gastronomie, crame, natură și retreat-uri pentru companii.";
 
 export const SITE_EMAIL = "hello@rohub.ro";
 export const SITE_PHONE = "+40722111222";
@@ -85,7 +85,7 @@ export function buildPageMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: `${SITE_NAME} — ${title}`,
+          alt: `${SITE_NAME} - ${title}`,
         },
       ],
     },
@@ -248,7 +248,7 @@ export function servicesJsonLd(): JsonLd {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Retreat-uri pentru angajați — RoHubTravel Services",
+    name: "Retreat-uri pentru angajați - RoHubTravel Services",
     serviceType: "Corporate retreat / employee experience travel",
     description:
       "Retreat-uri corporate în România: Escape 24h, Experience 36h, Retreat 48h și programe custom cu natură, gastronomie și experiențe locale.",
@@ -264,25 +264,25 @@ export function servicesJsonLd(): JsonLd {
       itemListElement: [
         {
           "@type": "Offer",
-          name: "ESCAPE — 24 ore",
+          name: "ESCAPE - 24 ore",
           description:
             "Experiență de o zi: natură, gastronomie și activități locale, fără cazare.",
         },
         {
           "@type": "Offer",
-          name: "EXPERIENCE — 36 ore",
+          name: "EXPERIENCE - 36 ore",
           description:
             "Retreat de o noapte cu cazare, experiențe locale și timp de deconectare.",
         },
         {
           "@type": "Offer",
-          name: "RETREAT — 48 ore",
+          name: "RETREAT - 48 ore",
           description:
             "Două zile complete de retreat: natură, cultură, gastronomie și crame.",
         },
         {
           "@type": "Offer",
-          name: "YOUR ROMANIA — Custom",
+          name: "YOUR ROMANIA - Custom",
           description:
             "Retreat personalizat pentru grupuri de minimum 25 de persoane.",
         },
@@ -295,7 +295,7 @@ export const HOME_FAQS = [
   {
     question: "Ce este RoHubTravel?",
     answer:
-      "RoHubTravel este o agenție de turism axată pe vacanțe și circuite autentice în România. Organizăm experiențe pe regiuni — Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea — cu gastronomie locală, crame, natură și ghiduri verificate.",
+      "RoHubTravel este o agenție de turism axată pe vacanțe și circuite autentice în România. Organizăm experiențe pe regiuni - Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea - cu gastronomie locală, crame, natură și ghiduri verificate.",
   },
   {
     question: "În ce regiuni din România organizați vacanțe?",
@@ -305,12 +305,12 @@ export const HOME_FAQS = [
   {
     question: "Cum rezerv un circuit sau o vacanță?",
     answer:
-      "Scrie-ne pe formularul de contact, pe email la hello@rohub.ro, telefon +40 722 111 222 sau WhatsApp. Spune-ne regiunea, perioada și numărul de persoane — răspundem în maxim o zi lucrătoare cu o propunere personalizată.",
+      "Scrie-ne pe formularul de contact, pe email la hello@rohub.ro, telefon +40 722 111 222 sau WhatsApp. Spune-ne regiunea, perioada și numărul de persoane - răspundem în maxim o zi lucrătoare cu o propunere personalizată.",
   },
   {
     question: "Organizați și retreat-uri pentru companii?",
     answer:
-      "Da. Pe pagina Services găsești pachete Escape 24h, Experience 36h, Retreat 48h și programe custom pentru angajați — natură, gastronomie și experiențe locale, nu team-building clasic.",
+      "Da. Pe pagina Services găsești pachete Escape 24h, Experience 36h, Retreat 48h și programe custom pentru angajați - natură, gastronomie și experiențe locale, nu team-building clasic.",
   },
   {
     question: "Vacanțele sunt potrivite pentru diaspora și oaspeți din străinătate?",
@@ -328,7 +328,7 @@ export const SERVICES_FAQS = [
   {
     question: "Retreat-urile RoHubTravel sunt team-building?",
     answer:
-      "Nu. Nu este team-building clasic. Este timp pentru oameni: deconectare, natură, gastronomie și experiențe locale — fără presiunea de a performa în activități forțate de echipă.",
+      "Nu. Nu este team-building clasic. Este timp pentru oameni: deconectare, natură, gastronomie și experiențe locale - fără presiunea de a performa în activități forțate de echipă.",
   },
   {
     question: "Cum cer o ofertă pentru un retreat corporate?",
@@ -346,6 +346,6 @@ export const VACANTE_FAQS = [
   {
     question: "Vacanțele RoHubTravel sunt pachete fixe sau personalizate?",
     answer:
-      "Construim itinerarii pe ritmul tău: durată, ritm, tip de cazare și experiențe (crame, gastronomie, natură, cultură). Nu vinzi un pachet generic — adaptăm circuitul la grup.",
+      "Construim itinerarii pe ritmul tău: durată, ritm, tip de cazare și experiențe (crame, gastronomie, natură, cultură). Nu vinzi un pachet generic - adaptăm circuitul la grup.",
   },
 ] as const;

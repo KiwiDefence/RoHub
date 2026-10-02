@@ -63,7 +63,7 @@ export function Contact({ defaultDestination = "" }: ContactProps) {
       return;
     }
 
-    const subject = encodeURIComponent(`Cerere RoHubTravel — ${name}`);
+    const subject = encodeURIComponent(`Cerere RoHubTravel - ${name}`);
     const body = encodeURIComponent(
       [
         `Nume: ${name}`,
