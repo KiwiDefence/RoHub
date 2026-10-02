@@ -19,11 +19,11 @@ npm run build
 
 Output-ul apare în folderul `out/` (HTML/CSS/JS static).
 
-Pentru a simula path-ul de pe GitHub Pages (ex. `/Rohub`):
+Pentru a simula path-ul de pe GitHub Pages (ex. `/RoHub`):
 
 ```bash
 # PowerShell
-$env:NEXT_PUBLIC_BASE_PATH="/Rohub"; npm run build
+$env:NEXT_PUBLIC_BASE_PATH="/RoHub"; npm run build
 ```
 
 ## Deploy pe GitHub Pages

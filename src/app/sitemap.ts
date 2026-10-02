@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { regions } from "@/lib/content";
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://motanofficial.github.io/Rohub";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://kiwidefence.github.io/RoHub";
 
 export const dynamic = "force-static";
 
