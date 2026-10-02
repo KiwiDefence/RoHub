@@ -1,41 +1,77 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { FaqSection } from "@/components/FaqSection";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { JsonLd } from "@/components/JsonLd";
 import { regions } from "@/lib/content";
+import {
+  VACANTE_FAQS,
+  absoluteUrl,
+  breadcrumbJsonLd,
+  buildPageMetadata,
+  faqJsonLd,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "Vacanțe în România pe regiuni",
   description:
-    "Circuite și vacanțe RoHub în Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea. Experiențe autentice în România.",
-  alternates: {
-    canonical: "/vacante/",
-  },
-  openGraph: {
-    title: "Vacanțe în România pe regiuni · RoHub",
-    description:
-      "Alege regiunea: Oltenia, Muntenia, Maramureș, Transilvania, Bucovina sau Dobrogea.",
-    locale: "ro_RO",
-    type: "website",
-  },
-};
+    "Circuite și vacanțe RoHubTravel în Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea. Experiențe autentice: gastronomie, crame, mănăstiri și natură în România.",
+  path: "/vacante/",
+  keywords: [
+    "vacanțe România pe regiuni",
+    "circuite Oltenia",
+    "circuite Maramureș",
+    "circuite Transilvania",
+    "circuite Bucovina",
+    "tururi Delta Dunării",
+  ],
+});
 
 export default function VacanteIndexPage() {
+  const itemList = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Vacanțe în România pe regiuni — RoHubTravel",
+    itemListElement: regions.map((region, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: region.name,
+      url: absoluteUrl(`/vacante/${region.slug}/`),
+      description: region.seoDescription,
+    })),
+  };
+
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Acasă", path: "/" },
+          { name: "Vacanțe", path: "/vacante/" },
+        ])}
+      />
+      <JsonLd data={itemList} />
+      <JsonLd data={faqJsonLd([...VACANTE_FAQS])} />
       <Header variant="solid" />
       <main className="flex-1 bg-fog pt-24 sm:pt-28">
         <section className="mx-auto max-w-6xl px-5 pb-10 sm:px-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">
+          <Breadcrumbs
+            items={[
+              { name: "Acasă", href: "/" },
+              { name: "Vacanțe" },
+            ]}
+          />
+          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-moss">
             Vacanțe în România
           </p>
           <h1 className="mt-3 max-w-3xl font-display text-4xl font-extrabold tracking-tight text-ink sm:text-6xl">
             Regiuni pe care le poți trăi, nu doar vizita
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-stone sm:text-lg">
-            Fiecare pagină e un circuit RoHub pe regiune — făcut pentru oameni
-            care vor povești locale, gastronomie, crame și natură.
+            Fiecare pagină e un circuit RoHubTravel pe regiune — făcut pentru
+            oameni care vor povești locale, gastronomie, crame și natură în
+            Oltenia, Muntenia, Maramureș, Transilvania, Bucovina sau Dobrogea.
           </p>
         </section>
 
@@ -62,7 +98,7 @@ export default function VacanteIndexPage() {
                         {region.days}
                       </p>
                       <h2 className="mt-1 font-display text-2xl font-bold text-ink">
-                        {region.name}
+                        Vacanțe în {region.name}
                       </h2>
                       <p className="mt-2 text-sm leading-relaxed text-stone">
                         {region.blurb}
@@ -77,6 +113,11 @@ export default function VacanteIndexPage() {
             ))}
           </ul>
         </section>
+
+        <FaqSection
+          title="Cum alegi vacanța potrivită"
+          faqs={VACANTE_FAQS}
+        />
       </main>
       <Footer />
     </>

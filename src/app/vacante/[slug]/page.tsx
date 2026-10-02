@@ -2,10 +2,17 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { JsonLd } from "@/components/JsonLd";
 import { getAllRegionSlugs, getRegion, regions } from "@/lib/content";
+import {
+  breadcrumbJsonLd,
+  buildPageMetadata,
+  regionTripJsonLd,
+} from "@/lib/seo";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -24,27 +31,21 @@ export async function generateMetadata({
     return { title: "Vacanță negăsită" };
   }
 
-  return {
+  return buildPageMetadata({
     title: region.seoTitle,
     description: region.seoDescription,
-    alternates: {
-      canonical: `/vacante/${region.slug}/`,
-    },
-    openGraph: {
-      title: `${region.seoTitle} · RoHub`,
-      description: region.seoDescription,
-      type: "article",
-      locale: "ro_RO",
-      images: [{ url: region.image, alt: region.heroAlt }],
-    },
+    path: `/vacante/${region.slug}/`,
+    image: region.image,
+    type: "article",
     keywords: [
       `vacanțe ${region.name}`,
       `turism ${region.name}`,
-      "agenție de turism România",
-      "RoHub",
-      "experiențe autentice",
+      `circuite ${region.name}`,
+      `ce să vezi în ${region.name}`,
+      `gastronomie ${region.name}`,
+      ...region.attractions.slice(0, 4),
     ],
-  };
+  });
 }
 
 export default async function RegionPage({ params }: PageProps) {
@@ -56,6 +57,14 @@ export default async function RegionPage({ params }: PageProps) {
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Acasă", path: "/" },
+          { name: "Vacanțe", path: "/vacante/" },
+          { name: region.name, path: `/vacante/${region.slug}/` },
+        ])}
+      />
+      <JsonLd data={regionTripJsonLd(region)} />
       <Header variant="overlay" />
       <main className="flex-1">
         <section className="relative flex min-h-[70svh] items-end overflow-hidden">
@@ -72,11 +81,19 @@ export default async function RegionPage({ params }: PageProps) {
             aria-hidden
           />
           <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-14 pt-28 sm:px-8 sm:pb-20">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-dawn">
+            <Breadcrumbs
+              tone="light"
+              items={[
+                { name: "Acasă", href: "/" },
+                { name: "Vacanțe", href: "/vacante/" },
+                { name: region.name },
+              ]}
+            />
+            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-dawn">
               Vacanțe în România · {region.days}
             </p>
             <h1 className="mt-3 max-w-3xl font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl">
-              {region.name}
+              Vacanțe în {region.name}
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">
               {region.blurb}
@@ -88,14 +105,14 @@ export default async function RegionPage({ params }: PageProps) {
           <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-[1.4fr_0.8fr] lg:gap-16">
             <div>
               <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-                Trăiește {region.name}
+                Trăiește {region.name} cu RoHubTravel
               </h2>
               <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
                 {region.intro}
               </p>
 
               <h3 className="mt-10 font-display text-2xl font-bold text-ink">
-                Pentru ce e renumită
+                Pentru ce e renumită {region.name}
               </h3>
               <ul className="mt-4 space-y-3">
                 {region.famousFor.map((item) => (
@@ -109,7 +126,7 @@ export default async function RegionPage({ params }: PageProps) {
               </ul>
 
               <h3 className="mt-10 font-display text-2xl font-bold text-ink">
-                Ce să vezi
+                Ce să vezi în {region.name}
               </h3>
               <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                 {region.attractions.map((item) => (
@@ -123,7 +140,7 @@ export default async function RegionPage({ params }: PageProps) {
               </ul>
 
               <h3 className="mt-10 font-display text-2xl font-bold text-ink">
-                Mâncare & băutură
+                Mâncare & băutură în {region.name}
               </h3>
               <ul className="mt-4 space-y-3">
                 {region.food.map((item) => (
@@ -171,6 +188,17 @@ export default async function RegionPage({ params }: PageProps) {
                 Răspundem pe WhatsApp, email sau telefon în maxim o zi
                 lucrătoare.
               </p>
+              <p className="mt-6 text-sm text-white/70">
+                Vezi și{" "}
+                <Link href="/servicii-b2b/" className="text-dawn underline-offset-4 hover:underline">
+                  retreat-uri Services pentru companii
+                </Link>{" "}
+                sau{" "}
+                <Link href="/vacante/" className="text-dawn underline-offset-4 hover:underline">
+                  toate vacanțele în România
+                </Link>
+                .
+              </p>
             </aside>
           </div>
         </section>
@@ -179,7 +207,7 @@ export default async function RegionPage({ params }: PageProps) {
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <h2 className="font-display text-2xl font-bold text-ink sm:text-3xl">
-                Alte regiuni
+                Alte regiuni de vacanță în România
               </h2>
               <Link
                 href="/vacante/"
@@ -202,7 +230,7 @@ export default async function RegionPage({ params }: PageProps) {
                       />
                     </div>
                     <p className="mt-3 font-display text-xl font-bold text-ink">
-                      {item.name}
+                      Vacanțe în {item.name}
                     </p>
                     <p className="mt-1 text-sm text-stone">{item.blurb}</p>
                   </Link>

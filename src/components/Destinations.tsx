@@ -14,8 +14,9 @@ export function Destinations() {
             Fiecare regiune are o poveste
           </h2>
           <p className="mt-4 text-base leading-relaxed text-stone sm:text-lg">
-            Circuite și experiențe în Oltenia, Muntenia, Maramureș și alte
-            colțuri unde încă se trăiește — nu doar se vizitează.
+            Circuite și vacanțe în Oltenia, Muntenia, Maramureș, Transilvania,
+            Bucovina și Dobrogea — locuri unde încă se trăiește, nu doar se
+            vizitează.
           </p>
         </div>
 

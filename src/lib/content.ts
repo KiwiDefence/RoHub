@@ -32,7 +32,7 @@ export const regions: Region[] = [
     heroAlt: "Mănăstirea Horezu din Oltenia, România",
     seoTitle: "Vacanțe în Oltenia — mănăstiri, crame și gastronomie",
     seoDescription:
-      "Descoperă Oltenia cu RoHub: Horezu, Cozia, Olteț, vinuri și mâncare oltenească. Circuite autentice în România.",
+      "Vacanțe și circuite în Oltenia cu RoHubTravel: Mănăstirea Horezu UNESCO, Cozia, ceramică, crame și gastronomie oltenească. Experiențe autentice în sud-vestul României.",
     intro:
       "Oltenia e regiunea din sud-vestul României unde tradiția se vede pe masă și pe zidurile mănăstirilor. De la Horezu UNESCO la valea Oltului, te ducem acolo unde încă se trăiește — nu doar unde se fotografiază.",
     famousFor: [
@@ -72,7 +72,7 @@ export const regions: Region[] = [
     heroAlt: "Castelul Peleș din Sinaia, Muntenia, România",
     seoTitle: "Vacanțe în Muntenia — Peleș, București și munte",
     seoDescription:
-      "Vacanțe în Muntenia cu RoHub: Castelul Peleș, București, Valea Prahovei, gastronomie și escapade de weekend.",
+      "Vacanțe în Muntenia cu RoHubTravel: Castelul Peleș, București, Valea Prahovei, Dealu Mare și escapade de weekend. Circuite scurte lângă capitală.",
     intro:
       "Muntenia e poarta spre România pe care o trăiești aproape de capitală: palate regale, munte pe Prahova și mese bune. Ideală pentru diaspora, weekend-uri și oaspeți corporate.",
     famousFor: [
@@ -112,7 +112,7 @@ export const regions: Region[] = [
     heroAlt: "Cimitirul Vesel din Săpânța, Maramureș, România",
     seoTitle: "Vacanțe în Maramureș — tradiții, stâne și gastronomie",
     seoDescription:
-      "Tururi în Maramureș: Săpânța, biserici de lemn, stâne, brânzeturi și experiențe autentice cu RoHub.",
+      "Tururi și vacanțe în Maramureș cu RoHubTravel: Săpânța, biserici de lemn UNESCO, stâne, brânzeturi și tradiții autentice. Circuite în nordul României.",
     intro:
       "Maramureșul e locul în care lemnul, cimitirul vesel și stânele încă spun povești. Te ducem pe văi unde tradiția nu e museum-piece — e viață de zi cu zi.",
     famousFor: [
@@ -152,7 +152,7 @@ export const regions: Region[] = [
     heroAlt: "Castelul Bran din Transilvania, România",
     seoTitle: "Vacanțe în Transilvania — Bran, Sighișoara și sate săsești",
     seoDescription:
-      "Circuite în Transilvania: Castelul Bran, Sighișoara, Brașov, sate săsești, vinuri și gastronomie cu RoHub.",
+      "Circuite în Transilvania cu RoHubTravel: Castelul Bran, Sighișoara UNESCO, Brașov, sate săsești, vinuri și gastronomie. Vacanțe culturale în inima României.",
     intro:
       "Transilvania e regiunea pe care o cunoști din povești — și merită trăită pe teren: castele, centre medievale, dealuri și mese la pensiuni. Construim itinerarii pe ritmul tău.",
     famousFor: [
@@ -192,7 +192,7 @@ export const regions: Region[] = [
     heroAlt: "Mănăstirea Voroneț din Bucovina, România",
     seoTitle: "Vacanțe în Bucovina — mănăstiri pictate și gastronomie",
     seoDescription:
-      "Vacanțe în Bucovina: Voroneț, Sucevița, Moldovița, natură și mâncare locală. Tururi RoHub.",
+      "Vacanțe în Bucovina cu RoHubTravel: mănăstiri pictate Voroneț, Sucevița, Moldovița, natură și gastronomie locală. Circuite UNESCO în nord-estul României.",
     intro:
       "Bucovina te încetinește: fresce pe exterior, păduri și mese care durează. Ideală pentru o săptămână de cultură, aer curat și odihnă fără grabă.",
     famousFor: [
@@ -232,7 +232,7 @@ export const regions: Region[] = [
     heroAlt: "Pelicani în Delta Dunării, Dobrogea, România",
     seoTitle: "Vacanțe în Dobrogea și Delta Dunării",
     seoDescription:
-      "Vacanțe în Delta Dunării și Dobrogea: canale, pelicani, pește proaspăt și natură. Experiențe RoHub.",
+      "Vacanțe în Delta Dunării și Dobrogea cu RoHubTravel: canale, birdwatching, pește proaspăt și sate de pescari. Tururi natură UNESCO în estul României.",
     intro:
       "Dobrogea și Delta sunt despre apă, păsări și mese pe mal. Te ducem pe canale, la pește proaspăt și la locuri unde ritmul e al deltei — nu al litoralului aglomerat.",
     famousFor: [
@@ -290,3 +290,49 @@ export const experiences = [
 
 export const HERO_IMAGE = asset("/regions/hero.jpg");
 export const ABOUT_IMAGE = asset("/regions/about.jpg");
+
+/** Romania-only imagery for the Services / retreats page. */
+export const SERVICE_IMAGES = {
+  hero: {
+    src: asset("/regions/hero.jpg"),
+    alt: "Transfăgărășan în Munții Făgăraș, România — drum de munte pentru retreat-uri",
+  },
+  escape: {
+    src: asset("/regions/oltenia.jpg"),
+    alt: "Mănăstirea Horezu din Oltenia, România — experiență culturală de o zi",
+  },
+  experience: {
+    src: asset("/regions/muntenia.jpg"),
+    alt: "Castelul Peleș din Sinaia, Muntenia, România — retreat de o noapte",
+  },
+  retreat: {
+    src: asset("/regions/dobrogea.jpg"),
+    alt: "Pelicani în Delta Dunării, Dobrogea, România — deconectare în natură",
+  },
+  custom: {
+    src: asset("/regions/about.jpg"),
+    alt: "Piața Mare din Sibiu, Transilvania, România — experiență custom pentru companii",
+  },
+  why: {
+    src: asset("/regions/bucovina.jpg"),
+    alt: "Mănăstirea Voroneț din Bucovina, România — cultură și tradiție",
+  },
+  gallery: [
+    {
+      src: asset("/regions/maramures.jpg"),
+      alt: "Cimitirul Vesel din Săpânța, Maramureș, România",
+    },
+    {
+      src: asset("/regions/transilvania.jpg"),
+      alt: "Cruce de piatră tradițională în Transilvania, România",
+    },
+    {
+      src: asset("/regions/bucovina.jpg"),
+      alt: "Mănăstire pictată din Bucovina, România",
+    },
+    {
+      src: asset("/regions/oltenia.jpg"),
+      alt: "Complex monahal în Oltenia, România",
+    },
+  ],
+} as const;

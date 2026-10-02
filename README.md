@@ -1,4 +1,4 @@
-# RoHub
+# RoHubTravel
 
 Agenție de turism — site static Next.js, pregătit pentru **GitHub Pages**.
 

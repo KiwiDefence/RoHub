@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const links = [
   { href: "/vacante/", label: "Vacanțe" },
-  { href: "/servicii-b2b/", label: "B2B" },
+  { href: "/servicii-b2b/", label: "Services" },
   { href: "/#despre", label: "Despre" },
   { href: "/#contact", label: "Contact" },
 ] as const;
@@ -48,7 +48,7 @@ export function Header({ variant = "overlay" }: HeaderProps) {
           className="font-display text-xl font-extrabold tracking-tight sm:text-2xl"
           onClick={() => setOpen(false)}
         >
-          RoHub
+          RoHubTravel
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">

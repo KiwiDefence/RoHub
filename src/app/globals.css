@@ -24,7 +24,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-display: var(--font-syne);
-  --font-sans: var(--font-figtree);
+  --font-sans: var(--font-plus-jakarta);
 }
 
 html {

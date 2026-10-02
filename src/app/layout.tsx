@@ -1,6 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Figtree, Syne } from "next/font/google";
+import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import { FloatingActions } from "@/components/FloatingActions";
+import { JsonLd } from "@/components/JsonLd";
+import {
+  CORE_KEYWORDS,
+  DEFAULT_OG_IMAGE,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TAGLINE,
+  SITE_URL,
+  absoluteUrl,
+  organizationJsonLd,
+  websiteJsonLd,
+} from "@/lib/seo";
 import "./globals.css";
 
 const syne = Syne({
@@ -10,8 +22,8 @@ const syne = Syne({
   display: "swap",
 });
 
-const figtree = Figtree({
-  variable: "--font-figtree",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
@@ -34,41 +46,72 @@ const csp = [
 ].join("; ");
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "RoHub — Vacanțe autentice în România",
-    template: "%s · RoHub",
+    default: `${SITE_NAME} — Vacanțe autentice în România`,
+    template: `%s · ${SITE_NAME}`,
   },
-  description:
-    "RoHub: agenție de turism pentru vacanțe și circuite în România. Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea — experiențe locale, gastronomie, crame.",
-  keywords: [
-    "agenție de turism România",
-    "RoHub",
-    "vacanțe România",
-    "circuite România",
-    "Oltenia",
-    "Muntenia",
-    "Maramureș",
-    "turism autentic",
-  ],
-  authors: [{ name: "RoHub" }],
-  creator: "RoHub",
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: [...CORE_KEYWORDS],
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "travel",
+  classification: "Travel Agency",
+  referrer: "strict-origin-when-cross-origin",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "ro-RO": "/",
+      "x-default": "/",
+    },
+  },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   openGraph: {
     type: "website",
     locale: "ro_RO",
-    siteName: "RoHub",
-    title: "RoHub — Vacanțe autentice în România",
-    description:
-      "Nu vizitezi România. O trăiești. Circuite și experiențe pe regiuni.",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} — Vacanțe autentice în România`,
+    description: `${SITE_TAGLINE} Circuite și experiențe pe regiuni: Oltenia, Muntenia, Maramureș, Transilvania, Bucovina, Dobrogea.`,
+    images: [
+      {
+        url: absoluteUrl(DEFAULT_OG_IMAGE),
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} — vacanțe autentice în România`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} — Vacanțe autentice în România`,
+    description: SITE_TAGLINE,
+    images: [absoluteUrl(DEFAULT_OG_IMAGE)],
   },
   other: {
     "Content-Security-Policy": csp,
     "X-Content-Type-Options": "nosniff",
     "Referrer-Policy": "strict-origin-when-cross-origin",
     "X-Frame-Options": "DENY",
+    "geo.region": "RO",
+    "geo.placename": "București",
   },
 };
 
@@ -80,7 +123,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ro" className={`${syne.variable} ${figtree.variable} h-full`}>
+    <html
+      lang="ro"
+      className={`${syne.variable} ${plusJakarta.variable} h-full`}
+    >
       <head>
         <meta httpEquiv="Content-Security-Policy" content={csp} />
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
@@ -88,8 +134,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           name="referrer"
           content="strict-origin-when-cross-origin"
         />
+        <link rel="alternate" hrefLang="ro-RO" href={SITE_URL} />
+        <link rel="alternate" hrefLang="x-default" href={SITE_URL} />
       </head>
       <body className="min-h-full flex flex-col antialiased">
+        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={websiteJsonLd()} />
         {children}
         <FloatingActions />
       </body>

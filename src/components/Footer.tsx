@@ -11,11 +11,24 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[1.2fr_1fr_1fr]">
         <div>
           <p className="font-display text-2xl font-extrabold tracking-tight">
-            RoHub
+            RoHubTravel
           </p>
           <p className="mt-2 max-w-sm text-sm text-white/70">
-            Nu vizitezi România. O trăiești. Circuite și experiențe autentice
-            pe regiuni.
+            Agenție de turism pentru vacanțe și circuite autentice în România —
+            Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea.
+          </p>
+          <p className="mt-4 text-sm text-white/60">
+            București ·{" "}
+            <a
+              href="mailto:hello@rohub.ro"
+              className="hover:text-white"
+            >
+              hello@rohub.ro
+            </a>{" "}
+            ·{" "}
+            <a href="tel:+40722111222" className="hover:text-white">
+              +40 722 111 222
+            </a>
           </p>
         </div>
 
@@ -39,7 +52,7 @@ export function Footer() {
 
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-dawn">
-            RoHub
+            RoHubTravel
           </p>
           <ul className="mt-4 space-y-2 text-sm text-white/70">
             <li>
@@ -49,7 +62,7 @@ export function Footer() {
             </li>
             <li>
               <Link href="/servicii-b2b/" className="hover:text-white">
-                Servicii B2B
+                Services
               </Link>
             </li>
             <li>
@@ -74,7 +87,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-6 sm:flex-row sm:items-end sm:justify-between sm:px-8">
           <p className="max-w-md text-xs leading-relaxed text-white/50">
-            © {year} RoHub. Toate drepturile rezervate. Fotografii: Wikimedia
+            © {year} RoHubTravel. Toate drepturile rezervate. Fotografii: Wikimedia
             Commons (România).
           </p>
 

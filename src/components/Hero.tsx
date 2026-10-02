@@ -25,15 +25,16 @@ export function Hero() {
       />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-16 pt-32 sm:px-8 sm:pb-24">
-        <p className="animate-fade-up font-display text-5xl font-extrabold tracking-tight text-white sm:text-7xl md:text-8xl lg:text-9xl">
-          RoHub
+        <p className="animate-fade-up font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+          RoHubTravel
         </p>
         <h1 className="animate-fade-up delay-1 mt-4 max-w-2xl text-2xl font-medium leading-snug text-white sm:text-3xl md:text-4xl">
           Nu vizitezi România. O trăiești.
         </h1>
         <p className="animate-fade-up delay-2 mt-4 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
-          Fiecare regiune are o poveste — te ducem acolo unde încă se trăiește.
-          Circuite, gastronomie, crame și experiențe locale.
+          Agenție de turism pentru vacanțe în România: circuite pe regiuni,
+          gastronomie, crame și experiențe locale — de la Oltenia la Delta
+          Dunării.
         </p>
         <div className="animate-fade-up delay-3 mt-8 flex flex-wrap gap-3">
           <a
