@@ -522,7 +522,7 @@ export const experiences = [
 export const HERO_IMAGE = asset("/regions/hero.jpg");
 export const ABOUT_IMAGE = asset("/regions/about.jpg");
 
-/** Romania-only imagery for the Services / retreats page. */
+/** Romania-only imagery for the Servicii / retreats page. */
 export const SERVICE_IMAGES = {
   hero: {
     src: asset("/regions/hero.jpg"),

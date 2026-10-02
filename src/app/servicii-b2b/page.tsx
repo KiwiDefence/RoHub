@@ -15,7 +15,7 @@ import {
 } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
-  title: "Services - Retreat-uri pentru angajați în România",
+  title: "Servicii - Retreat-uri pentru angajați în România",
   description:
     "Retreat-uri RoHubTravel pentru companii: Escape 24h, Experience 36h, Retreat 48h și programe custom. Natură, gastronomie și experiențe locale - nu team-building clasic.",
   path: "/servicii-b2b/",
@@ -27,7 +27,7 @@ export const metadata = buildPageMetadata({
     "retreat corporate natură",
     "experiențe angajați România",
     "team building alternativ România",
-    "RoHubTravel Services",
+    "RoHubTravel Servicii",
   ],
 });
 
@@ -158,7 +158,7 @@ export default function ServiciiB2BPage() {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Acasă", path: "/" },
-          { name: "Services", path: "/servicii-b2b/" },
+          { name: "Servicii", path: "/servicii-b2b/" },
         ])}
       />
       <JsonLd data={servicesJsonLd()} />
@@ -183,11 +183,11 @@ export default function ServiciiB2BPage() {
               tone="light"
               items={[
                 { name: "Acasă", href: "/" },
-                { name: "Services" },
+                { name: "Servicii" },
               ]}
             />
             <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-dawn">
-              Services
+              Servicii
             </p>
             <h1 className="mt-4 max-w-3xl font-sans text-3xl font-semibold leading-tight tracking-[-0.02em] text-white sm:text-5xl sm:leading-[1.15] md:text-6xl">
               Retreat-uri pentru angajați. Experiențe care te scot din rutină.
@@ -440,7 +440,7 @@ export default function ServiciiB2BPage() {
           faqs={SERVICES_FAQS}
         />
 
-        <Contact defaultDestination="Retreat Services" />
+        <Contact defaultDestination="Retreat Servicii" />
       </main>
       <Footer />
     </>

@@ -9,7 +9,7 @@ import { breadcrumbJsonLd, buildPageMetadata } from "@/lib/seo";
 export const metadata = buildPageMetadata({
   title: "Harta site - toate paginile RoHubTravel",
   description:
-    "Sitemap HTML RoHubTravel: vacanțe pe regiuni în România, Services (retreat-uri angajați) și contact. Index complet al paginilor.",
+    "Sitemap HTML RoHubTravel: vacanțe pe regiuni în România, Servicii (retreat-uri angajați) și contact. Index complet al paginilor.",
   path: "/harta-site/",
   keywords: ["harta site", "sitemap RoHubTravel", "pagini vacanțe România"],
 });

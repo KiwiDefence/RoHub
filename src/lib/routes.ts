@@ -27,7 +27,7 @@ export function getAllRoutes(): SiteRoute[] {
     },
     {
       path: "/servicii-b2b/",
-      label: "Services - retreat-uri pentru angajați",
+      label: "Servicii - retreat-uri pentru angajați",
       priority: 0.95,
       changeFrequency: "weekly",
     },

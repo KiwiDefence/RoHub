@@ -248,7 +248,7 @@ export function servicesJsonLd(): JsonLd {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Retreat-uri pentru angajați - RoHubTravel Services",
+    name: "Retreat-uri pentru angajați - RoHubTravel Servicii",
     serviceType: "Corporate retreat / employee experience travel",
     description:
       "Retreat-uri corporate în România: Escape 24h, Experience 36h, Retreat 48h și programe custom cu natură, gastronomie și experiențe locale.",
@@ -310,7 +310,7 @@ export const HOME_FAQS = [
   {
     question: "Organizați și retreat-uri pentru companii?",
     answer:
-      "Da. Pe pagina Services găsești pachete Escape 24h, Experience 36h, Retreat 48h și programe custom pentru angajați - natură, gastronomie și experiențe locale, nu team-building clasic.",
+      "Da. Pe pagina Servicii găsești pachete Escape 24h, Experience 36h, Retreat 48h și programe custom pentru angajați - natură, gastronomie și experiențe locale, nu team-building clasic.",
   },
   {
     question: "Vacanțele sunt potrivite pentru diaspora și oaspeți din străinătate?",

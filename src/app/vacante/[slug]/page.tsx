@@ -242,7 +242,7 @@ export default async function RegionPage({ params }: PageProps) {
                   href="/servicii-b2b/"
                   className="text-dawn underline-offset-4 hover:underline"
                 >
-                  Services pentru companii
+                  Servicii pentru companii
                 </Link>{" "}
                 sau{" "}
                 <Link

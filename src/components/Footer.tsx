@@ -62,7 +62,7 @@ export function Footer() {
             </li>
             <li>
               <Link href="/servicii-b2b/" className="hover:text-white">
-                Services
+                Servicii
               </Link>
             </li>
             <li>
