@@ -154,7 +154,7 @@ export default function ServiciiB2BPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-dawn">
               Servicii B2B
             </p>
-            <h1 className="mt-4 max-w-3xl font-display text-3xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+            <h1 className="mt-4 max-w-3xl font-sans text-3xl font-semibold leading-tight tracking-[-0.02em] sm:text-5xl sm:leading-[1.15] md:text-6xl">
               Retreat-uri pentru angajați. Experiențe care te scot din rutină.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">
@@ -168,7 +168,7 @@ export default function ServiciiB2BPage() {
               relaxarea, natura, gastronomia și experiențele locale într-o
               experiență completă.
             </p>
-            <p className="mt-8 font-display text-xl font-bold text-dawn sm:text-2xl">
+            <p className="mt-8 font-sans text-xl font-semibold leading-snug text-dawn sm:text-2xl">
               Nu este team-building.
               <br />
               Este timp pentru oameni.
@@ -192,7 +192,7 @@ export default function ServiciiB2BPage() {
 
         <section id="pachete" className="bg-fog py-16 sm:py-24">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <h2 className="max-w-2xl font-display text-3xl font-bold tracking-tight text-ink sm:text-5xl">
+            <h2 className="max-w-2xl font-sans text-3xl font-semibold tracking-[-0.02em] text-ink sm:text-5xl sm:leading-[1.15]">
               Alege experiența potrivită pentru echipa ta
             </h2>
 
@@ -206,7 +206,7 @@ export default function ServiciiB2BPage() {
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">
                     {pkg.code}
                   </p>
-                  <h3 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+                  <h3 className="mt-2 font-sans text-3xl font-semibold tracking-[-0.02em] text-ink sm:text-4xl">
                     {pkg.name}
                   </h3>
                   <p className="mt-3 max-w-2xl text-xl font-medium text-ink sm:text-2xl">
@@ -245,7 +245,7 @@ export default function ServiciiB2BPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">
               ROHUB CUSTOM
             </p>
-            <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-ink sm:text-5xl">
+            <h2 className="mt-3 font-sans text-3xl font-semibold tracking-[-0.02em] text-ink sm:text-5xl sm:leading-[1.15]">
               YOUR ROMANIA
             </h2>
             <p className="mt-4 max-w-2xl text-xl font-medium text-ink sm:text-2xl">
@@ -292,7 +292,7 @@ export default function ServiciiB2BPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-dawn">
               De ce RoHub?
             </p>
-            <h2 className="mt-3 max-w-2xl font-display text-3xl font-bold tracking-tight sm:text-5xl">
+            <h2 className="mt-3 max-w-2xl font-sans text-3xl font-semibold tracking-[-0.02em] sm:text-5xl sm:leading-[1.15]">
               Nu vizitezi România. O trăiești.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">
@@ -303,7 +303,7 @@ export default function ServiciiB2BPage() {
             <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {whyPoints.map((point) => (
                 <li key={point.title} className="border-t border-white/15 pt-6">
-                  <h3 className="font-display text-xl font-bold uppercase tracking-wide">
+                  <h3 className="font-sans text-lg font-semibold uppercase tracking-[0.12em]">
                     {point.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/80 sm:text-base">
@@ -317,14 +317,14 @@ export default function ServiciiB2BPage() {
 
         <section className="bg-mist py-16 sm:py-20">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <h2 className="max-w-2xl font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <h2 className="max-w-2xl font-sans text-3xl font-semibold tracking-[-0.02em] text-ink sm:text-4xl sm:leading-[1.15]">
               Vrei să creezi următorul retreat pentru angajații tăi?
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-stone sm:text-lg">
               Spune-ne câți participanți ai, perioada dorită și ce tip de
               experiență cauți.
             </p>
-            <p className="mt-3 font-display text-xl font-bold text-pine">
+            <p className="mt-3 font-sans text-xl font-semibold text-pine">
               Noi ne ocupăm de restul.
             </p>
             <p className="mt-8 text-sm text-stone">
