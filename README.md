@@ -19,20 +19,13 @@ npm run build
 
 Output-ul apare în folderul `out/` (HTML/CSS/JS static).
 
-Pentru a simula path-ul de pe GitHub Pages (ex. `/RoHub`):
+## Deploy pe GitHub Pages + domeniu
 
-```bash
-# PowerShell
-$env:NEXT_PUBLIC_BASE_PATH="/RoHub"; npm run build
-```
+1. În **Settings → Pages**, Source: **GitHub Actions**, Custom domain: `rohubtravel.com`
+2. Workflow-ul construiește **fără** `basePath` (domeniul servește din root)
+3. `public/CNAME` conține `rohubtravel.com`
 
-## Deploy pe GitHub Pages
-
-1. Creează un repo pe GitHub și împinge codul.
-2. În **Settings → Pages**, setează Source pe **GitHub Actions**.
-3. Workflow-ul `.github/workflows/deploy.yml` construiește și publică automat la fiecare push pe `main` / `master`.
-
-Site-ul va fi la: `https://<user>.github.io/<repo>/`
+Site live: [https://rohubtravel.com](https://rohubtravel.com)
 
 ## Securitate
 
