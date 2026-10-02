@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { regions } from "@/lib/content";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export function Footer() {
   const year = new Date().getFullYear();
 
@@ -9,7 +11,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[1.2fr_1fr_1fr]">
         <div>
           <p className="font-display text-2xl font-extrabold tracking-tight">
-            Rohub
+            RoHub
           </p>
           <p className="mt-2 max-w-sm text-sm text-white/70">
             Nu vizitezi România. O trăiești. Circuite și experiențe autentice
@@ -37,7 +39,7 @@ export function Footer() {
 
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-dawn">
-            Rohub
+            RoHub
           </p>
           <ul className="mt-4 space-y-2 text-sm text-white/70">
             <li>
@@ -58,11 +60,49 @@ export function Footer() {
           </ul>
         </div>
       </div>
+
       <div className="border-t border-white/10">
-        <p className="mx-auto max-w-6xl px-5 py-5 text-xs text-white/50 sm:px-8">
-          © {year} Rohub. Toate drepturile rezervate. Fotografii: Wikimedia
-          Commons (România).
-        </p>
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-6 sm:flex-row sm:items-end sm:justify-between sm:px-8">
+          <p className="max-w-md text-xs leading-relaxed text-white/50">
+            © {year} RoHub. Toate drepturile rezervate. Fotografii: Wikimedia
+            Commons (România).
+          </p>
+
+          {/* Pictograme ANPC SAL/SOL — Ordin 449/2022, 250×50px
+              Ghid: https://kitamaru.ro/blog/cum-folosesc-pictogramele-anpc/ */}
+          <div className="flex flex-wrap items-center gap-2 sm:justify-end">
+            <a
+              href="https://anpc.ro/ce-este-sal/"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              className="m-0 inline-block p-0 leading-none no-underline"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`${basePath}/anpc/anpc-sal.svg`}
+                alt="Soluționarea Alternativă a Litigiilor"
+                width={250}
+                height={50}
+                className="m-[5px] inline-block h-[50px] w-[250px] max-w-full border-0"
+              />
+            </a>
+            <a
+              href="https://ec.europa.eu/consumers/odr"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              className="m-0 inline-block p-0 leading-none no-underline"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`${basePath}/anpc/anpc-sol.svg`}
+                alt="Soluționarea Online a Litigiilor"
+                width={250}
+                height={50}
+                className="m-[5px] inline-block h-[50px] w-[250px] max-w-full border-0"
+              />
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );

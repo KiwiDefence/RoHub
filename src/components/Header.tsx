@@ -47,7 +47,7 @@ export function Header({ variant = "overlay" }: HeaderProps) {
           className="font-display text-xl font-extrabold tracking-tight sm:text-2xl"
           onClick={() => setOpen(false)}
         >
-          Rohub
+          RoHub
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">

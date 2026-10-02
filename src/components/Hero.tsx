@@ -26,7 +26,7 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-16 pt-32 sm:px-8 sm:pb-24">
         <p className="animate-fade-up font-display text-5xl font-extrabold tracking-tight text-white sm:text-7xl md:text-8xl lg:text-9xl">
-          Rohub
+          RoHub
         </p>
         <h1 className="animate-fade-up delay-1 mt-4 max-w-2xl text-2xl font-medium leading-snug text-white sm:text-3xl md:text-4xl">
           Nu vizitezi România. O trăiești.

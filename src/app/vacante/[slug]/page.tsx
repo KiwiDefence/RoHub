@@ -31,7 +31,7 @@ export async function generateMetadata({
       canonical: `/vacante/${region.slug}/`,
     },
     openGraph: {
-      title: `${region.seoTitle} · Rohub`,
+      title: `${region.seoTitle} · RoHub`,
       description: region.seoDescription,
       type: "article",
       locale: "ro_RO",
@@ -41,7 +41,7 @@ export async function generateMetadata({
       `vacanțe ${region.name}`,
       `turism ${region.name}`,
       "agenție de turism România",
-      "Rohub",
+      "RoHub",
       "experiențe autentice",
     ],
   };

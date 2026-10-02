@@ -8,12 +8,12 @@ import { regions } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Vacanțe în România pe regiuni",
   description:
-    "Circuite și vacanțe Rohub în Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea. Experiențe autentice în România.",
+    "Circuite și vacanțe RoHub în Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea. Experiențe autentice în România.",
   alternates: {
     canonical: "/vacante/",
   },
   openGraph: {
-    title: "Vacanțe în România pe regiuni · Rohub",
+    title: "Vacanțe în România pe regiuni · RoHub",
     description:
       "Alege regiunea: Oltenia, Muntenia, Maramureș, Transilvania, Bucovina sau Dobrogea.",
     locale: "ro_RO",
@@ -34,7 +34,7 @@ export default function VacanteIndexPage() {
             Regiuni pe care le poți trăi, nu doar vizita
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-stone sm:text-lg">
-            Fiecare pagină e un circuit Rohub pe regiune — făcut pentru oameni
+            Fiecare pagină e un circuit RoHub pe regiune — făcut pentru oameni
             care vor povești locale, gastronomie, crame și natură.
           </p>
         </section>

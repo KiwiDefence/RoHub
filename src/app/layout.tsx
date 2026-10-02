@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Figtree, Syne } from "next/font/google";
+import { FloatingActions } from "@/components/FloatingActions";
 import "./globals.css";
 
 const syne = Syne({
@@ -34,14 +35,14 @@ const csp = [
 
 export const metadata: Metadata = {
   title: {
-    default: "Rohub — Vacanțe autentice în România",
-    template: "%s · Rohub",
+    default: "RoHub — Vacanțe autentice în România",
+    template: "%s · RoHub",
   },
   description:
-    "Rohub: agenție de turism pentru vacanțe și circuite în România. Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea — experiențe locale, gastronomie, crame.",
+    "RoHub: agenție de turism pentru vacanțe și circuite în România. Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea — experiențe locale, gastronomie, crame.",
   keywords: [
     "agenție de turism România",
-    "Rohub",
+    "RoHub",
     "vacanțe România",
     "circuite România",
     "Oltenia",
@@ -49,8 +50,8 @@ export const metadata: Metadata = {
     "Maramureș",
     "turism autentic",
   ],
-  authors: [{ name: "Rohub" }],
-  creator: "Rohub",
+  authors: [{ name: "RoHub" }],
+  creator: "RoHub",
   robots: {
     index: true,
     follow: true,
@@ -58,8 +59,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ro_RO",
-    siteName: "Rohub",
-    title: "Rohub — Vacanțe autentice în România",
+    siteName: "RoHub",
+    title: "RoHub — Vacanțe autentice în România",
     description:
       "Nu vizitezi România. O trăiești. Circuite și experiențe pe regiuni.",
   },
@@ -88,7 +89,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           content="strict-origin-when-cross-origin"
         />
       </head>
-      <body className="min-h-full flex flex-col antialiased">{children}</body>
+      <body className="min-h-full flex flex-col antialiased">
+        {children}
+        <FloatingActions />
+      </body>
     </html>
   );
 }
