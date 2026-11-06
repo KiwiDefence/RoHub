@@ -27,9 +27,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const region = getRegion(slug);
-  if (!region) {
-    return { title: "Vacanță negăsită" };
-  }
+  if (!region) notFound();
 
   return buildPageMetadata({
     title: region.seoTitle,

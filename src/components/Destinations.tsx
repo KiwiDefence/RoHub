@@ -21,42 +21,41 @@ export function Destinations() {
         </div>
 
         <ul className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {regions.map((place) => (
-            <li key={place.slug} className="group">
-              <Link href={`/vacante/${place.slug}/`} className="block">
-                <article>
-                  <div className="relative aspect-[4/5] overflow-hidden">
-                    <Image
-                      src={place.image}
-                      alt={place.heroAlt}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition duration-700 group-hover:scale-105"
-                    />
-                    <div
-                      className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent"
-                      aria-hidden
-                    />
-                    <div className="absolute inset-x-0 bottom-0 p-5">
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-dawn">
-                        România · {place.days}
-                      </p>
-                      <h3 className="mt-1 font-display text-2xl font-bold text-white">
-                        {place.name}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-white/85">
-                        {place.blurb}
-                      </p>
-                      <span className="mt-3 inline-block text-sm font-semibold text-white underline-offset-4 group-hover:underline">
-                        Vezi vacanța →
-                      </span>
-                    </div>
-                  </div>
-                </article>
+          {regions.map((place, index) => (
+            <li key={place.slug} className="group" style={{ animationDelay: `${index * 100}ms` }}>
+              <Link
+                href={`/vacante/${place.slug}/`}
+                className="block overflow-hidden rounded-sm ring-1 ring-stone/20 transition hover:shadow-lg"
+              >
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={place.image}
+                    alt={place.heroAlt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                    loading={index < 2 ? "eager" : "lazy"}
+                  />
+                </div>
+                <div className="bg-white px-5 py-4">
+                  <p className="font-display text-xl font-bold text-ink">
+                    {place.name}
+                  </p>
+                  <p className="mt-1 text-sm text-stone">{place.days}</p>
+                </div>
               </Link>
             </li>
           ))}
         </ul>
+
+        <p className="mt-10 text-center text-sm">
+          <Link
+            href="/vacante/"
+            className="font-semibold text-moss underline-offset-4 hover:underline"
+          >
+            Vezi toate vacanțele în România
+          </Link>
+        </p>
       </div>
     </section>
   );

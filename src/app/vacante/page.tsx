@@ -12,6 +12,7 @@ import {
   breadcrumbJsonLd,
   buildPageMetadata,
   faqJsonLd,
+  vacanteIndexJsonLd,
 } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
@@ -52,6 +53,7 @@ export default function VacanteIndexPage() {
         ])}
       />
       <JsonLd data={itemList} />
+      <JsonLd data={vacanteIndexJsonLd()} />
       <JsonLd data={faqJsonLd([...VACANTE_FAQS])} />
       <Header variant="solid" />
       <main className="flex-1 bg-fog pt-24 sm:pt-28">
@@ -77,8 +79,8 @@ export default function VacanteIndexPage() {
 
         <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8 sm:pb-28">
           <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {regions.map((region) => (
-              <li key={region.slug}>
+            {regions.map((region, index) => (
+              <li key={region.slug} style={{ animationDelay: `${index * 100}ms` }}>
                 <Link
                   href={`/vacante/${region.slug}/`}
                   className="group block h-full"
@@ -91,6 +93,7 @@ export default function VacanteIndexPage() {
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover transition duration-700 group-hover:scale-105"
+                        loading={index < 3 ? "eager" : "lazy"}
                       />
                     </div>
                     <div className="pt-4">

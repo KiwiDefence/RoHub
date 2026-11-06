@@ -17,7 +17,7 @@ import {
 export const metadata = buildPageMetadata({
   title: "Servicii - Retreat-uri pentru angajați în România",
   description:
-    "Retreat-uri RoHubTravel pentru companii: Escape 24h, Experience 36h, Retreat 48h și programe custom. Natură, gastronomie și experiențe locale - nu team-building clasic.",
+    "Retreat-uri corporate în România: Escape 24h, Experience 36h, Retreat 48h și programe custom. Natură, gastronomie și experiențe locale — nu team-building clasic.",
   path: "/servicii-b2b/",
   image: SERVICE_IMAGES.hero.src,
   keywords: [
@@ -39,6 +39,7 @@ const packages = [
     headline: "24 de ore pentru a ieși din rutină.",
     blurb:
       "O experiență de o zi, creată pentru companiile care vor să ofere angajaților o pauză reală de la mediul de lucru, fără un program de mai multe zile.",
+    price: "750 RON",
     includes: [
       "transport organizat",
       "experiență în natură",
@@ -60,6 +61,7 @@ const packages = [
     headline: "36 de ore pentru relaxare și descoperire.",
     blurb:
       "O experiență de o noapte care oferă mai mult timp pentru deconectare și pentru descoperirea locurilor și oamenilor din România.",
+    price: "1.150 RON",
     includes: [
       "transport organizat",
       "cazare pentru o noapte",
@@ -83,6 +85,7 @@ const packages = [
     headline: "48 de ore pentru o deconectare completă.",
     blurb:
       "Două zile în care angajații pot lăsa rutina în urmă și pot descoperi România prin natură, gastronomie, tradiții și experiențe locale.",
+    price: "1.450 RON",
     includes: [
       "transport organizat",
       "cazare pentru două nopți",
@@ -215,6 +218,139 @@ export default function ServiciiB2BPage() {
 
         <section className="bg-fog py-14 sm:py-16">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="grid gap-12 lg:grid-cols-2">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">
+                  Problema
+                </p>
+                <h2 className="mt-3 font-sans text-2xl font-semibold leading-snug text-ink sm:text-3xl">
+                  Retreat-urile tradiționale și team-building-ul clasic nu funcționează
+                </h2>
+                <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
+                  Cele mai multe retreat-uri corporate sunt legate de o singură locație fixă — aceeași activitate, același decor. Transportul, cazarea și programul sunt gestionate separat, consumând timp și resurse. Planificarea este stresantă.
+                </p>
+                <p className="mt-4 text-lg leading-relaxed text-stone sm:text-xl">
+                  <span className="font-bold text-pine">38%</span> dintre
+                  angajații din România au experimentat stres ridicat în ziua
+                  precedentă (Gallup, 2025).
+                </p>
+              </div>
+
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">
+                  Soluția
+                </p>
+                <h2 className="mt-3 font-sans text-2xl font-semibold leading-snug text-ink sm:text-3xl">
+                  O experiență completă, flexibilă, dincolo de o singură locație
+                </h2>
+                <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
+                  RoHubTravel creează retreat-uri care combină cazarea rurală, gastronomia locală, natura, degustările, vizitele la producători locali, activități tradiționale și timp liber — o experiență completă și flexibilă, spre deosebire de competiția legată de o singură locație fixă.
+                </p>
+                <p className="mt-4 text-xl font-semibold leading-snug text-pine sm:text-2xl">
+                  Nu este team-building.
+                  <br />
+                  Este timp pentru oameni.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="relative overflow-hidden bg-ink py-14 text-white sm:py-16">
+          <div className="absolute inset-0 bg-gradient-to-b from-ink via-pine/20 to-ink" aria-hidden />
+          <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-dawn">
+              Piața din România
+            </p>
+            <h2 className="mt-3 font-sans text-2xl font-semibold leading-snug sm:text-3xl">
+              O piață vastă, subexploitată
+            </h2>
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/85 sm:text-lg">
+              În 2024, rezidenții României au cheltuit 4,51 miliarde euro pe călătorii interne. 
+              27% din turismul din 2025 se află în topul categoriilor de beneficii importante pentru angajați, 
+              iar bugetul mediu extra-salarial per angajat în 2026 este de 1.170 RON.
+            </p>
+            <div className="mt-10 grid gap-6 sm:grid-cols-3">
+              <div className="rounded-sm bg-white/5 p-6">
+                <p className="text-sm uppercase tracking-[0.16em] text-dawn">TAM</p>
+                <p className="mt-2 font-sans text-3xl font-bold text-white">3,65 mld RON</p>
+                <p className="mt-1 text-sm leading-relaxed text-white/70">
+                  Toate companiile cu minimum 10 angajați — 3.171.056 de persoane.
+                </p>
+              </div>
+              <div className="rounded-sm bg-white/5 p-6">
+                <p className="text-sm uppercase tracking-[0.16em] text-dawn">SAM</p>
+                <p className="mt-2 font-sans text-3xl font-bold text-white">2,59 mld RON</p>
+                <p className="mt-1 text-sm leading-relaxed text-white/70">
+                  Companiile cu minimum 60 angajați — 2.255.301 de persoane.
+                </p>
+              </div>
+              <div className="rounded-sm bg-white/5 p-6">
+                <p className="text-sm uppercase tracking-[0.16em] text-dawn">SOM — Anul 3</p>
+                <p className="mt-2 font-sans text-3xl font-bold text-white">5,39 mil RON</p>
+                <p className="mt-1 text-sm leading-relaxed text-white/70">
+                  66 grupuri × 65 participanți × 1.275 RON mediu — 0,21% din SAM.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-14 sm:py-16">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">
+              De ce alegem flexibilul
+            </p>
+            <h2 className="mt-3 font-sans text-2xl font-semibold leading-snug text-ink sm:text-3xl">
+              Competiția e legată de o locație. Noi suntem flexibili.
+            </h2>
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-stone sm:text-lg">
+              Cele mai multe retreat-uri corporate din România sunt oferite de locații fixe — un singur resort, un singur decor. RoHubTravel diferă prin flexibilitate: călătorim în sate, sate-muzeu, crame, mănăstiri și zone naturale din toată România.
+            </p>
+
+            <div className="mt-10 overflow-x-auto">
+              <table className="w-full border-collapse text-left">
+                <thead>
+                  <tr className="border-b border-stone/20">
+                    <th className="pb-3 pr-6 pt-2 text-sm font-semibold text-ink sm:pr-8">Competiție</th>
+                    <th className="pb-3 pr-6 pt-2 text-sm font-semibold text-ink sm:pr-8">Tip</th>
+                    <th className="pb-3 pr-6 pt-2 text-sm font-semibold text-ink sm:pr-8">Locație</th>
+                    <th className="pb-3 pt-2 text-sm font-semibold text-ink">Flexibilitate</th>
+                  </tr>
+                </thead>
+                <tbody className="text-base sm:text-[15px]">
+                  <tr className="border-b border-stone/15">
+                    <td className="py-4 pr-6 sm:pr-8">POTCOAVA</td>
+                    <td className="py-4 pr-6 text-stone sm:pr-8">Safari village, locație fixă</td>
+                    <td className="py-4 pr-6 text-stone sm:pr-8">O singură locație</td>
+                    <td className="py-4 text-stone">Activități presetate pe teren</td>
+                  </tr>
+                  <tr className="border-b border-stone/15">
+                    <td className="py-4 pr-6 sm:pr-8">PORTAL VILLAGE</td>
+                    <td className="py-4 pr-6 text-stone sm:pr-8">Retreat de familie, locație fixă</td>
+                    <td className="py-4 pr-6 text-stone sm:pr-8">O singură locație</td>
+                    <td className="py-4 text-stone">Program și locație fixe</td>
+                  </tr>
+                  <tr className="border-b border-stone/15">
+                    <td className="py-4 pr-6 sm:pr-8">ENISALA SAFARI VILLAGE</td>
+                    <td className="py-4 pr-6 text-stone sm:pr-8">Safari park, locație fixă</td>
+                    <td className="py-4 pr-6 text-stone sm:pr-8">O singură locație</td>
+                    <td className="py-4 text-stone">Activități presetate pe teren</td>
+                  </tr>
+                  <tr className="bg-pine/5">
+                    <td className="py-4 pr-6 font-semibold text-pine sm:pr-8">RoHubTravel</td>
+                    <td className="py-4 pr-6 font-semibold text-pine sm:pr-8">Retreat pe regiuni, itinerar custom</td>
+                    <td className="py-4 pr-6 font-semibold text-pine sm:pr-8">Orice regiune din România</td>
+                    <td className="py-4 font-semibold text-pine">Itinerar, locații, durate — tot custom</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-fog py-14 sm:py-16">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <p className="max-w-3xl text-base leading-relaxed text-stone sm:text-lg">
               La RoHubTravel credem că oamenii nu au nevoie întotdeauna de încă o
               activitate de echipă. Uneori au nevoie pur și simplu să se oprească,
@@ -235,6 +371,11 @@ export default function ServiciiB2BPage() {
             <h2 className="max-w-2xl font-sans text-3xl font-semibold tracking-[-0.02em] text-ink sm:text-5xl sm:leading-[1.15]">
               Alege experiența potrivită pentru echipa ta
             </h2>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-stone sm:text-lg">
+              Toate pachetele sunt disponibile pentru grupuri de minimum{" "}
+              <strong className="font-semibold text-ink">10 persoane</strong>.
+              Pentru grupuri de peste 25 de persoane, îți recomandăm pachetul custom.
+            </p>
 
             <div className="mt-14 space-y-20">
               {packages.map((pkg, index) => {
@@ -263,8 +404,9 @@ export default function ServiciiB2BPage() {
                       <p className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">
                         {pkg.code}
                       </p>
-                      <h3 className="mt-2 font-sans text-3xl font-semibold tracking-[-0.02em] text-ink sm:text-4xl">
+                      <h3 className="mt-2 flex items-baseline gap-3 font-sans text-3xl font-semibold tracking-[-0.02em] text-ink sm:text-4xl">
                         {pkg.name}
+                        <span className="text-lg font-medium text-moss">{pkg.price}</span>
                       </h3>
                       <p className="mt-3 max-w-xl text-xl font-medium text-ink sm:text-2xl">
                         {pkg.headline}
@@ -326,6 +468,9 @@ export default function ServiciiB2BPage() {
                 Pentru grupurile de minimum{" "}
                 <strong className="font-semibold text-ink">25 de persoane</strong>
                 , construim retreat-uri personalizate de 48 de ore sau mai mult.
+              </p>
+              <p className="mt-4 max-w-xl font-sans text-2xl font-semibold text-pine">
+                De la 2.000 RON
               </p>
               <p className="mt-3 max-w-xl text-base leading-relaxed text-stone sm:text-lg">
                 Nu alegi doar o destinație. Construim împreună întreaga experiență

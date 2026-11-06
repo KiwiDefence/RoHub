@@ -25,31 +25,13 @@ export function Hero() {
       />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-16 pt-32 sm:px-8 sm:pb-24">
-        <p className="animate-fade-up font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
-          RoHubTravel
-        </p>
-        <h1 className="animate-fade-up delay-1 mt-4 max-w-2xl text-2xl font-medium leading-snug text-white sm:text-3xl md:text-4xl">
-          Nu vizitezi România. O trăiești.
+        <h1 className="animate-fade-up font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
+          Vacanțe și circuite autentice în România
         </h1>
-        <p className="animate-fade-up delay-2 mt-4 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
-          Agenție de turism pentru vacanțe în România: circuite pe regiuni,
-          gastronomie, crame și experiențe locale - de la Oltenia la Delta
-          Dunării.
+        <p className="animate-fade-up delay-1 mt-4 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">
+          Nu vizitezi România. O trăiești. Itinerare personalizate cu gastronomie
+          locală, crame, sate autentice și mănăstiri.
         </p>
-        <div className="animate-fade-up delay-3 mt-8 flex flex-wrap gap-3">
-          <a
-            href="/vacante/"
-            className="rounded-sm bg-dawn px-6 py-3 text-sm font-semibold text-ink transition hover:brightness-110"
-          >
-            Vacanțe pe regiuni
-          </a>
-          <a
-            href="/#contact"
-            className="rounded-sm border border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-          >
-            Scrie-ne
-          </a>
-        </div>
       </div>
     </section>
   );

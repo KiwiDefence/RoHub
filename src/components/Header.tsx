@@ -1,7 +1,9 @@
 "use client";
 
+import { SITE_EMAIL, SITE_PHONE } from "@/lib/seo";
+
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const links = [
   { href: "/vacante/", label: "Vacanțe" },
@@ -18,6 +20,7 @@ export function Header({ variant = "overlay" }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const solid = variant === "solid" || scrolled || open;
+  const menuRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (variant === "solid") return;
@@ -32,6 +35,42 @@ export function Header({ variant = "overlay" }: HeaderProps) {
     return () => {
       document.body.style.overflow = "";
     };
+  }, [open]);
+
+  // Focus trap for mobile menu
+  useEffect(() => {
+    if (!open) return;
+    const el = menuRef.current;
+    if (!el) return;
+
+    const focusable = Array.from(
+      el.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
+    );
+    if (focusable.length === 0) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    function handler(e: KeyboardEvent) {
+      if (e.key !== "Tab") return;
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    el.focus();
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
   }, [open]);
 
   return (
@@ -100,6 +139,8 @@ export function Header({ variant = "overlay" }: HeaderProps) {
 
       {open ? (
         <nav
+          ref={menuRef}
+          tabIndex={-1}
           id="mobile-nav"
           className="border-t border-white/10 px-5 py-6 md:hidden"
           aria-label="Mobil"

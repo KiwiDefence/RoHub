@@ -12,7 +12,7 @@ export function About() {
         <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[5/6]">
           <Image
             src={ABOUT_IMAGE}
-            alt="Drum prin natură în România, pregătit pentru următoarea experiență RoHubTravel"
+            alt="Drum forestier în România, experiență autentică RoHubTravel"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"

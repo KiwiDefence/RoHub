@@ -129,7 +129,19 @@ export function Contact({ defaultDestination = "" }: ContactProps) {
           className="space-y-5"
           noValidate
           autoComplete="on"
+          aria-describedby={error ? "contact-error" : undefined}
         >
+          {error && (
+            <div
+              id="contact-error"
+              role="alert"
+              className="rounded-sm bg-red-50 p-3 text-sm text-red-700"
+            >
+              <p className="font-semibold">Verifică formularul:</p>
+              <p className="mt-1">{error}</p>
+            </div>
+          )}
+
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-ink">
               Nume
@@ -206,11 +218,6 @@ export function Contact({ defaultDestination = "" }: ContactProps) {
             />
           </div>
 
-          {error ? (
-            <p role="alert" className="text-sm font-medium text-red-700">
-              {error}
-            </p>
-          ) : null}
           {sent ? (
             <p role="status" className="text-sm font-medium text-moss">
               Se deschide clientul de email… Mulțumim!

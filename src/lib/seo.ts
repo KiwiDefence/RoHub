@@ -15,6 +15,7 @@ export const SITE_PHONE = "+40722111222";
 export const SITE_PHONE_DISPLAY = "+40 722 111 222";
 export const SITE_WHATSAPP = "https://wa.me/40722111222";
 export const DEFAULT_OG_IMAGE = "/regions/hero.jpg";
+export const OG_SHARE_IMAGE = "/regions/og-share.jpg";
 
 export const CORE_KEYWORDS = [
   "agenție de turism România",
@@ -244,6 +245,32 @@ export function regionTripJsonLd(region: Region): JsonLd {
   };
 }
 
+export function vacanteIndexJsonLd(): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Vacanțe și circuite în România",
+    description:
+      "Circuite și vacanțe autentice în România: Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea. Gastronomie, crame, natură și experiențe locale.",
+    url: absoluteUrl("/vacante/"),
+    provider: { "@id": absoluteUrl("/#organization") },
+    areaServed: {
+      "@type": "Country",
+      name: "România",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Vacanțe în România pe regiuni",
+      itemListElement: regions.map((region) => ({
+        "@type": "Offer",
+        name: `Vacanțe în ${region.name}`,
+        description: region.seoDescription,
+        url: absoluteUrl(`/vacante/${region.slug}/`),
+      })),
+    },
+  };
+}
+
 export function servicesJsonLd(): JsonLd {
   return {
     "@context": "https://schema.org",
@@ -267,24 +294,40 @@ export function servicesJsonLd(): JsonLd {
           name: "ESCAPE - 24 ore",
           description:
             "Experiență de o zi: natură, gastronomie și activități locale, fără cazare.",
+          price: "750",
+          priceCurrency: "RON",
+          minOrderQuantity: 10,
+          url: absoluteUrl("/servicii-b2b/#escape"),
         },
         {
           "@type": "Offer",
           name: "EXPERIENCE - 36 ore",
           description:
             "Retreat de o noapte cu cazare, experiențe locale și timp de deconectare.",
+          price: "1150",
+          priceCurrency: "RON",
+          minOrderQuantity: 10,
+          url: absoluteUrl("/servicii-b2b/#experience"),
         },
         {
           "@type": "Offer",
           name: "RETREAT - 48 ore",
           description:
             "Două zile complete de retreat: natură, cultură, gastronomie și crame.",
+          price: "1450",
+          priceCurrency: "RON",
+          minOrderQuantity: 10,
+          url: absoluteUrl("/servicii-b2b/#retreat"),
         },
         {
           "@type": "Offer",
           name: "YOUR ROMANIA - Custom",
           description:
             "Retreat personalizat pentru grupuri de minimum 25 de persoane.",
+          price: "2000",
+          priceCurrency: "RON",
+          minOrderQuantity: 25,
+          url: absoluteUrl("/servicii-b2b/#custom"),
         },
       ],
     },
