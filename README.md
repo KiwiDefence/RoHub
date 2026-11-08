@@ -2,7 +2,7 @@
 
 Agenție de turism — site static Next.js, pregătit pentru **GitHub Pages** / `rohubtravel.com`.
 
-> Nu vizitezi România. O trăiești.
+> Descoperă. Trăiește. Simte România.
 
 ## Dezvoltare locală
 

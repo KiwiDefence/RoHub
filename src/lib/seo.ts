@@ -6,7 +6,7 @@ export const SITE_URL = (
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "RoHubTravel";
-export const SITE_TAGLINE = "Nu vizitezi România. O trăiești.";
+export const SITE_TAGLINE = "Descoperă. Trăiește. Simte România.";
 export const SITE_DESCRIPTION =
   "Agenție de turism RoHubTravel: vacanțe și circuite autentice în România - Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea. Gastronomie, crame, natură și retreat-uri pentru companii.";
 

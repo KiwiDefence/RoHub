@@ -79,9 +79,9 @@ export default function Home() {
                   RoHubTravel construiește circuite personalizate pe regiunile României — Oltenia, Muntenia, Maramureș, Transilvania, Bucovina, Dobrogea. Fiecare experiență include locații reale, oameni reali și gastronomie autentică.
                 </p>
                 <p className="mt-4 text-xl font-semibold leading-snug text-pine sm:text-2xl">
-                  Nu vizitezi România.
+                  Descoperă. Trăiește.
                   <br />
-                  O trăiești.
+                  Simte România.
                 </p>
               </div>
             </div>
