@@ -61,9 +61,17 @@ export function renderAdminPage(tripCode) {
     <section><h2>Clasament</h2><div id="players"></div></section>
     <section><h2>Ultimele scanări</h2><div id="events"></div></section>
   </div>
+  <div class="grid" style="margin-top:28px">
+    <section><h2>Conturi</h2><div id="users"></div></section>
+    <section><h2>Rezervări demo</h2><div id="bookings"></div></section>
+  </div>
   <div class="bar">
     <span><span class="live" id="live"></span><span id="status">se conectează…</span></span>
-    <button id="reset" type="button">șterge toți jucătorii</button>
+    <span>
+      <button id="reset" type="button">șterge jucătorii</button>
+      ·
+      <button id="reset-bookings" type="button">șterge rezervările</button>
+    </span>
   </div>
 </main>
 <div class="folk"></div>
@@ -75,15 +83,30 @@ export function renderAdminPage(tripCode) {
 
   async function tick() {
     try {
-      const res = await fetch("/api/trips/" + CODE, { cache: "no-store" });
-      const data = await res.json();
+      const [tripRes, overviewRes] = await Promise.all([
+        fetch("/api/trips/" + CODE, { cache: "no-store" }),
+        fetch("/api/admin/overview", { cache: "no-store" }),
+      ]);
+      const data = await tripRes.json();
+      const overview = await overviewRes.json();
       render(data);
+      renderOverview(overview);
       document.getElementById("live").className = "live";
       document.getElementById("status").textContent = "live · actualizat " + time(new Date().toISOString());
     } catch {
       document.getElementById("live").className = "live off";
       document.getElementById("status").textContent = "server indisponibil";
     }
+  }
+
+  function renderOverview({ users, bookings }) {
+    document.getElementById("users").innerHTML = users?.length
+      ? users.map((u) => '<div class="event"><b>' + esc(u.name) + "</b> · " + esc(u.email) + "</div>").join("")
+      : '<p class="empty">Niciun cont încă.</p>';
+    document.getElementById("bookings").innerHTML = bookings?.length
+      ? bookings.map((b) => '<div class="event"><b>' + esc(b.travel?.title ?? b.travelId) + "</b> · " +
+          esc(b.nickname) + " · " + esc(b.startsOn) + " → " + esc(b.endsOn) + "</div>").join("")
+      : '<p class="empty">Nicio rezervare demo.</p>';
   }
 
   function render({ stations, players, events }) {
@@ -115,6 +138,11 @@ export function renderAdminPage(tripCode) {
   document.getElementById("reset").addEventListener("click", async () => {
     if (!confirm("Ștergi toți jucătorii și scanările?")) return;
     await fetch("/api/trips/" + CODE, { method: "DELETE" });
+    tick();
+  });
+  document.getElementById("reset-bookings").addEventListener("click", async () => {
+    if (!confirm("Ștergi toate rezervările demo?")) return;
+    await fetch("/api/admin/bookings", { method: "DELETE" });
     tick();
   });
 

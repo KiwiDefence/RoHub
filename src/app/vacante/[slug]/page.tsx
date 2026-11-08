@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { getAllRegionSlugs, getRegion, regions } from "@/lib/content";
+import { getDemoTravelByRegion } from "@/lib/demo-travels";
 import {
   breadcrumbJsonLd,
   buildPageMetadata,
@@ -52,6 +53,7 @@ export default async function RegionPage({ params }: PageProps) {
   if (!region) notFound();
 
   const others = regions.filter((item) => item.slug !== region.slug).slice(0, 3);
+  const demoTravel = getDemoTravelByRegion(region.slug);
 
   return (
     <>
@@ -224,15 +226,28 @@ export default async function RegionPage({ params }: PageProps) {
                 Durată tipică:{" "}
                 <span className="text-white">{region.days}</span>
               </p>
+              {demoTravel ? (
+                <Link
+                  href={`/calatorie/rezerva/${demoTravel.id}/`}
+                  className="mt-8 inline-block rounded-sm bg-dawn px-5 py-3 text-sm font-semibold text-ink transition hover:brightness-110"
+                >
+                  Rezervă demo · {region.name}
+                </Link>
+              ) : null}
               <a
                 href="#contact"
-                className="mt-8 inline-block rounded-sm bg-dawn px-5 py-3 text-sm font-semibold text-ink transition hover:brightness-110"
+                className={`inline-block rounded-sm px-5 py-3 text-sm font-semibold transition ${
+                  demoTravel
+                    ? "mt-3 border border-white/35 text-white hover:bg-white/10"
+                    : "mt-8 bg-dawn text-ink hover:brightness-110"
+                }`}
               >
                 Cere ofertă pentru {region.name}
               </a>
               <p className="mt-4 text-sm text-white/70">
-                Răspundem pe WhatsApp, email sau telefon în maximum o zi
-                lucrătoare.
+                {demoTravel
+                  ? "Demo fără plată: cont → rezervare → Călătoria mea → Piticot."
+                  : "Răspundem pe WhatsApp, email sau telefon în maximum o zi lucrătoare."}
               </p>
               <p className="mt-6 text-sm text-white/70">
                 Vezi și{" "}

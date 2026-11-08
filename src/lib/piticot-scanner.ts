@@ -3,7 +3,7 @@ import { allStationIds } from "@/lib/piticot";
 /** Extracts a station id from a scanned QR value (full URL or bare id). */
 export function stationIdFromQr(raw: string): string | null {
   const value = raw.trim();
-  const match = value.match(/\/piticot\/scan\/([\w-]+)/i);
+  const match = value.match(/\/piticot\/(?:scan|go)\/([\w-]+)/i);
   const id = (match ? match[1] : value).toLowerCase();
   return allStationIds().includes(id) ? id : null;
 }

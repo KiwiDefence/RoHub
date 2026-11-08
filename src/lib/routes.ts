@@ -38,6 +38,18 @@ export function getAllRoutes(): SiteRoute[] {
       changeFrequency: "monthly",
     },
     {
+      path: "/cont/",
+      label: "Contul tău",
+      priority: 0.5,
+      changeFrequency: "monthly",
+    },
+    {
+      path: "/calatorie/",
+      label: "Călătoria mea",
+      priority: 0.75,
+      changeFrequency: "weekly",
+    },
+    {
       path: "/inovatie/",
       label: "Inovație - Piticot & Mystery Box",
       priority: 0.85,

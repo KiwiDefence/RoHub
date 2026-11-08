@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
+import { AuthProvider } from "@/components/AuthProvider";
 import { FloatingActions } from "@/components/FloatingActions";
 import { JsonLd } from "@/components/JsonLd";
 import { NativeShell } from "@/components/NativeShell";
 import { ScrollToHash } from "@/components/ScrollToHash";
+import { TravelBanner } from "@/components/TravelBanner";
 import {
   CORE_KEYWORDS,
   DEFAULT_OG_IMAGE,
@@ -113,11 +115,14 @@ export default function RootLayout({
           Sari la conținutul principal
         </a>
 
-        <ScrollToHash />
-        {children}
+        <AuthProvider>
+          <ScrollToHash />
+          <TravelBanner />
+          {children}
 
-        <FloatingActions />
-        <NativeShell />
+          <FloatingActions />
+          <NativeShell />
+        </AuthProvider>
       </body>
     </html>
   );

@@ -12,6 +12,11 @@ import {
   getStation,
 } from "@/lib/piticot";
 import {
+  evaluateScan,
+  furthestOrder,
+  type ScanGate,
+} from "@/lib/piticot-scan-gate";
+import {
   loadProgress,
   startTrip,
   unlockStation,
@@ -22,14 +27,15 @@ type ScanClientProps = {
   stationId: string;
 };
 
-type Phase = "boot" | "jump" | "reveal" | "invalid";
+type Phase = "boot" | "jump" | "reveal" | "blocked" | "invalid";
 
 export function ScanClient({ stationId }: ScanClientProps) {
   const station = getStation(stationId);
   const stations = useMemo(() => getOrderedStations(), []);
   const [phase, setPhase] = useState<Phase>("boot");
-  const [justUnlocked, setJustUnlocked] = useState(false);
+  const [gate, setGate] = useState<ScanGate | null>(null);
   const [fromIndex, setFromIndex] = useState(-1);
+  const [restingIndex, setRestingIndex] = useState(-1);
   const [unlockedSet, setUnlockedSet] = useState<Set<string>>(new Set());
   const scanned = useRef(false);
 
@@ -43,19 +49,25 @@ export function ScanClient({ stationId }: ScanClientProps) {
 
     const current =
       loadProgress(PITICOT_DEMO_CODE) ?? startTrip(PITICOT_DEMO_CODE, "Oaspete");
-    const already = current.unlocked.includes(station.id);
-    const prevMax = current.unlocked.reduce((max, id) => {
-      const order = stations.find((s) => s.id === id)?.order ?? -1;
-      return Math.max(max, order);
-    }, -1);
+    const verdict = evaluateScan(current, station.id);
+    const maxOrder = furthestOrder(current);
+    setGate(verdict);
+    setUnlockedSet(new Set(current.unlocked));
 
-    const next = unlockStation(current, station.id);
-    void syncProgress(next);
-    setUnlockedSet(new Set(next.unlocked));
-    setJustUnlocked(!already);
-    setFromIndex(already || prevMax > station.order ? station.order : prevMax);
-    setPhase("jump");
-  }, [station, stations]);
+    if (verdict.kind === "unlock") {
+      const next = unlockStation(current, station.id);
+      void syncProgress(next);
+      setUnlockedSet(new Set(next.unlocked));
+      setFromIndex(maxOrder);
+      setRestingIndex(station.order);
+      setPhase("jump");
+      return;
+    }
+
+    setRestingIndex(maxOrder);
+    setFromIndex(maxOrder);
+    setPhase(verdict.kind === "invalid" ? "invalid" : "blocked");
+  }, [station]);
 
   if (phase === "boot") return null;
 
@@ -74,6 +86,40 @@ export function ScanClient({ stationId }: ScanClientProps) {
     );
   }
 
+  if (phase === "blocked" && gate && gate.kind !== "unlock") {
+    const nextStop = stations.find((s) => s.order === restingIndex + 1);
+    return (
+      <GameScreen
+        hudHeight={168}
+        board={
+          <PiticotBoard
+            stations={stations}
+            unlocked={unlockedSet}
+            restingIndex={restingIndex}
+          />
+        }
+        hud={
+          <div className="pt-rise mx-auto w-full max-w-sm text-center">
+            <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#b3261e]">
+              {station.title}
+            </p>
+            <h1 className="mt-1 text-[1.75rem] font-extrabold leading-tight">
+              {gate.message}
+            </h1>
+            {gate.kind === "ahead" && nextStop ? (
+              <p className="mt-2 text-[1.05rem] italic leading-snug">
+                Următoarea oprire e <b>{nextStop.title}</b>.
+              </p>
+            ) : null}
+            <Link href="/inovatie/piticot/" className="pt-btn mt-3 w-full py-2.5 text-lg">
+              Înapoi la tablă
+            </Link>
+          </div>
+        }
+      />
+    );
+  }
+
   const complete = unlockedSet.size >= stations.length;
 
   return (
@@ -83,7 +129,7 @@ export function ScanClient({ stationId }: ScanClientProps) {
         <PiticotBoard
           stations={stations}
           unlocked={unlockedSet}
-          restingIndex={station.order}
+          restingIndex={restingIndex}
           playJump={{ fromIndex, toIndex: station.order }}
           onJumpComplete={() => setPhase("reveal")}
         />
@@ -109,8 +155,7 @@ export function ScanClient({ stationId }: ScanClientProps) {
               </span>
               <div className="min-w-0">
                 <p className="text-sm font-bold uppercase tracking-[0.14em] opacity-65">
-                  {justUnlocked ? "Oprire deblocată" : "Ai mai fost aici"} ·{" "}
-                  {unlockedSet.size} din {stations.length}
+                  Oprire deblocată · {unlockedSet.size} din {stations.length}
                 </p>
                 <h1 className="text-[1.6rem] font-extrabold leading-tight">
                   {station.title}

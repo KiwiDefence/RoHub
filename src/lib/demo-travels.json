@@ -1,0 +1,70 @@
+[
+  {
+    "id": "oltenia-weekend",
+    "regionSlug": "oltenia",
+    "title": "Weekend Oltenia · Circuitul Piticotului",
+    "summary": "3 zile în Oltenia: cramă, comoară pe ulițe, masă la gazdă. Piticotul e inclus pe traseu.",
+    "days": 3,
+    "startsOn": "2026-11-14",
+    "endsOn": "2026-11-16",
+    "includesPiticot": true,
+    "piticotTripCode": "ROHUB-DEMO",
+    "meetingPoint": "Pensiunea Dealul Verde, Horezu — 09:00",
+    "hostContact": "WhatsApp organizator: +40 724 156 693",
+    "itinerary": [
+      {
+        "title": "Ziua 1 · Sosire & plecare",
+        "items": [
+          "Check-in și briefing scurt cu echipa RoHub",
+          "Punct de plecare Piticot — scanează primul QR",
+          "Cină tradițională oltenească"
+        ]
+      },
+      {
+        "title": "Ziua 2 · Cramă, comoară, casă",
+        "items": [
+          "Degustare la cramă (QR Piticot)",
+          "Vânătoare de comori pe ulițe",
+          "Vizită la Casa scriitorului"
+        ]
+      },
+      {
+        "title": "Ziua 3 · Masă & final",
+        "items": [
+          "Masă la gazdă locală",
+          "Finalul drumului — deschide povestea Piticot",
+          "Check-out și drum spre casă"
+        ]
+      }
+    ],
+    "tips": [
+      "Ține telefonul încărcat — QR-urile Piticot se scanează pe teren.",
+      "Poartă încălțăminte comodă pentru ulițe și curți.",
+      "Notificarea din aplicație te duce rapid la itinerariu și la Piticot."
+    ]
+  },
+  {
+    "id": "transilvania-escape",
+    "regionSlug": "transilvania",
+    "title": "Escapadă Transilvania",
+    "summary": "Weekend cultural în Transilvania. Fără Piticot pe acest pachet demo — rezervă Oltenia pentru joc.",
+    "days": 2,
+    "startsOn": "2026-11-21",
+    "endsOn": "2026-11-22",
+    "includesPiticot": false,
+    "piticotTripCode": "",
+    "meetingPoint": "Piața Sfatului, Brașov — 10:00",
+    "hostContact": "WhatsApp organizator: +40 724 156 693",
+    "itinerary": [
+      {
+        "title": "Ziua 1 · Brașov",
+        "items": ["Tur al centrului istoric", "Cină regională"]
+      },
+      {
+        "title": "Ziua 2 · Bran & peisaj",
+        "items": ["Castelul Bran", "Întoarcere organizată"]
+      }
+    ],
+    "tips": ["Rezervarea e demo — fără plată reală."]
+  }
+]

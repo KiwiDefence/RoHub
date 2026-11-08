@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { useAuth } from "@/components/AuthProvider";
 import { FolkStrip } from "@/components/piticot/FolkStrip";
 import { GameScreen } from "@/components/piticot/GameScreen";
 import { PiticotBoard } from "@/components/piticot/PiticotBoard";
@@ -15,6 +16,7 @@ import {
   type PiticotStation,
 } from "@/lib/piticot";
 import { isNativeApp } from "@/lib/native";
+import { evaluateScan } from "@/lib/piticot-scan-gate";
 import { scanStationQr } from "@/lib/piticot-scanner";
 import {
   loadProgress,
@@ -31,7 +33,7 @@ import {
   type SyncStatus,
 } from "@/lib/piticot-sync";
 
-type View = "join" | "board" | "storybook";
+type View = "join" | "board" | "storybook" | "need-booking";
 
 const NO_UNLOCKS = new Set<string>();
 const noopSubscribe = () => () => {};
@@ -50,18 +52,58 @@ export function PiticotApp() {
   const [scanning, setScanning] = useState(false);
   const native = useSyncExternalStore(noopSubscribe, isNativeApp, () => false);
   const router = useRouter();
+  const { ready: authReady, user, activeBooking } = useAuth();
 
   useEffect(() => {
-    const existing = loadProgress(PITICOT_DEMO_CODE);
+    if (!authReady) return;
+
+    const booking = activeBooking;
+    const piticotBooking =
+      booking?.travel?.includesPiticot && booking.travel.piticotTripCode
+        ? booking
+        : null;
+    const tripCode = piticotBooking?.travel?.piticotTripCode ?? PITICOT_DEMO_CODE;
+
+    const existing = loadProgress(tripCode);
     if (existing) {
       void syncProgress(existing).then(setSync);
       setProgress(existing);
       setNickname(existing.nickname);
       setCode(existing.tripCode);
       setView("board");
+      setReady(true);
+      return;
     }
+
+    if (piticotBooking) {
+      const nick =
+        piticotBooking.nickname || user?.name || "Explorator";
+      const started = startTrip(tripCode, nick);
+      void syncProgress(started).then(setSync);
+      setProgress(started);
+      setNickname(nick);
+      setCode(tripCode);
+      setView("board");
+      setReady(true);
+      return;
+    }
+
+    if (user && booking && !booking.travel?.includesPiticot) {
+      setView("need-booking");
+      setReady(true);
+      return;
+    }
+
+    if (user && !booking) {
+      setView("need-booking");
+      setReady(true);
+      return;
+    }
+
+    // Logged-out demo: keep manual join for organisers / quick test
+    setView("join");
     setReady(true);
-  }, []);
+  }, [authReady, user, activeBooking]);
 
   const unlockedSet = useMemo(
     () => new Set(progress?.unlocked ?? []),
@@ -105,7 +147,12 @@ export function PiticotApp() {
     const result = await scanStationQr();
     setScanning(false);
     if (result.kind === "station") {
-      router.push(`/inovatie/piticot/scan/${result.stationId}/`);
+      const verdict = evaluateScan(progress, result.stationId);
+      if (verdict.kind === "unlock") {
+        router.push(`/inovatie/piticot/scan/${result.stationId}/`);
+        return;
+      }
+      setScanNote(verdict.message);
     } else if (result.kind === "unknown") {
       setScanNote("Codul ăsta nu e de pe traseul Piticotului.");
     } else if (result.kind === "unavailable") {
@@ -123,7 +170,31 @@ export function PiticotApp() {
     setView("join");
   };
 
-  if (!ready) return null;
+  if (!ready || !authReady) return null;
+
+  if (view === "need-booking") {
+    return (
+      <GameScreen
+        hudHeight={200}
+        board={<PiticotBoard stations={stations} unlocked={NO_UNLOCKS} restingIndex={-1} />}
+        hud={
+          <div className="pt-rise mx-auto w-full max-w-sm text-center">
+            <h1 className="text-[2rem] font-extrabold leading-none text-[#b3261e]">
+              Piticot
+            </h1>
+            <p className="mt-3 text-[1.05rem] leading-snug">
+              {activeBooking && !activeBooking.travel?.includesPiticot
+                ? "Călătoria ta activă nu include Piticot. Rezervă pachetul Oltenia pentru circuit."
+                : "Rezervă o călătorie întâi — apoi Piticotul se deschide automat."}
+            </p>
+            <Link href="/calatorie/" className="pt-btn mt-5 inline-block w-full py-3 text-lg">
+              Călătoria mea
+            </Link>
+          </div>
+        }
+      />
+    );
+  }
 
   if (view === "storybook" && progress) {
     return (
