@@ -9,14 +9,15 @@ export function isAndroidBrowser(): boolean {
 }
 
 /**
- * Builds an Android Intent URL that opens our app for this path when the app
- * is installed, and falls back to the same HTTPS page when it is not.
+ * Builds an Android Intent URL that opens our app for `appPathname` when the
+ * app is installed. If it is not, Android follows `fallbackUrl` (usually the
+ * website scan page).
  *
  * Uses the custom `rohub://` scheme (works even before App Links verify) and
  * pins `package=` so Android does not ask which app should open the link.
  */
-export function androidIntentUrl(pathname: string, fallbackUrl: string): string {
-  const path = pathname.replace(/^\/+/, "").replace(/\/+$/, "");
+export function androidIntentUrl(appPathname: string, fallbackUrl: string): string {
+  const path = appPathname.replace(/^\/+/, "").replace(/\/+$/, "");
   // NativeShell maps rohub://piticot/... → /inovatie/piticot/...
   const hostAndPath = path.startsWith("inovatie/")
     ? path.slice("inovatie/".length)
@@ -28,4 +29,21 @@ export function androidIntentUrl(pathname: string, fallbackUrl: string): string 
     `S.browser_fallback_url=${encodeURIComponent(fallbackUrl)};` +
     `end`
   );
+}
+
+/** Website path for a station scan (after the app-check bridge). */
+export function piticotScanPath(stationId: string): string {
+  return `/inovatie/piticot/scan/${stationId}/`;
+}
+
+/** QR / App Link path that checks for the app first. */
+export function piticotGoPath(stationId: string): string {
+  return `/inovatie/piticot/go/${stationId}/`;
+}
+
+/** Rewrites /go/ deep links to the in-app /scan/ route. */
+export function normalizePiticotDeepLink(pathname: string): string {
+  const match = pathname.match(/^\/inovatie\/piticot\/go\/([\w-]+)\/?$/);
+  if (match) return piticotScanPath(match[1]);
+  return pathname.endsWith("/") ? pathname : `${pathname}/`;
 }

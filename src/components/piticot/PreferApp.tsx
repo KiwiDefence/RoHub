@@ -16,7 +16,8 @@ export function PreferApp() {
   const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
-    if (!isAndroidBrowser()) return;
+    // Bridge pages (/go/) own the primary app check — don't double-fire here.
+    if (!isAndroidBrowser() || pathname.includes("/piticot/go/")) return;
 
     setShowBanner(true);
 
@@ -24,8 +25,8 @@ export function PreferApp() {
     if (sessionStorage.getItem(key)) return;
     sessionStorage.setItem(key, "1");
 
-    // Give the page a tick to paint, then hand off. If the app opens, the
-    // browser is backgrounded; if not, browser_fallback_url keeps us here.
+    // Second chance on the website scan page. If the app opens, the browser
+    // is backgrounded; if not, browser_fallback_url keeps us here.
     const timer = window.setTimeout(() => {
       window.location.href = androidIntentUrl(pathname, window.location.href);
     }, 350);

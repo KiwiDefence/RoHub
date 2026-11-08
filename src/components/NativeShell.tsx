@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useSyncExternalStore, type ReactNode } from "react";
 import { isNativeApp } from "@/lib/native";
+import { normalizePiticotDeepLink } from "@/lib/open-in-app";
 
 const noopSubscribe = () => () => {};
 
@@ -16,7 +17,7 @@ function routeFromUrl(raw: string): string | null {
         ? `/inovatie/${url.host}${url.pathname}`
         : url.pathname;
     if (!path || path === "/") return null;
-    return path.endsWith("/") ? path : `${path}/`;
+    return normalizePiticotDeepLink(path);
   } catch {
     return null;
   }

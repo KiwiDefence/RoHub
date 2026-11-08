@@ -32,7 +32,8 @@ fs.mkdirSync(outDir, { recursive: true });
 const manifest = [];
 
 for (const station of stations) {
-  const url = `${SITE}/inovatie/piticot/scan/${station.id}/`;
+  // /go/ checks for the Android app first, then falls back to the website.
+  const url = `${SITE}/inovatie/piticot/go/${station.id}/`;
   const file = `${String(station.order).padStart(2, "0")}-${station.id}.png`;
   const dest = path.join(outDir, file);
   await QRCode.toFile(dest, url, {
@@ -56,7 +57,8 @@ fs.writeFileSync(
   `# Piticot QR — print pack (privat)
 
 Aceste PNG-uri **nu** sunt pe site. Le printezi și le lipești la stații.
-Oaspeții scanează cu camera telefonului → se deschide pagina de unlock.
+Oaspeții scanează cu camera telefonului → se verifică aplicația, apoi unlock
+(în app dacă e instalată, altfel pe site).
 
 ## Fișiere
 
