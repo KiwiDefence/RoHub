@@ -38,7 +38,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: "Matei Mihai Radu",
-    role: "Administrator firmă",
+    role: "Administrator de firmă",
     image: photo("/team/matei-mihai-radu.webp"),
     imageAlt: "Matei Mihai Radu, administrator firmă RoHubTravel",
     objectPosition: "center 20%",

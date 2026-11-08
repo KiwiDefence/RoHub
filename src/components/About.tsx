@@ -31,9 +31,9 @@ export function About() {
             Turism românesc, pe oameni și pe locuri reale
           </h2>
           <p className="mt-5 text-base leading-relaxed text-white/85 sm:text-lg">
-            RoHubTravel e agenție de turism axată pe România: circuite, experiențe
+            RoHubTravel este o agenție de turism axată pe România: circuite, experiențe
             autentice, gastronomie, crame și programe pentru companii. Lucrăm cu
-            ghiduri locale, pensiuni și parteneri verificați — ca să trăiești
+            ghizi locali, pensiuni și parteneri verificați — ca să trăiești
             regiunea, nu doar să o treci pe listă. Baza noastră este în Brașov.
           </p>
 

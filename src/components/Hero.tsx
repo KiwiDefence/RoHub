@@ -40,13 +40,13 @@ export function Hero() {
         <div className="animate-fade-up delay-3 mt-8 flex flex-wrap gap-3">
           <HashLink
             href="/#contact"
-            className="rounded-sm bg-dawn px-5 py-3 text-sm font-semibold text-ink transition hover:brightness-110"
+            className="inline-flex min-h-12 items-center justify-center rounded-md bg-dawn px-6 py-3.5 text-sm font-semibold text-ink shadow-lg shadow-black/35 ring-1 ring-dawn/55 transition hover:brightness-110"
           >
             Planifică vacanța
           </HashLink>
           <Link
             href="/servicii-b2b/"
-            className="rounded-sm border border-white/40 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
+            className="inline-flex min-h-12 items-center justify-center rounded-md border-2 border-white/75 bg-ink/45 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-black/25 backdrop-blur-sm transition hover:border-white hover:bg-ink/65"
           >
             Retreat pentru companii
           </Link>

@@ -7,7 +7,7 @@ import { buildPageMetadata } from "@/lib/seo";
 export const metadata = buildPageMetadata({
   title: "Pagina nu a fost găsită",
   description:
-    "Pagina pe care o cauți nu există sau a fost mutată. Redirecționează-te către pagina principală RoHubTravel.",
+    "Pagina pe care o cauți nu există sau a fost mutată. Mergi la pagina principală RoHubTravel.",
   path: "/404/",
   keywords: ["pagina 404", "pagină inexistentă", "RoHubTravel"],
   noIndex: true,

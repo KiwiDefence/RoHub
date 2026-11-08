@@ -39,7 +39,7 @@ export function getAllRoutes(): SiteRoute[] {
     },
     {
       path: "/harta-site/",
-      label: "Harta site - toate paginile",
+      label: "Harta site-ului - toate paginile",
       priority: 0.3,
       changeFrequency: "monthly",
     },

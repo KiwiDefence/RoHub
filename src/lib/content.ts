@@ -413,7 +413,7 @@ export const regions: Region[] = [
     whenToGo:
       "Mai–octombrie este perioada recomandată pentru drumuri confortabile și lumină bună pe fresce. Septembrie și începutul de octombrie sunt excelente pentru culori de pădure. Iarna poate fi deosebită vizual, dar necesită flexibilitate pe traseu.",
     howWeWork:
-      "Organizaăm un circuit logic al mănăstirilor, evităm aglomerația acolo unde este posibil prin ore de vizită bine alese și confirmăm cazarea și mesele din timp. Asistența RoHubTravel rămâne activă pe tot sejurul.",
+      "Organizăm un circuit logic al mănăstirilor, evităm aglomerația acolo unde este posibil prin ore de vizită bine alese și confirmăm cazarea și mesele din timp. Asistența RoHubTravel rămâne activă pe tot sejurul.",
     bestFor:
       "Familii, cupluri și călători care doresc cultură UNESCO, peisaj și odihnă, fără un program epuizant.",
   },

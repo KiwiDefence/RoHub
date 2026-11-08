@@ -7,7 +7,7 @@ import { getAllRoutes } from "@/lib/routes";
 import { breadcrumbJsonLd, buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
-  title: "Harta site - toate paginile RoHubTravel",
+  title: "Harta site-ului - toate paginile RoHubTravel",
   description:
     "Sitemap HTML RoHubTravel: vacanțe pe regiuni în România, Servicii (retreat-uri angajați) și contact. Index complet al paginilor.",
   path: "/harta-site/",
@@ -22,7 +22,7 @@ export default function HartaSitePage() {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Acasă", path: "/" },
-          { name: "Harta site", path: "/harta-site/" },
+          { name: "Harta site-ului", path: "/harta-site/" },
         ])}
       />
       <Header variant="solid" />
@@ -31,7 +31,7 @@ export default function HartaSitePage() {
           <Breadcrumbs
             items={[
               { name: "Acasă", href: "/" },
-              { name: "Harta site" },
+              { name: "Harta site-ului" },
             ]}
           />
           <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-moss">

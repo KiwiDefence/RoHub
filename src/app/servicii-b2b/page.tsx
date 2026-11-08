@@ -5,6 +5,7 @@ import { FaqSection } from "@/components/FaqSection";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
+import { PackageIncludes } from "@/components/PackageIncludes";
 import { SERVICE_IMAGES } from "@/lib/content";
 import {
   SERVICES_FAQS,
@@ -41,14 +42,46 @@ const packages = [
       "O experiență de o zi, creată pentru companiile care vor să ofere angajaților o pauză reală de la mediul de lucru, fără un program de mai multe zile.",
     price: "750 RON",
     includes: [
-      "transport organizat",
-      "experiență în natură",
-      "activitate culturală sau locală",
-      "experiență gastronomică",
-      "vizită la producători locali",
-      "timp liber pentru relaxare",
-      "coordonare pe durata experienței",
-      "program adaptat grupului",
+      {
+        label: "transport organizat",
+        detail:
+          "Dus-întors cu mijloc de transport potrivit grupului, pe un traseu confirmat înainte de plecare.",
+      },
+      {
+        label: "experiență în natură",
+        detail:
+          "Timp în aer liber pe trasee ușoare sau zone naturale alese pentru ritmul grupului — fără forțare, cu pauză reală.",
+      },
+      {
+        label: "activitate culturală sau locală",
+        detail:
+          "O întâlnire cu locul: obiectiv cultural, meșteșug sau poveste locală, adaptată intereselor echipei.",
+      },
+      {
+        label: "experiență gastronomică",
+        detail:
+          "Masă cu preparate locale (prânz și/sau cină), la pensiune sau gazdă verificată pe traseu.",
+      },
+      {
+        label: "vizită la producători locali",
+        detail:
+          "Oprire la un producător sau atelier local — explicații, degustare sau demonstrație, după sezon și disponibilitate.",
+      },
+      {
+        label: "timp liber pentru relaxare",
+        detail:
+          "Ferestre fără program obligatoriu, ca oamenii să se odihnească, să discute sau să exploreze pe ritmul lor.",
+      },
+      {
+        label: "coordonare pe durata experienței",
+        detail:
+          "Un punct clar de contact RoHubTravel pe tot parcursul zilei, pentru logistică și eventuale ajustări.",
+      },
+      {
+        label: "program adaptat grupului",
+        detail:
+          "Orarul și intensitatea se potrivesc mărimii grupului, nivelului de energie și obiectivelor HR.",
+      },
     ],
     suited:
       "O primă experiență RoHubTravel sau pentru companiile care vor un retreat scurt, fără cazare.",
@@ -63,16 +96,56 @@ const packages = [
       "O experiență de o noapte care oferă mai mult timp pentru deconectare și pentru descoperirea locurilor și oamenilor din România.",
     price: "1.150 RON",
     includes: [
-      "transport organizat",
-      "cazare pentru o noapte",
-      "mic dejun",
-      "experiențe locale",
-      "activități în natură",
-      "experiență gastronomică",
-      "vizite la producători locali",
-      "activități culturale sau tradiționale",
-      "timp liber",
-      "coordonare pe durata retreat-ului",
+      {
+        label: "transport organizat",
+        detail:
+          "Dus-întors organizat pentru întregul grup, cu ore de plecare și întoarcere confirmate din timp.",
+      },
+      {
+        label: "cazare pentru o noapte",
+        detail:
+          "O noapte în locație selectată — pensiune, casă de oaspeți sau unitate cu caracter local, verificată de noi.",
+      },
+      {
+        label: "mic dejun",
+        detail:
+          "Mic dejun inclus în dimineața următoare, ca ziua să înceapă fără grija logisticii.",
+      },
+      {
+        label: "experiențe locale",
+        detail:
+          "Activități legate de comunitatea din zonă: oameni, povești și locuri care nu apar în turismul de masă.",
+      },
+      {
+        label: "activități în natură",
+        detail:
+          "Momente în peisaj — plimbări, natură și aer liber — calibrate pe confortul grupului.",
+      },
+      {
+        label: "experiență gastronomică",
+        detail:
+          "Mese cu specific local pe durata sejurului, cu accent pe produse din zonă.",
+      },
+      {
+        label: "vizite la producători locali",
+        detail:
+          "Vizite la producători, crame sau ateliere, cu timp real de dialog, nu doar o oprire scurtă.",
+      },
+      {
+        label: "activități culturale sau tradiționale",
+        detail:
+          "Elemente de patrimoniu, meșteșug sau tradiție locală, integrate natural în program.",
+      },
+      {
+        label: "timp liber",
+        detail:
+          "Spațiu în program pentru odihnă, conversație și deconectare fără agendă forțată.",
+      },
+      {
+        label: "coordonare pe durata retreat-ului",
+        detail:
+          "Suport RoHubTravel de la plecare până la întoarcere, pe WhatsApp, telefon sau email.",
+      },
     ],
     suited:
       "Companiile care vor să ofere angajaților mai mult decât o excursie de o zi.",
@@ -87,17 +160,61 @@ const packages = [
       "Două zile în care angajații pot lăsa rutina în urmă și pot descoperi România prin natură, gastronomie, tradiții și experiențe locale.",
     price: "1.450 RON",
     includes: [
-      "transport organizat",
-      "cazare pentru două nopți",
-      "mic dejun",
-      "experiențe în natură",
-      "activități culturale",
-      "gastronomie locală",
-      "degustări și experiențe la producători locali",
-      "vizite la crame",
-      "experiențe tradiționale",
-      "timp liber",
-      "coordonare pe durata retreat-ului",
+      {
+        label: "transport organizat",
+        detail:
+          "Transport dus-întors pentru grup, planificat pe durata completă a retreat-ului de 48 de ore.",
+      },
+      {
+        label: "cazare pentru două nopți",
+        detail:
+          "Două nopți în locații cu atmosferă regională, alese pentru confort și autenticitate.",
+      },
+      {
+        label: "mic dejun",
+        detail:
+          "Mic dejun inclus în diminețile de pe parcurs, ca ritmul să rămână clar și fără surprize.",
+      },
+      {
+        label: "experiențe în natură",
+        detail:
+          "Activități outdoor pe peisaj românesc — natură, aer liber și timp de respirat în afara biroului.",
+      },
+      {
+        label: "activități culturale",
+        detail:
+          "Vizite și contexte culturale care dau sens locului, nu doar o listă de obiective.",
+      },
+      {
+        label: "gastronomie locală",
+        detail:
+          "Mese pe rețete și produse din zonă, la gazde și locații selectate.",
+      },
+      {
+        label: "degustări și experiențe la producători locali",
+        detail:
+          "Întâlniri cu producători: degustări, demonstrații și povești despre meseria lor.",
+      },
+      {
+        label: "vizite la crame",
+        detail:
+          "Oprire la cramă sau podgorie, cu degustare ghidată acolo unde se potrivește traseului.",
+      },
+      {
+        label: "experiențe tradiționale",
+        detail:
+          "Momente legate de tradiții locale — meșteșug, obiceiuri sau activități de gospodărie, după sezon.",
+      },
+      {
+        label: "timp liber",
+        detail:
+          "Ferestre libere pe cele două zile, ca echipa să se reconecteze fără presiune de performanță.",
+      },
+      {
+        label: "coordonare pe durata retreat-ului",
+        detail:
+          "Coordonare end-to-end: cazare, transferuri, activități și asistență pe tot sejurul.",
+      },
     ],
     suited:
       "Companiile care vor să ofere angajaților o experiență completă de relaxare și reconectare.",
@@ -151,7 +268,7 @@ const whyPoints = [
   },
   {
     title: "Relaxare",
-    text: "Timp în care angajații nu trebuie să performeze. Doar să se bucure de experiență.",
+    text: "Timp în care angajații nu trebuie să livreze performanță. Doar să se bucure de experiență.",
   },
 ] as const;
 
@@ -305,7 +422,7 @@ export default function ServiciiB2BPage() {
                   03
                 </p>
                 <h3 className="mt-2 font-sans text-xl font-semibold">
-                  Descoperiți România
+                  Descoperi România
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/70">
                   Natură, gastronomie, producători locali și timp liber — fără
@@ -435,19 +552,7 @@ export default function ServiciiB2BPage() {
                         {pkg.blurb}
                       </p>
 
-                      <p className="mt-8 text-sm font-semibold uppercase tracking-[0.16em] text-dawn">
-                        Include
-                      </p>
-                      <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-                        {pkg.includes.map((item) => (
-                          <li
-                            key={item}
-                            className="border-l-2 border-moss pl-4 text-stone"
-                          >
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
+                      <PackageIncludes items={pkg.includes} />
 
                       <p className="mt-8 max-w-xl text-sm leading-relaxed text-stone sm:text-base">
                         <span className="font-semibold text-ink">

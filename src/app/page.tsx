@@ -50,7 +50,7 @@ export default function Home() {
                   Vacanțele standard sunt la fel: același resort, același program
                 </h2>
                 <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
-                  Cele mai multe oferte turistice sunt create pe locații fixe — aceeași destinație, același traseu, aceeași experiență. Nu găsești sate autentice, mănăstiri UNESCO sau crame ascunse în pliantele ageniilor.
+                  Cele mai multe oferte turistice sunt create pe locații fixe — aceeași destinație, același traseu, aceeași experiență. Nu găsești sate autentice, mănăstiri UNESCO sau crame ascunse în pliantele agențiilor.
                 </p>
                 <p className="mt-4 text-lg leading-relaxed text-stone sm:text-xl">
                   <span className="font-bold text-pine">38%</span> dintre
@@ -73,7 +73,7 @@ export default function Home() {
                   Soluția
                 </p>
                 <h2 className="mt-3 font-sans text-2xl font-semibold leading-snug text-ink sm:text-3xl">
-                  Itinerare pe regiuni, create pentru tine
+                  Itinerarii pe regiuni, create pentru tine
                 </h2>
                 <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
                   RoHubTravel construiește circuite personalizate pe regiunile României — Oltenia, Muntenia, Maramureș, Transilvania, Bucovina, Dobrogea. Fiecare experiență include locații reale, oameni reali și gastronomie autentică.

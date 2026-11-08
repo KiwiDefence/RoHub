@@ -77,7 +77,7 @@ export function Header({ variant = "overlay" }: HeaderProps) {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         solid
-          ? "bg-ink/90 text-white backdrop-blur-md"
+          ? "bg-ink text-white shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
           : "bg-transparent text-white"
       }`}
     >
@@ -96,7 +96,7 @@ export function Header({ variant = "overlay" }: HeaderProps) {
               <HashLink
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium tracking-wide text-white/85 transition hover:text-white"
+                className="text-sm font-medium tracking-wide text-white underline decoration-white/30 decoration-1 underline-offset-4 transition hover:text-white hover:decoration-white/70"
               >
                 {link.label}
               </HashLink>
@@ -104,7 +104,7 @@ export function Header({ variant = "overlay" }: HeaderProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium tracking-wide text-white/85 transition hover:text-white"
+                className="text-sm font-medium tracking-wide text-white underline decoration-white/30 decoration-1 underline-offset-4 transition hover:text-white hover:decoration-white/70"
               >
                 {link.label}
               </Link>
@@ -112,7 +112,7 @@ export function Header({ variant = "overlay" }: HeaderProps) {
           )}
           <HashLink
             href="/#contact"
-            className="rounded-sm bg-dawn px-4 py-2 text-sm font-semibold text-ink transition hover:brightness-110"
+            className="rounded-md bg-dawn px-5 py-2.5 text-sm font-semibold text-ink shadow-md shadow-black/25 ring-1 ring-dawn/50 transition hover:brightness-110"
           >
             Planifică vacanța
           </HashLink>
@@ -120,7 +120,7 @@ export function Header({ variant = "overlay" }: HeaderProps) {
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/35 bg-ink/70 text-white shadow-md shadow-black/30 md:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Închide meniul" : "Deschide meniul"}
@@ -152,16 +152,16 @@ export function Header({ variant = "overlay" }: HeaderProps) {
           ref={menuRef}
           tabIndex={-1}
           id="mobile-nav"
-          className="border-t border-white/10 px-5 py-6 md:hidden"
+          className="border-t border-white/15 bg-ink px-5 py-7 md:hidden"
           aria-label="Mobil"
         >
-          <ul className="flex flex-col gap-4">
+          <ul className="flex flex-col gap-1">
             {links.map((link) => (
               <li key={link.href}>
                 {link.href.includes("#") ? (
                   <HashLink
                     href={link.href}
-                    className="block text-lg font-medium"
+                    className="block rounded-md px-3 py-3 text-lg font-medium text-white underline decoration-white/35 decoration-1 underline-offset-[6px] transition hover:bg-white/10 hover:decoration-white/70"
                     onClick={() => setOpen(false)}
                   >
                     {link.label}
@@ -169,7 +169,7 @@ export function Header({ variant = "overlay" }: HeaderProps) {
                 ) : (
                   <Link
                     href={link.href}
-                    className="block text-lg font-medium"
+                    className="block rounded-md px-3 py-3 text-lg font-medium text-white underline decoration-white/35 decoration-1 underline-offset-[6px] transition hover:bg-white/10 hover:decoration-white/70"
                     onClick={() => setOpen(false)}
                   >
                     {link.label}
@@ -177,10 +177,10 @@ export function Header({ variant = "overlay" }: HeaderProps) {
                 )}
               </li>
             ))}
-            <li>
+            <li className="pt-3">
               <HashLink
                 href="/#contact"
-                className="mt-2 inline-block rounded-sm bg-dawn px-4 py-2 text-sm font-semibold text-ink"
+                className="flex w-full items-center justify-center rounded-md bg-dawn px-5 py-3.5 text-base font-semibold text-ink shadow-md shadow-black/30 ring-1 ring-dawn/50"
                 onClick={() => setOpen(false)}
               >
                 Planifică vacanța

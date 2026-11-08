@@ -231,7 +231,7 @@ export default async function RegionPage({ params }: PageProps) {
                 Cere ofertă pentru {region.name}
               </a>
               <p className="mt-4 text-sm text-white/70">
-                Răspundem pe WhatsApp, email sau telefon în maxim o zi
+                Răspundem pe WhatsApp, email sau telefon în maximum o zi
                 lucrătoare.
               </p>
               <p className="mt-6 text-sm text-white/70">

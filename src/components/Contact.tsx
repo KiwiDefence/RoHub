@@ -98,7 +98,7 @@ export function Contact({ defaultDestination = "" }: ContactProps) {
           </h2>
           <p className="mt-4 text-base leading-relaxed text-stone sm:text-lg">
             Spune-ne regiunea din România pe care vrei să o trăiești. Răspundem
-            în maxim o zi lucrătoare.
+            în maximum o zi lucrătoare.
           </p>
 
           <dl className="mt-10 space-y-5 text-sm sm:text-base">
@@ -141,110 +141,127 @@ export function Contact({ defaultDestination = "" }: ContactProps) {
 
         <form
           onSubmit={onSubmit}
-          className="space-y-5"
+          className="rounded-xl border border-pine/20 bg-white p-6 shadow-sm sm:p-8"
           noValidate
           autoComplete="on"
           aria-describedby={error ? "contact-error" : undefined}
         >
-          {error && (
-            <div
-              id="contact-error"
-              role="alert"
-              className="rounded-sm bg-red-50 p-3 text-sm text-red-700"
-            >
-              <p className="font-semibold">Verifică formularul:</p>
-              <p className="mt-1">{error}</p>
-            </div>
-          )}
-
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-ink">
-              Nume
-            </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              required
-              maxLength={80}
-              autoComplete="name"
-              value={form.name}
-              onChange={(e) => update("name", e.target.value)}
-              className="mt-2 w-full border-0 border-b border-stone/30 bg-transparent px-0 py-3 text-ink outline-none transition focus:border-pine"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-ink"
-            >
-              Email
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              maxLength={120}
-              autoComplete="email"
-              inputMode="email"
-              value={form.email}
-              onChange={(e) => update("email", e.target.value)}
-              className="mt-2 w-full border-0 border-b border-stone/30 bg-transparent px-0 py-3 text-ink outline-none transition focus:border-pine"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="destination"
-              className="block text-sm font-medium text-ink"
-            >
-              Destinație / regiune
-            </label>
-            <input
-              id="destination"
-              name="destination"
-              type="text"
-              maxLength={120}
-              value={form.destination}
-              onChange={(e) => update("destination", e.target.value)}
-              placeholder="ex. Maramureș, 5 zile"
-              className="mt-2 w-full border-0 border-b border-stone/30 bg-transparent px-0 py-3 text-ink outline-none transition placeholder:text-stone/50 focus:border-pine"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-sm font-medium text-ink"
-            >
-              Mesaj
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              required
-              rows={4}
-              maxLength={1000}
-              value={form.message}
-              onChange={(e) => update("message", e.target.value)}
-              className="mt-2 w-full resize-y border-0 border-b border-stone/30 bg-transparent px-0 py-3 text-ink outline-none transition focus:border-pine"
-            />
-          </div>
-
-          {sent ? (
-            <p role="status" className="text-sm font-medium text-moss">
-              Se deschide clientul de email… Mulțumim!
+          <div className="border-b border-pine/10 pb-5">
+            <p className="font-display text-xl font-bold tracking-tight text-ink sm:text-2xl">
+              Formular de contact
             </p>
-          ) : null}
+            <p className="mt-1 text-sm text-stone">
+              Completează câmpurile — te contactăm pe email.
+            </p>
+          </div>
 
-          <button
-            type="submit"
-            className="rounded-sm bg-pine px-6 py-3 text-sm font-semibold text-white transition hover:bg-moss"
-          >
-            Trimite mesajul
-          </button>
+          <div className="mt-6 space-y-5">
+            {error && (
+              <div
+                id="contact-error"
+                role="alert"
+                className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700"
+              >
+                <p className="font-semibold">Verifică formularul:</p>
+                <p className="mt-1">{error}</p>
+              </div>
+            )}
+
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-sm font-semibold text-ink"
+              >
+                Nume
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                maxLength={80}
+                autoComplete="name"
+                value={form.name}
+                onChange={(e) => update("name", e.target.value)}
+                placeholder="Numele tău"
+                className="mt-2 w-full rounded-md border border-stone/30 bg-fog/40 px-3.5 py-3 text-ink outline-none transition placeholder:text-stone/45 focus:border-pine focus:bg-white focus:ring-2 focus:ring-pine/20"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-semibold text-ink"
+              >
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                maxLength={120}
+                autoComplete="email"
+                inputMode="email"
+                value={form.email}
+                onChange={(e) => update("email", e.target.value)}
+                placeholder="nume@email.com"
+                className="mt-2 w-full rounded-md border border-stone/30 bg-fog/40 px-3.5 py-3 text-ink outline-none transition placeholder:text-stone/45 focus:border-pine focus:bg-white focus:ring-2 focus:ring-pine/20"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="destination"
+                className="block text-sm font-semibold text-ink"
+              >
+                Destinație / regiune
+              </label>
+              <input
+                id="destination"
+                name="destination"
+                type="text"
+                maxLength={120}
+                value={form.destination}
+                onChange={(e) => update("destination", e.target.value)}
+                placeholder="ex. Maramureș, 5 zile"
+                className="mt-2 w-full rounded-md border border-stone/30 bg-fog/40 px-3.5 py-3 text-ink outline-none transition placeholder:text-stone/45 focus:border-pine focus:bg-white focus:ring-2 focus:ring-pine/20"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-sm font-semibold text-ink"
+              >
+                Mesaj
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows={5}
+                maxLength={1000}
+                value={form.message}
+                onChange={(e) => update("message", e.target.value)}
+                placeholder="Spune-ne perioada, numărul de persoane și ce te interesează…"
+                className="mt-2 w-full resize-y rounded-md border border-stone/30 bg-fog/40 px-3.5 py-3 text-ink outline-none transition placeholder:text-stone/45 focus:border-pine focus:bg-white focus:ring-2 focus:ring-pine/20"
+              />
+            </div>
+
+            {sent ? (
+              <p role="status" className="text-sm font-medium text-moss">
+                Se deschide clientul de email… Mulțumim!
+              </p>
+            ) : null}
+
+            <button
+              type="submit"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-md bg-pine px-6 py-3.5 text-sm font-semibold text-white shadow-md shadow-pine/25 transition hover:bg-moss sm:w-auto"
+            >
+              Trimite mesajul
+            </button>
+          </div>
         </form>
       </div>
     </section>

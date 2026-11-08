@@ -94,7 +94,7 @@ export function Footer() {
             </li>
             <li>
               <Link href="/harta-site/" className="hover:text-white">
-                Harta site
+                Harta site-ului
               </Link>
             </li>
             <li>

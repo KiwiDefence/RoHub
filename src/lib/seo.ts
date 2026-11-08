@@ -346,7 +346,7 @@ export const HOME_FAQS = [
   {
     question: "Ce este RoHubTravel?",
     answer:
-      "RoHubTravel este o agenție de turism axată pe vacanțe și circuite autentice în România. Organizăm experiențe pe regiuni - Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea - cu gastronomie locală, crame, natură și ghiduri verificate.",
+      "RoHubTravel este o agenție de turism axată pe vacanțe și circuite autentice în România. Organizăm experiențe pe regiuni - Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea - cu gastronomie locală, crame, natură și ghizi verificați.",
   },
   {
     question: "În ce regiuni din România organizați vacanțe?",
@@ -355,7 +355,7 @@ export const HOME_FAQS = [
   },
   {
     question: "Cum rezerv un circuit sau o vacanță?",
-    answer: `Scrie-ne pe formularul de contact, pe email la ${SITE_EMAIL}, telefon ${SITE_PHONE_DISPLAY} sau WhatsApp. Spune-ne regiunea, perioada și numărul de persoane - răspundem în maxim o zi lucrătoare cu o propunere personalizată.`,
+    answer: `Scrie-ne pe formularul de contact, pe email la ${SITE_EMAIL}, telefon ${SITE_PHONE_DISPLAY} sau WhatsApp. Spune-ne regiunea, perioada și numărul de persoane - răspundem în maximum o zi lucrătoare cu o propunere personalizată.`,
   },
   {
     question: "Organizați și retreat-uri pentru companii?",
@@ -382,7 +382,7 @@ export const SERVICES_FAQS = [
   },
   {
     question: "Cum cer o ofertă pentru un retreat corporate?",
-    answer: `Contactează-ne la ${SITE_EMAIL} sau ${SITE_PHONE_DISPLAY} cu numărul de participanți, perioada dorită și tipul de experiență (24h, 36h, 48h sau custom). Trimitem o propunere pe email sau WhatsApp în maxim o zi lucrătoare.`,
+    answer: `Contactează-ne la ${SITE_EMAIL} sau ${SITE_PHONE_DISPLAY} cu numărul de participanți, perioada dorită și tipul de experiență (24h, 36h, 48h sau custom). Trimitem o propunere pe email sau WhatsApp în maximum o zi lucrătoare.`,
   },
 ] as const;
 
@@ -395,6 +395,6 @@ export const VACANTE_FAQS = [
   {
     question: "Vacanțele RoHubTravel sunt pachete fixe sau personalizate?",
     answer:
-      "Construim itinerarii pe ritmul tău: durată, ritm, tip de cazare și experiențe (crame, gastronomie, natură, cultură). Nu vinzi un pachet generic - adaptăm circuitul la grup.",
+      "Construim itinerarii pe ritmul tău: durată, ritm, tip de cazare și experiențe (crame, gastronomie, natură, cultură). Nu vindem un pachet generic — adaptăm circuitul la grup.",
   },
 ] as const;
