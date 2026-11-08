@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# piticot backend data, printable QR codes, APK, local backups
+/server/data/
+/private/
+
+# capacitor asset source (generated into android/)
+/assets/
+
+# Canva scratch exports (not used by the site)
+public/**/_canva-*.jpg

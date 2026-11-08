@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import { FloatingActions } from "@/components/FloatingActions";
 import { JsonLd } from "@/components/JsonLd";
+import { NativeShell } from "@/components/NativeShell";
 import { ScrollToHash } from "@/components/ScrollToHash";
 import {
   CORE_KEYWORDS,
@@ -116,6 +117,7 @@ export default function RootLayout({
         {children}
 
         <FloatingActions />
+        <NativeShell />
       </body>
     </html>
   );

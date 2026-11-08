@@ -6,11 +6,11 @@ export const SITE_URL = (
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "RoHubTravel";
-export const SITE_TAGLINE = "Descoperă. Trăiește. Simte România.";
+export const SITE_TAGLINE = "Descoperă, Trăiește, SIMTE România.";
 export const SITE_DESCRIPTION =
   "Agenție de turism RoHubTravel: vacanțe și circuite autentice în România - Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea. Gastronomie, crame, natură și retreat-uri pentru companii.";
 
-export const SITE_EMAIL = "hello@petreraducatalin.com";
+export const SITE_EMAIL = "contact@rohubtravel.com";
 export const SITE_PHONE = "+40787346322";
 export const SITE_PHONE_DISPLAY = "+40 787 346 322";
 export const SITE_WHATSAPP = "https://wa.me/40787346322";

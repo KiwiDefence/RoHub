@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">RoHub Travel</string>
+    <string name="title_activity_main">RoHub Travel</string>
+    <string name="package_name">com.rohubtravel.app</string>
+    <string name="custom_url_scheme">com.rohubtravel.app</string>
+</resources>

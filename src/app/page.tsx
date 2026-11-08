@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { JsonLd } from "@/components/JsonLd";
+import { SiteTagline } from "@/components/SiteTagline";
 import {
   HOME_FAQS,
   SITE_DESCRIPTION,
@@ -79,9 +80,7 @@ export default function Home() {
                   RoHubTravel construiește circuite personalizate pe regiunile României — Oltenia, Muntenia, Maramureș, Transilvania, Bucovina, Dobrogea. Fiecare experiență include locații reale, oameni reali și gastronomie autentică.
                 </p>
                 <p className="mt-4 text-xl font-semibold leading-snug text-pine sm:text-2xl">
-                  Descoperă. Trăiește.
-                  <br />
-                  Simte România.
+                  <SiteTagline />
                 </p>
               </div>
             </div>

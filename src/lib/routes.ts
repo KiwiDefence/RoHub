@@ -38,6 +38,24 @@ export function getAllRoutes(): SiteRoute[] {
       changeFrequency: "monthly",
     },
     {
+      path: "/inovatie/",
+      label: "Inovație - Piticot & Mystery Box",
+      priority: 0.85,
+      changeFrequency: "monthly",
+    },
+    {
+      path: "/inovatie/piticot/",
+      label: "Piticot - circuit gamificat",
+      priority: 0.7,
+      changeFrequency: "monthly",
+    },
+    {
+      path: "/inovatie/mystery-box/",
+      label: "Mystery Box - destinație secretă",
+      priority: 0.7,
+      changeFrequency: "monthly",
+    },
+    {
       path: "/harta-site/",
       label: "Harta site-ului - toate paginile",
       priority: 0.3,

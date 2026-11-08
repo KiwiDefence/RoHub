@@ -2,7 +2,7 @@
 
 Agenție de turism — site static Next.js, pregătit pentru **GitHub Pages** / `rohubtravel.com`.
 
-> Descoperă. Trăiește. Simte România.
+> Descoperă, Trăiește, SIMTE România.
 
 ## Dezvoltare locală
 
@@ -31,7 +31,7 @@ Site live: [https://rohubtravel.com](https://rohubtravel.com)
 
 ## Contact (sursă unică: `src/lib/seo.ts`)
 
-- Email: hello@petreraducatalin.com
+- Email: contact@rohubtravel.com
 - Telefon / WhatsApp: +40 787 346 322
 - Sediu: Brașov, România
 

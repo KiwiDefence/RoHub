@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HashLink } from "@/components/HashLink";
 import { HERO_IMAGE } from "@/lib/content";
-import { SITE_TAGLINE } from "@/lib/seo";
+import { SiteTagline } from "@/components/SiteTagline";
 
 export function Hero() {
   return (
@@ -28,8 +28,8 @@ export function Hero() {
       />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-16 pt-32 sm:px-8 sm:pb-24">
-        <h1 className="animate-fade-up max-w-4xl font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl">
-          {SITE_TAGLINE}
+        <h1 className="animate-fade-up max-w-4xl font-display text-4xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl">
+          <SiteTagline contrastSimte />
         </h1>
         <p className="animate-fade-up delay-2 mt-4 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">
           Vacanțe și circuite autentice în România: gastronomie locală, crame,

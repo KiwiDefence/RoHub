@@ -1,12 +1,18 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { SITE_WHATSAPP } from "@/lib/seo";
 
 export function FloatingActions() {
+  const pathname = usePathname() ?? "";
+  if (pathname.includes("/inovatie/piticot")) return null;
+
   return (
     <a
       href={`${SITE_WHATSAPP}?text=${encodeURIComponent("Bună ziua, doresc informații despre vacanțele RoHubTravel.")}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-4 right-4 z-[60] inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:scale-105 hover:brightness-110 sm:bottom-6 sm:right-6"
+      className="floating-whatsapp fixed bottom-4 right-4 z-[60] inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:scale-105 hover:brightness-110 sm:bottom-6 sm:right-6"
       aria-label="Contactează-ne pe WhatsApp"
     >
       <svg

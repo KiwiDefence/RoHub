@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { PackageIncludes } from "@/components/PackageIncludes";
+import { SiteTagline } from "@/components/SiteTagline";
 import { SERVICE_IMAGES } from "@/lib/content";
 import {
   SERVICES_FAQS,
@@ -665,7 +666,7 @@ export default function ServiciiB2BPage() {
               De ce RoHubTravel?
             </p>
             <h2 className="mt-3 max-w-2xl font-sans text-3xl font-semibold tracking-[-0.02em] sm:text-5xl sm:leading-[1.15]">
-              Descoperă. Trăiește. Simte România.
+              <SiteTagline />
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">
               Transformăm o simplă excursie într-o experiență care îi apropie pe

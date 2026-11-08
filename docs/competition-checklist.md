@@ -8,7 +8,7 @@
 | Field | Value |
 |-------|--------|
 | Phone / WhatsApp | +40 787 346 322 (`wa.me/40787346322`) |
-| Email | hello@petreraducatalin.com |
+| Email | contact@rohubtravel.com |
 | Address | Brașov, România (city only — no invented street/CUI) |
 | Tagline | Nu vizitezi România. O trăiești. |
 
@@ -30,6 +30,10 @@
 - [x] Privacy + terms routes in sitemap (`routes.ts`)
 - [x] Address/geo = Brașov; Romanian-only `availableLanguage`
 - [x] Dead analytics-in-`<style>` removed
+
+## Tech innovation (pitch demo)
+
+- [x] `/inovatie/` hub + Piticot gamified board + Mystery Box booking/clues (static, localStorage)
 
 ## Content & conversion
 
