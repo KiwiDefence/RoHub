@@ -64,7 +64,7 @@ export default async function RegionPage({ params }: PageProps) {
       />
       <JsonLd data={regionTripJsonLd(region)} />
       <Header variant="overlay" />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <section className="relative flex min-h-[70svh] items-end overflow-hidden">
           <Image
             src={region.image}

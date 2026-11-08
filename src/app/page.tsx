@@ -6,7 +6,6 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { JsonLd } from "@/components/JsonLd";
-import { SERVICE_IMAGES } from "@/lib/content";
 import {
   HOME_FAQS,
   SITE_DESCRIPTION,
@@ -20,7 +19,7 @@ export const metadata = buildPageMetadata({
   description: SITE_DESCRIPTION,
   path: "/",
   keywords: [
-    "agenție turism București",
+    "agenție turism Brașov",
     "circuite România personalizate",
     "vacanțe diaspora România",
   ],
@@ -36,7 +35,7 @@ export default function Home() {
       />
       <JsonLd data={faqJsonLd([...HOME_FAQS])} />
       <Header />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <Hero />
         <Destinations />
 
@@ -55,7 +54,17 @@ export default function Home() {
                 </p>
                 <p className="mt-4 text-lg leading-relaxed text-stone sm:text-xl">
                   <span className="font-bold text-pine">38%</span> dintre
-                  români simt stres zilnic (Gallup, 2025) — au nevoie de o vacanță care să îi deconecteze cu adevărat.
+                  angajații din România au raportat stres ridicat în ziua
+                  precedentă (
+                  <a
+                    href="https://www.gallup.com/analytics/349280/gallup-global-emotions-report.aspx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-moss underline-offset-2 hover:underline"
+                  >
+                    Gallup Global Emotions
+                  </a>
+                  ) — au nevoie de o vacanță care să îi deconecteze cu adevărat.
                 </p>
               </div>
 

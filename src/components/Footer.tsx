@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { regions } from "@/lib/content";
-import { SITE_EMAIL, SITE_PHONE, SITE_WHATSAPP } from "@/lib/seo";
+import {
+  SITE_ADDRESS_DISPLAY,
+  SITE_EMAIL,
+  SITE_PHONE,
+  SITE_PHONE_DISPLAY,
+} from "@/lib/seo";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -11,24 +16,30 @@ export function Footer() {
     <footer className="border-t border-white/10 bg-ink text-white">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:grid-cols-2 sm:px-8 lg:grid-cols-[1.2fr_1fr_1fr]">
         <div>
-          <p className="font-display text-2xl font-extrabold tracking-tight">
-            RoHubTravel
-          </p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`${basePath}/brand/rohub-logo.png`}
+            alt="RoHubTravel"
+            width={192}
+            height={192}
+            className="h-48 w-48 rounded-2xl object-cover sm:h-56 sm:w-56 md:h-64 md:w-64"
+          />
           <p className="mt-2 max-w-sm text-sm text-white/70">
             Agenție de turism pentru vacanțe și circuite autentice în România -
             Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea.
           </p>
           <p className="mt-4 text-sm text-white/60">
-            București ·{" "}
+            {SITE_ADDRESS_DISPLAY}
+            <br />
             <a
               href={`mailto:${SITE_EMAIL}`}
               className="hover:text-white"
             >
               {SITE_EMAIL}
-            </a>{" "}
-            ·{" "}
+            </a>
+            <br />
             <a href={`tel:${SITE_PHONE}`} className="hover:text-white">
-              {SITE_PHONE}
+              {SITE_PHONE_DISPLAY}
             </a>
           </p>
         </div>
@@ -67,8 +78,8 @@ export function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/harta-site/" className="hover:text-white">
-                Harta site
+              <Link href="/echipa/" className="hover:text-white">
+                Echipa
               </Link>
             </li>
             <li>
@@ -81,6 +92,24 @@ export function Footer() {
                 Contact
               </Link>
             </li>
+            <li>
+              <Link href="/harta-site/" className="hover:text-white">
+                Harta site
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/politica-de-confidentialitate/"
+                className="hover:text-white"
+              >
+                Politica de confidențialitate
+              </Link>
+            </li>
+            <li>
+              <Link href="/termeni-si-conditii/" className="hover:text-white">
+                Termeni și condiții
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
@@ -88,12 +117,32 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-6 sm:flex-row sm:items-end sm:justify-between sm:px-8">
           <p className="max-w-md text-xs leading-relaxed text-white/50">
-            © {year} RoHubTravel. Toate drepturile rezervate. Fotografii: Wikimedia
-            Commons (România).
+            © {year} RoHubTravel. Toate drepturile rezervate. Fotografii:{" "}
+            <a
+              href="https://commons.wikimedia.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline-offset-2 hover:text-white/80 hover:underline"
+            >
+              Wikimedia Commons
+            </a>
+            {" · "}
+            <Link
+              href="/politica-de-confidentialitate/"
+              className="underline-offset-2 hover:text-white/80 hover:underline"
+            >
+              Confidențialitate
+            </Link>
+            {" · "}
+            <Link
+              href="/termeni-si-conditii/"
+              className="underline-offset-2 hover:text-white/80 hover:underline"
+            >
+              Termeni
+            </Link>
+            .
           </p>
 
-          {/* Pictograme ANPC SAL/SOL - Ordin 449/2022, 250×50px
-              Ghid: https://kitamaru.ro/blog/cum-folosesc-pictogramele-anpc/ */}
           <div className="flex flex-wrap items-center gap-2 sm:justify-end">
             <a
               href="https://anpc.ro/ce-este-sal/"

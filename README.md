@@ -1,6 +1,8 @@
 # RoHubTravel
 
-Agenție de turism - site static Next.js, pregătit pentru **GitHub Pages**.
+Agenție de turism — site static Next.js, pregătit pentru **GitHub Pages** / `rohubtravel.com`.
+
+> Nu vizitezi România. O trăiești.
 
 ## Dezvoltare locală
 
@@ -27,18 +29,28 @@ Output-ul apare în folderul `out/` (HTML/CSS/JS static).
 
 Site live: [https://rohubtravel.com](https://rohubtravel.com)
 
-## Securitate
+## Contact (sursă unică: `src/lib/seo.ts`)
 
-- Export static (fără server Node în producție)
-- Content-Security-Policy (meta)
-- Formular de contact cu validare + sanitizare (mailto, fără backend)
-- Link-uri externe cu `rel` sigur unde e cazul
-- `X-Content-Type-Options: nosniff`, `Referrer-Policy`
-- Imagini doar de pe `images.unsplash.com` (allowlist în config)
+- Email: hello@petreraducatalin.com
+- Telefon / WhatsApp: +40 787 346 322
+- Sediu: Brașov, România
+
+## Documentație
+
+- [docs/competition-checklist.md](docs/competition-checklist.md) — checklist competiție
+- [docs/photo-attribution.md](docs/photo-attribution.md) — licențe fotografii Wikimedia Commons
+- [docs/pitch-deck.md](docs/pitch-deck.md) — pitch (inclusiv cifre investitori — doar în deck)
 
 ## Stack
 
-- Next.js 16 (App Router, `output: "export"`)
+- Next.js 16 (App Router, `output: "export"`, `trailingSlash: true`)
 - React 19
 - Tailwind CSS 4
 - TypeScript
+- Imagini locale în `public/regions/` (`images.unoptimized: true` pentru export static)
+
+## Note
+
+- Formularul de contact deschide `mailto:` (fără backend).
+- Nu rulăm analitice terțe / cookie-uri de marketing pe site.
+- Marca vizuală (hub/compass) este originală RoHubTravel.

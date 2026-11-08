@@ -32,10 +32,28 @@ export function getAllRoutes(): SiteRoute[] {
       changeFrequency: "weekly",
     },
     {
+      path: "/echipa/",
+      label: "Echipa RoHubTravel",
+      priority: 0.8,
+      changeFrequency: "monthly",
+    },
+    {
       path: "/harta-site/",
       label: "Harta site - toate paginile",
       priority: 0.3,
       changeFrequency: "monthly",
+    },
+    {
+      path: "/politica-de-confidentialitate/",
+      label: "Politica de confidențialitate",
+      priority: 0.2,
+      changeFrequency: "yearly",
+    },
+    {
+      path: "/termeni-si-conditii/",
+      label: "Termeni și condiții",
+      priority: 0.2,
+      changeFrequency: "yearly",
     },
     ...regions.map((region) => ({
       path: `/vacante/${region.slug}/`,

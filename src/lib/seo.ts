@@ -10,11 +10,19 @@ export const SITE_TAGLINE = "Nu vizitezi România. O trăiești.";
 export const SITE_DESCRIPTION =
   "Agenție de turism RoHubTravel: vacanțe și circuite autentice în România - Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea. Gastronomie, crame, natură și retreat-uri pentru companii.";
 
-export const SITE_EMAIL = "hello@rohub.ro";
-export const SITE_PHONE = "+40722111222";
-export const SITE_PHONE_DISPLAY = "+40 722 111 222";
-export const SITE_WHATSAPP = "https://wa.me/40722111222";
-export const DEFAULT_OG_IMAGE = "/regions/hero.jpg";
+export const SITE_EMAIL = "hello@petreraducatalin.com";
+export const SITE_PHONE = "+40787346322";
+export const SITE_PHONE_DISPLAY = "+40 787 346 322";
+export const SITE_WHATSAPP = "https://wa.me/40787346322";
+export const SITE_CITY = "Brașov";
+export const SITE_REGION = "Brașov";
+export const SITE_COUNTRY = "RO";
+export const SITE_ADDRESS_DISPLAY = "Brașov, România";
+/** Brașov city center approx. */
+export const SITE_GEO = { latitude: 45.6579, longitude: 25.6012 } as const;
+
+export const BRAND_LOGO = "/brand/rohub-logo.png";
+export const DEFAULT_OG_IMAGE = "/regions/og-share.jpg";
 export const OG_SHARE_IMAGE = "/regions/og-share.jpg";
 
 export const CORE_KEYWORDS = [
@@ -32,6 +40,7 @@ export const CORE_KEYWORDS = [
   "team building România natură",
   "experiențe gastronomice România",
   "crame România tururi",
+  "retreat Brașov",
 ] as const;
 
 export function absoluteUrl(path = "/"): string {
@@ -122,7 +131,7 @@ export function organizationJsonLd(): JsonLd {
     name: SITE_NAME,
     legalName: SITE_NAME,
     url: SITE_URL,
-    logo: absoluteUrl(DEFAULT_OG_IMAGE),
+    logo: absoluteUrl(BRAND_LOGO),
     image: absoluteUrl(DEFAULT_OG_IMAGE),
     description: SITE_DESCRIPTION,
     email: SITE_EMAIL,
@@ -131,14 +140,14 @@ export function organizationJsonLd(): JsonLd {
     foundingDate: "2024",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "București",
-      addressRegion: "București",
-      addressCountry: "RO",
+      addressLocality: SITE_CITY,
+      addressRegion: SITE_REGION,
+      addressCountry: SITE_COUNTRY,
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 44.4268,
-      longitude: 26.1025,
+      latitude: SITE_GEO.latitude,
+      longitude: SITE_GEO.longitude,
     },
     areaServed: {
       "@type": "Country",
@@ -151,10 +160,9 @@ export function organizationJsonLd(): JsonLd {
         contactType: "customer service",
         email: SITE_EMAIL,
         areaServed: "RO",
-        availableLanguage: ["Romanian", "English"],
+        availableLanguage: ["Romanian"],
       },
     ],
-    sameAs: [SITE_WHATSAPP],
     knowsAbout: [
       "Turism România",
       "Circuite regionale",
@@ -347,18 +355,17 @@ export const HOME_FAQS = [
   },
   {
     question: "Cum rezerv un circuit sau o vacanță?",
-    answer:
-      "Scrie-ne pe formularul de contact, pe email la hello@rohub.ro, telefon +40 722 111 222 sau WhatsApp. Spune-ne regiunea, perioada și numărul de persoane - răspundem în maxim o zi lucrătoare cu o propunere personalizată.",
+    answer: `Scrie-ne pe formularul de contact, pe email la ${SITE_EMAIL}, telefon ${SITE_PHONE_DISPLAY} sau WhatsApp. Spune-ne regiunea, perioada și numărul de persoane - răspundem în maxim o zi lucrătoare cu o propunere personalizată.`,
   },
   {
     question: "Organizați și retreat-uri pentru companii?",
     answer:
-      "Da. Pe pagina Servicii găsești pachete Escape 24h, Experience 36h, Retreat 48h și programe custom pentru angajați - natură, gastronomie și experiențe locale, nu team-building clasic.",
+      "Da. Pe pagina Servicii găsești pachete Escape 24h, Experience 36h, Retreat 48h și programe custom pentru angajați - natură, gastronomie și experiențe locale, nu team-building clasic. Pachetele standard pornesc de la minimum 10 persoane.",
   },
   {
     question: "Vacanțele sunt potrivite pentru diaspora și oaspeți din străinătate?",
     answer:
-      "Da. Itinerariile sunt gândite și pentru români din diaspora și oaspeți care vor să trăiască România autentică: mănăstiri, sate, crame, gastronomie și peisaje, cu logistică clară din București sau alte puncte de plecare.",
+      "Da. Itinerariile sunt gândite și pentru români din diaspora și oaspeți care vor să trăiască România autentică: mănăstiri, sate, crame, gastronomie și peisaje, cu logistică clară din Brașov, București sau alte puncte de plecare.",
   },
 ] as const;
 
@@ -366,7 +373,7 @@ export const SERVICES_FAQS = [
   {
     question: "Ce tipuri de retreat-uri pentru angajați oferiți?",
     answer:
-      "Avem Escape (24h), Experience (36h), Retreat (48h) și programe custom Your Romania pentru grupuri de minimum 25 de persoane. Toate combină natură, gastronomie și experiențe locale în România.",
+      "Avem Escape (24h), Experience (36h), Retreat (48h) și programe custom Your Romania pentru grupuri de minimum 25 de persoane. Toate combină natură, gastronomie și experiențe locale în România. Pachetele Escape, Experience și Retreat pornesc de la minimum 10 persoane.",
   },
   {
     question: "Retreat-urile RoHubTravel sunt team-building?",
@@ -375,8 +382,7 @@ export const SERVICES_FAQS = [
   },
   {
     question: "Cum cer o ofertă pentru un retreat corporate?",
-    answer:
-      "Contactează-ne cu numărul de participanți, perioada dorită și tipul de experiență (24h, 36h, 48h sau custom). Trimitem o propunere pe email sau WhatsApp în maxim o zi lucrătoare.",
+    answer: `Contactează-ne la ${SITE_EMAIL} sau ${SITE_PHONE_DISPLAY} cu numărul de participanți, perioada dorită și tipul de experiență (24h, 36h, 48h sau custom). Trimitem o propunere pe email sau WhatsApp în maxim o zi lucrătoare.`,
   },
 ] as const;
 

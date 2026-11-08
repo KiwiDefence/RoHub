@@ -26,7 +26,7 @@ export default function HartaSitePage() {
         ])}
       />
       <Header variant="solid" />
-      <main className="flex-1 bg-fog pt-24 sm:pt-28">
+      <main id="main-content" className="flex-1 bg-fog pt-24 sm:pt-28">
         <section className="mx-auto max-w-3xl px-5 pb-20 sm:px-8 sm:pb-28">
           <Breadcrumbs
             items={[

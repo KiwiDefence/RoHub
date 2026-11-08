@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import { FloatingActions } from "@/components/FloatingActions";
 import { JsonLd } from "@/components/JsonLd";
+import { ScrollToHash } from "@/components/ScrollToHash";
 import {
   CORE_KEYWORDS,
   DEFAULT_OG_IMAGE,
@@ -29,25 +30,25 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const isDev = process.env.NODE_ENV === "development";
-
-const csp = [
-  "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "font-src 'self' https://fonts.gstatic.com data:",
-  "img-src 'self' data: https:;",
-  "frame-ancestors 'none'",
-].join("; ");
-
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: SITE_NAME,
-    template: `%s | ${SITE_NAME}`,
+    default: SITE_TAGLINE,
+    template: "%s",
   },
   description: SITE_DESCRIPTION,
   keywords: [...CORE_KEYWORDS],
-  manifest: "/manifest.json",
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+      { url: "/brand/rohub-logo.png", sizes: "1024x1024", type: "image/png" },
+      { url: "/icons/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/icons/icon-192x192.png", sizes: "192x192" }],
+  },
   robots: {
     index: true,
     follow: true,
@@ -81,31 +82,14 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [absoluteUrl(DEFAULT_OG_IMAGE)],
   },
-  alternates: {
-    canonical: SITE_URL,
-  },
 };
 
-export const viewport: Metadata["viewport"] = {
+export const viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
+  themeColor: "#1b4d3e",
 };
-
-const scripts = `
-// Lightweight analytics: store pageview count in localStorage
-(function() {
-  try {
-    var storage = localStorage;
-    var key = 'roh_analytics';
-    var data = null;
-    try { data = JSON.parse(storage.getItem(key)) || { pv: 0 }; } catch(e) { data = { pv: 0 }; }
-    data.pv++;
-    data.last = new Date().toISOString();
-    storage.setItem(key, JSON.stringify(data));
-  } catch(e) { /* storage full or unavailable */ }
-})();
-`;
 
 export default function RootLayout({
   children,
@@ -117,31 +101,18 @@ export default function RootLayout({
       lang="ro"
       className={`${outfit.variable} ${plusJakarta.variable} flex min-h-screen flex-col`}
     >
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-        <meta name="msapplication-TileColor" content="#1b4d3e" />
-        <meta name="theme-color" content="#1b4d3e" />
-        <meta name="google" content="notranslate" />
-        <meta name="referrer" content="origin-when-cross-origin" />
-        <meta name="pinterest" content="nopin" />
-        <link rel="canonical" href={absoluteUrl("/")} />
-        <style dangerouslySetInnerHTML={{ __html: scripts }} />
-      </head>
-      <body className="flex min-h-screen flex-col bg-pine font-sans text-ink antialiased">
-        {/* Skip Navigation */}
+      <body className="flex min-h-screen flex-col bg-fog font-sans text-ink antialiased">
+        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={websiteJsonLd()} />
+
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:px-4 focus:py-2 focus:bg-dawn focus:text-ink focus:font-semibold focus:rounded-sm"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:rounded-sm focus:bg-dawn focus:px-4 focus:py-2 focus:font-semibold focus:text-ink"
         >
           Sari la conținutul principal
         </a>
 
+        <ScrollToHash />
         {children}
 
         <FloatingActions />

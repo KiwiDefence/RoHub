@@ -39,7 +39,7 @@ export const regions: Region[] = [
     days: "3–5 zile",
     blurb:
       "Mănăstiri UNESCO, ceramică de Horezu, crame pe dealuri și gastronomie oltenească autentică.",
-    image: asset("/regions/oltenia.jpg"),
+    image: asset("/regions/oltenia.webp"),
     heroAlt: "Mănăstirea Horezu din Oltenia, România",
     seoTitle: "Vacanțe în Oltenia - mănăstiri, crame și gastronomie",
     seoDescription:
@@ -115,7 +115,7 @@ export const regions: Region[] = [
     days: "2–4 zile",
     blurb:
       "Castelul Peleș, București istoric, Valea Prahovei și vinurile de pe Dealu Mare.",
-    image: asset("/regions/muntenia.jpg"),
+    image: asset("/regions/muntenia.webp"),
     heroAlt: "Castelul Peleș din Sinaia, Muntenia, România",
     seoTitle: "Vacanțe în Muntenia - Peleș, București și munte",
     seoDescription:
@@ -191,7 +191,7 @@ export const regions: Region[] = [
     days: "4–6 zile",
     blurb:
       "Biserici de lemn UNESCO, Săpânța, porți sculptate, stâne și gastronomie de munte.",
-    image: asset("/regions/maramures.jpg"),
+    image: asset("/regions/maramures.webp"),
     heroAlt: "Cimitirul Vesel din Săpânța, Maramureș, România",
     seoTitle: "Vacanțe în Maramureș - tradiții, stâne și gastronomie",
     seoDescription:
@@ -268,8 +268,8 @@ export const regions: Region[] = [
     days: "5–7 zile",
     blurb:
       "Bran, Sighișoara UNESCO, Brașov, sate săsești, dealuri și gastronomie ardelenească.",
-    image: asset("/regions/transilvania.jpg"),
-    heroAlt: "Peisaj și patrimoniu din Transilvania, România",
+    image: asset("/regions/transilvania.webp"),
+    heroAlt: "Piața Mare din Sibiu, Transilvania, România",
     seoTitle: "Vacanțe în Transilvania - Bran, Sighișoara și sate săsești",
     seoDescription:
       "Circuite în Transilvania cu RoHubTravel: Castelul Bran, Sighișoara UNESCO, Brașov, sate săsești, vinuri și gastronomie. Vacanțe culturale în inima României.",
@@ -346,7 +346,7 @@ export const regions: Region[] = [
     days: "4–6 zile",
     blurb:
       "Mănăstiri pictate UNESCO, albastrul de Voroneț, păduri, aer curat și gastronomie bucovineană.",
-    image: asset("/regions/bucovina.jpg"),
+    image: asset("/regions/bucovina.webp"),
     heroAlt: "Mănăstirea Voroneț din Bucovina, România",
     seoTitle: "Vacanțe în Bucovina - mănăstiri pictate și gastronomie",
     seoDescription:
@@ -423,7 +423,7 @@ export const regions: Region[] = [
     days: "3–5 zile",
     blurb:
       "Delta Dunării UNESCO, pelicani, canale, sate de pescari și gastronomie de pește.",
-    image: asset("/regions/dobrogea.jpg"),
+    image: asset("/regions/dobrogea.webp"),
     heroAlt: "Pelicani în Delta Dunării, Dobrogea, România",
     seoTitle: "Vacanțe în Dobrogea și Delta Dunării",
     seoDescription:
@@ -519,51 +519,51 @@ export const experiences = [
   },
 ] as const;
 
-export const HERO_IMAGE = asset("/regions/hero.jpg");
-export const ABOUT_IMAGE = asset("/regions/about.jpg");
+export const HERO_IMAGE = asset("/regions/hero.webp");
+export const ABOUT_IMAGE = asset("/regions/about.webp");
 
 /** Romania-only imagery for the Servicii / retreats page. */
 export const SERVICE_IMAGES = {
   hero: {
-    src: asset("/regions/hero.jpg"),
-    alt: "Transfăgărășan în Munții Făgăraș, România - drum de munte pentru retreat-uri",
+    src: asset("/regions/hero.webp"),
+    alt: "Munții Carpați sub zăpadă, România - peisaj pentru retreat-uri",
   },
   escape: {
-    src: asset("/regions/oltenia.jpg"),
+    src: asset("/regions/oltenia.webp"),
     alt: "Mănăstirea Horezu din Oltenia, România - experiență culturală de o zi",
   },
   experience: {
-    src: asset("/regions/muntenia.jpg"),
+    src: asset("/regions/muntenia.webp"),
     alt: "Castelul Peleș din Sinaia, Muntenia, România - retreat de o noapte",
   },
   retreat: {
-    src: asset("/regions/dobrogea.jpg"),
+    src: asset("/regions/dobrogea.webp"),
     alt: "Pelicani în Delta Dunării, Dobrogea, România - deconectare în natură",
   },
   custom: {
-    src: asset("/regions/about.jpg"),
+    src: asset("/regions/transilvania.webp"),
     alt: "Piața Mare din Sibiu, Transilvania, România - experiență custom pentru companii",
   },
   why: {
-    src: asset("/regions/bucovina.jpg"),
-    alt: "Mănăstirea Voroneț din Bucovina, România - cultură și tradiție",
+    src: asset("/regions/bucovina.webp"),
+    alt: "Frescele Mănăstirii Voroneț din Bucovina, România - cultură și tradiție",
   },
   gallery: [
     {
-      src: asset("/regions/maramures.jpg"),
+      src: asset("/regions/maramures.webp"),
       alt: "Cimitirul Vesel din Săpânța, Maramureș, România",
     },
     {
-      src: asset("/regions/transilvania.jpg"),
-      alt: "Cruce de piatră tradițională în Transilvania, România",
+      src: asset("/regions/transilvania.webp"),
+      alt: "Piața Mare din Sibiu, Transilvania, România",
     },
     {
-      src: asset("/regions/bucovina.jpg"),
-      alt: "Mănăstire pictată din Bucovina, România",
+      src: asset("/regions/bucovina.webp"),
+      alt: "Frescele Mănăstirii Voroneț din Bucovina, România",
     },
     {
-      src: asset("/regions/oltenia.jpg"),
-      alt: "Complex monahal în Oltenia, România",
+      src: asset("/regions/oltenia.webp"),
+      alt: "Mănăstirea Horezu din Oltenia, România",
     },
   ],
 } as const;

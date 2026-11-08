@@ -42,6 +42,9 @@ export function Destinations() {
                     {place.name}
                   </p>
                   <p className="mt-1 text-sm text-stone">{place.days}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-stone/90">
+                    {place.blurb}
+                  </p>
                 </div>
               </Link>
             </li>

@@ -56,7 +56,7 @@ export default function VacanteIndexPage() {
       <JsonLd data={vacanteIndexJsonLd()} />
       <JsonLd data={faqJsonLd([...VACANTE_FAQS])} />
       <Header variant="solid" />
-      <main className="flex-1 bg-fog pt-24 sm:pt-28">
+      <main id="main-content" className="flex-1 bg-fog pt-24 sm:pt-28">
         <section className="mx-auto max-w-6xl px-5 pb-10 sm:px-8">
           <Breadcrumbs
             items={[

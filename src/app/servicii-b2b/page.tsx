@@ -167,7 +167,7 @@ export default function ServiciiB2BPage() {
       <JsonLd data={servicesJsonLd()} />
       <JsonLd data={faqJsonLd([...SERVICES_FAQS])} />
       <Header variant="overlay" />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <section className="relative flex min-h-[100svh] items-end overflow-hidden">
           <Image
             src={SERVICE_IMAGES.hero.src}
@@ -231,8 +231,17 @@ export default function ServiciiB2BPage() {
                 </p>
                 <p className="mt-4 text-lg leading-relaxed text-stone sm:text-xl">
                   <span className="font-bold text-pine">38%</span> dintre
-                  angajații din România au experimentat stres ridicat în ziua
-                  precedentă (Gallup, 2025).
+                  angajații din România au raportat stres ridicat în ziua
+                  precedentă (
+                  <a
+                    href="https://www.gallup.com/analytics/349280/gallup-global-emotions-report.aspx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-moss underline-offset-2 hover:underline"
+                  >
+                    Gallup Global Emotions
+                  </a>
+                  ).
                 </p>
               </div>
 
@@ -260,39 +269,50 @@ export default function ServiciiB2BPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-ink via-pine/20 to-ink" aria-hidden />
           <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-dawn">
-              Piața din România
+              Cum funcționează
             </p>
             <h2 className="mt-3 font-sans text-2xl font-semibold leading-snug sm:text-3xl">
-              O piață vastă, subexploitată
+              Trei pași. Noi ne ocupăm de restul.
             </h2>
-            <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/85 sm:text-lg">
-              În 2024, rezidenții României au cheltuit 4,51 miliarde euro pe călătorii interne. 
-              27% din turismul din 2025 se află în topul categoriilor de beneficii importante pentru angajați, 
-              iar bugetul mediu extra-salarial per angajat în 2026 este de 1.170 RON.
-            </p>
-            <div className="mt-10 grid gap-6 sm:grid-cols-3">
-              <div className="rounded-sm bg-white/5 p-6">
-                <p className="text-sm uppercase tracking-[0.16em] text-dawn">TAM</p>
-                <p className="mt-2 font-sans text-3xl font-bold text-white">3,65 mld RON</p>
-                <p className="mt-1 text-sm leading-relaxed text-white/70">
-                  Toate companiile cu minimum 10 angajați — 3.171.056 de persoane.
+            <ol className="mt-10 grid gap-6 sm:grid-cols-3">
+              <li className="rounded-sm bg-white/5 p-6">
+                <p className="text-sm uppercase tracking-[0.16em] text-dawn">
+                  01
                 </p>
-              </div>
-              <div className="rounded-sm bg-white/5 p-6">
-                <p className="text-sm uppercase tracking-[0.16em] text-dawn">SAM</p>
-                <p className="mt-2 font-sans text-3xl font-bold text-white">2,59 mld RON</p>
-                <p className="mt-1 text-sm leading-relaxed text-white/70">
-                  Companiile cu minimum 60 angajați — 2.255.301 de persoane.
+                <h3 className="mt-2 font-sans text-xl font-semibold">
+                  Alegi experiența
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/70">
+                  Escape 24h, Experience 36h, Retreat 48h sau un program custom
+                  pentru echipa ta — minimum 10 persoane la pachetele standard.
                 </p>
-              </div>
-              <div className="rounded-sm bg-white/5 p-6">
-                <p className="text-sm uppercase tracking-[0.16em] text-dawn">SOM — Anul 3</p>
-                <p className="mt-2 font-sans text-3xl font-bold text-white">5,39 mil RON</p>
-                <p className="mt-1 text-sm leading-relaxed text-white/70">
-                  66 grupuri × 65 participanți × 1.275 RON mediu — 0,21% din SAM.
+              </li>
+              <li className="rounded-sm bg-white/5 p-6">
+                <p className="text-sm uppercase tracking-[0.16em] text-dawn">
+                  02
                 </p>
-              </div>
-            </div>
+                <h3 className="mt-2 font-sans text-xl font-semibold">
+                  Te preluăm și te ghidăm
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/70">
+                  Transport organizat, cazare (unde e cazul), program și
+                  coordonare pe durata retreat-ului — o singură interfață pentru
+                  HR.
+                </p>
+              </li>
+              <li className="rounded-sm bg-white/5 p-6">
+                <p className="text-sm uppercase tracking-[0.16em] text-dawn">
+                  03
+                </p>
+                <h3 className="mt-2 font-sans text-xl font-semibold">
+                  Descoperiți România
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/70">
+                  Natură, gastronomie, producători locali și timp liber — fără
+                  presiunea de a „performa” într-un team-building clasic.
+                </p>
+              </li>
+            </ol>
           </div>
         </section>
 

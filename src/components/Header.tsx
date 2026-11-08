@@ -1,13 +1,13 @@
 "use client";
 
-import { SITE_EMAIL, SITE_PHONE } from "@/lib/seo";
-
+import { HashLink } from "@/components/HashLink";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const links = [
   { href: "/vacante/", label: "Vacanțe" },
   { href: "/servicii-b2b/", label: "Servicii" },
+  { href: "/echipa/", label: "Echipa" },
   { href: "/#despre", label: "Despre" },
   { href: "/#contact", label: "Contact" },
 ] as const;
@@ -84,28 +84,38 @@ export function Header({ variant = "overlay" }: HeaderProps) {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:h-20 sm:px-8">
         <Link
           href="/"
-          className="font-display text-xl font-extrabold tracking-tight sm:text-2xl"
+          className="inline-flex items-center gap-2.5 font-display text-xl font-extrabold tracking-tight sm:text-2xl"
           onClick={() => setOpen(false)}
         >
           RoHubTravel
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium tracking-wide text-white/85 transition hover:text-white"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link
+          {links.map((link) =>
+            link.href.includes("#") ? (
+              <HashLink
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium tracking-wide text-white/85 transition hover:text-white"
+              >
+                {link.label}
+              </HashLink>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium tracking-wide text-white/85 transition hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ),
+          )}
+          <HashLink
             href="/#contact"
             className="rounded-sm bg-dawn px-4 py-2 text-sm font-semibold text-ink transition hover:brightness-110"
           >
             Planifică vacanța
-          </Link>
+          </HashLink>
         </nav>
 
         <button
@@ -148,23 +158,33 @@ export function Header({ variant = "overlay" }: HeaderProps) {
           <ul className="flex flex-col gap-4">
             {links.map((link) => (
               <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="block text-lg font-medium"
-                  onClick={() => setOpen(false)}
-                >
-                  {link.label}
-                </Link>
+                {link.href.includes("#") ? (
+                  <HashLink
+                    href={link.href}
+                    className="block text-lg font-medium"
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.label}
+                  </HashLink>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className="block text-lg font-medium"
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
             <li>
-              <Link
+              <HashLink
                 href="/#contact"
                 className="mt-2 inline-block rounded-sm bg-dawn px-4 py-2 text-sm font-semibold text-ink"
                 onClick={() => setOpen(false)}
               >
                 Planifică vacanța
-              </Link>
+              </HashLink>
             </li>
           </ul>
         </nav>

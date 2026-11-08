@@ -1,6 +1,13 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import {
+  SITE_ADDRESS_DISPLAY,
+  SITE_EMAIL,
+  SITE_PHONE,
+  SITE_PHONE_DISPLAY,
+  SITE_WHATSAPP,
+} from "@/lib/seo";
 
 type FormState = {
   name: string;
@@ -74,13 +81,13 @@ export function Contact({ defaultDestination = "" }: ContactProps) {
       ].join("\n"),
     );
 
-    window.location.href = `mailto:hello@rohub.ro?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${SITE_EMAIL}?subject=${subject}&body=${body}`;
     setSent(true);
     setForm({ ...initial, destination: defaultDestination });
   }
 
   return (
-    <section id="contact" className="bg-mist py-20 sm:py-28">
+    <section id="contact" className="bg-mist py-16 sm:py-24">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">
@@ -99,27 +106,35 @@ export function Contact({ defaultDestination = "" }: ContactProps) {
               <dt className="font-semibold text-ink">Email</dt>
               <dd>
                 <a
-                  href="mailto:hello@rohub.ro"
+                  href={`mailto:${SITE_EMAIL}`}
                   className="text-moss underline-offset-4 hover:underline"
                 >
-                  hello@rohub.ro
+                  {SITE_EMAIL}
                 </a>
               </dd>
             </div>
             <div>
-              <dt className="font-semibold text-ink">Telefon</dt>
-              <dd>
+              <dt className="font-semibold text-ink">Telefon / WhatsApp</dt>
+              <dd className="space-x-3">
                 <a
-                  href="tel:+40722111222"
+                  href={`tel:${SITE_PHONE}`}
                   className="text-moss underline-offset-4 hover:underline"
                 >
-                  +40 722 111 222
+                  {SITE_PHONE_DISPLAY}
+                </a>
+                <a
+                  href={`${SITE_WHATSAPP}?text=${encodeURIComponent("Bună ziua, doresc informații despre vacanțele RoHubTravel.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-moss underline-offset-4 hover:underline"
+                >
+                  WhatsApp
                 </a>
               </dd>
             </div>
             <div>
               <dt className="font-semibold text-ink">Sediu</dt>
-              <dd className="text-stone">București, România</dd>
+              <dd className="text-stone">{SITE_ADDRESS_DISPLAY}</dd>
             </div>
           </dl>
         </div>
