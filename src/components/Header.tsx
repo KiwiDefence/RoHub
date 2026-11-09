@@ -99,7 +99,7 @@ export function Header({ variant = "overlay" }: HeaderProps) {
             alt="RoHubTravel"
             width={220}
             height={90}
-            className="h-11 w-auto object-contain brightness-0 invert sm:h-[3.25rem]"
+            className="h-10 w-auto object-contain sm:h-12"
           />
         </Link>
 

@@ -382,7 +382,7 @@ export function TravelHub() {
                   try {
                     await scheduleDemoNotificationSequence(activeBooking);
                     setDemoNote(
-                      "Notificările vor apărea în ~10s, 25s, 45s și 70s. Pune app-ul în background ca să le vezi clar.",
+                      "Pe Xiaomi: notificările merg pe Dynamic Island (~2s, 12s, 25s, 40s). Dacă nu apar pe insulă, activează „Afișare în bara de stare / Notificări focus” pentru RoHubTravel, apoi pune app-ul în background.",
                     );
                   } catch {
                     setDemoNote("Nu am putut programa notificările.");

@@ -15,6 +15,7 @@ public class MainActivity extends BridgeActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        registerPlugin(XiaomiIslandPlugin.class);
         super.onCreate(savedInstanceState);
         bridge.setWebViewClient(new StaticExportWebViewClient(bridge));
     }

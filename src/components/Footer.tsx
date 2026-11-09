@@ -21,9 +21,9 @@ export function Footer() {
           <img
             src={`${basePath}${BRAND_LOGO_MARK}`}
             alt="RoHubTravel"
-            width={220}
-            height={90}
-            className="h-11 w-auto object-contain brightness-0 invert sm:h-[3.25rem]"
+            width={280}
+            height={280}
+            className="h-11 w-auto object-contain sm:h-14"
           />
           <p className="mt-4 max-w-sm text-sm text-white/70">
             Agenție de turism pentru vacanțe și circuite autentice în România -

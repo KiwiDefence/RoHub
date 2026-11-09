@@ -3,6 +3,11 @@ import { normalizeTravel } from "@/lib/demo-travels";
 import { isNativeApp } from "@/lib/native";
 import type { BookingWithTravel } from "@/lib/travel";
 import { travelDayIndex } from "@/lib/travel";
+import {
+  cancelXiaomiIsland,
+  showXiaomiIsland,
+  showXiaomiIslandSequence,
+} from "@/lib/xiaomi-island";
 
 const CHANNEL_LIVE = "rohub-trip-live";
 const CHANNEL_REMINDERS = "rohub-trip-reminders";
@@ -67,7 +72,7 @@ async function ensureChannels(): Promise<void> {
     id: CHANNEL_LIVE,
     name: "Călătorie activă",
     description: "Status pe durata vacanței",
-    importance: 2,
+    importance: 4,
     visibility: 1,
     vibration: false,
     sound: undefined,
@@ -227,17 +232,30 @@ async function scheduleItinerary(booking: BookingWithTravel): Promise<void> {
 
 async function showOngoingIfNeeded(): Promise<void> {
   if (!activeBooking?.travel || appInForeground) return;
-  const { LocalNotifications } = await import("@capacitor/local-notifications");
   const day = travelDayIndex(activeBooking) + 1;
   const dayTitle =
     activeBooking.travel.itinerary[day - 1]?.title ?? `Ziua ${day}`;
+  const title = activeBooking.travel.title;
+  const body = `${dayTitle} · deschide programul`;
 
+  // Prefer Xiaomi Dynamic Island / Focus notification when available.
+  const islandOk = await showXiaomiIsland({
+    id: ONGOING_ID,
+    title,
+    body,
+    shortTitle: `Ziua ${day}`,
+    route: "/calatorie/",
+    ongoing: true,
+  });
+  if (islandOk) return;
+
+  const { LocalNotifications } = await import("@capacitor/local-notifications");
   await LocalNotifications.schedule({
     notifications: [
       {
         id: ONGOING_ID,
-        title: activeBooking.travel.title,
-        body: `${dayTitle} · deschide programul`,
+        title,
+        body,
         largeBody: "Atinge pentru itinerariu, hartă și Piticot.",
         channelId: CHANNEL_LIVE,
         actionTypeId: ACTION_TRIP,
@@ -292,6 +310,7 @@ export async function syncTripNotificationSchedule(
 export async function clearTripNotification(): Promise<void> {
   if (typeof window === "undefined" || !isNativeApp()) return;
   try {
+    await cancelXiaomiIsland(ONGOING_ID);
     const { LocalNotifications } = await import("@capacitor/local-notifications");
     await LocalNotifications.cancel({ notifications: [{ id: ONGOING_ID }] });
   } catch {
@@ -306,6 +325,15 @@ export async function notifyPiticotUnlock(stationTitle: string): Promise<void> {
     if (!(await ensurePermission())) return;
     await ensureChannels();
     await ensureActionTypes();
+    const islandOk = await showXiaomiIsland({
+      id: UNLOCK_ID,
+      title: "Oprire deblocată!",
+      body: stationTitle,
+      shortTitle: "Piticot",
+      route: "/inovatie/piticot/",
+      ongoing: false,
+    });
+    if (islandOk) return;
     const { LocalNotifications } = await import("@capacitor/local-notifications");
     await LocalNotifications.schedule({
       notifications: [
@@ -402,6 +430,47 @@ export async function scheduleDemoNotificationSequence(
       { id: DEMO_BASE + 3 },
     ],
   });
+
+  // On Xiaomi, drive the demo through Dynamic Island (Focus) notifications.
+  const islandOk = await showXiaomiIslandSequence([
+    {
+      id: DEMO_BASE,
+      title: "Bine ai venit pe traseu",
+      body: travel.title,
+      shortTitle: "RoHub",
+      route: "/calatorie/",
+      delayMs: 2_000,
+    },
+    {
+      id: DEMO_BASE + 1,
+      title: nextSlot?.title ?? "Următoarea oprire",
+      body: nextSlot
+        ? `${nextSlot.time}${nextSlot.place ? ` · ${nextSlot.place}` : ""}`
+        : "Deschide programul",
+      shortTitle: "Program",
+      route: "/calatorie/",
+      delayMs: 12_000,
+    },
+    {
+      id: DEMO_BASE + 2,
+      title: "Pregătește scanarea QR",
+      body: "Deschide Piticot la următoarea oprire",
+      shortTitle: "Piticot",
+      route: "/inovatie/piticot/",
+      delayMs: 25_000,
+    },
+    {
+      id: DEMO_BASE + 3,
+      title: "Ziua merge bine",
+      body: "Revino oricând la program și hartă",
+      shortTitle: "RoHub",
+      route: "/calatorie/",
+      delayMs: 40_000,
+      ongoing: true,
+    },
+  ]);
+  if (islandOk) return;
+
   await LocalNotifications.schedule({ notifications: sequence });
 }
 
