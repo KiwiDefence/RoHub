@@ -14,13 +14,14 @@ function photo(path: string) {
   return `${basePath}${normalized}`;
 }
 
+/** Order matches the Canva team strip. */
 export const teamMembers: TeamMember[] = [
   {
-    name: "Denis Nedelcu",
+    name: "Roxana",
     role: "Specialist Marketing",
-    image: photo("/team/denis-nedelcu.webp"),
-    imageAlt: "Denis Nedelcu, specialist marketing RoHubTravel",
-    objectPosition: "center 18%",
+    image: photo("/team/roxana.png"),
+    imageAlt: "Roxana, specialist marketing RoHubTravel",
+    objectPosition: "center 40%",
   },
   {
     name: "Radu Cătălin Petre",
@@ -37,17 +38,17 @@ export const teamMembers: TeamMember[] = [
     objectPosition: "center 12%",
   },
   {
-    name: "Matei Mihai Radu",
-    role: "Administrator de firmă",
-    image: photo("/team/matei-mihai-radu.webp"),
-    imageAlt: "Matei Mihai Radu, administrator firmă RoHubTravel",
-    objectPosition: "center 20%",
+    name: "Mari Chiper",
+    role: "Administrator firmă",
+    image: photo("/team/mari-chiper.png"),
+    imageAlt: "Mari Chiper, administrator firmă RoHubTravel",
+    objectPosition: "center 18%",
   },
   {
     name: "Purice Adrian Sebastian",
     role: "Specialist Tehnologie & Securitate",
     image: photo("/team/purice-adrian-sebastian.webp"),
     imageAlt: "Purice Adrian Sebastian, specialist tehnologie și securitate RoHubTravel",
-    objectPosition: "center 35%",
+    objectPosition: "center 28%",
   },
 ];

@@ -3,9 +3,17 @@
 import { usePathname } from "next/navigation";
 import { SITE_WHATSAPP } from "@/lib/seo";
 
+/** Routes where WhatsApp must not interrupt booking / account / trip UX. */
+function hideWhatsAppFab(pathname: string): boolean {
+  if (pathname.includes("/inovatie/piticot")) return true;
+  if (pathname.startsWith("/calatorie")) return true;
+  if (pathname.startsWith("/cont")) return true;
+  return false;
+}
+
 export function FloatingActions() {
   const pathname = usePathname() ?? "";
-  if (pathname.includes("/inovatie/piticot")) return null;
+  if (hideWhatsAppFab(pathname)) return null;
 
   return (
     <a

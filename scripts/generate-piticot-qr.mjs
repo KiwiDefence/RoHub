@@ -74,7 +74,7 @@ Aceste PNG-uri **nu** sunt pe site. Le printezi și le lipești la stații.
 
 ## Care fișier tipăresc?
 
-- **\`0N-id.png\` (fără \`-web\`)** — pentru demo cu aplicația instalată.
+- **\`0N-id.png\` (fără \`-web\`)** — pentru aplicația instalată.
   Conține \`rohub://…\`. Camera Xiaomi / Google deschide **direct aplicația**,
   nu un link de site.
 - **\`0N-id-web.png\`** — fallback pe site (\`/go/\`: verifică app, apoi website).

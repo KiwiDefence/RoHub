@@ -1,4 +1,4 @@
-// RoHub API: accounts, demo bookings, Piticot progress, admin dashboard.
+// RoHub API: accounts, bookings, Piticot progress, admin dashboard.
 // Zero dependencies — run with `npm run piticot:server`.
 import { createServer } from "node:http";
 import {
@@ -108,9 +108,19 @@ function publicBooking(b) {
     startsOn: b.startsOn,
     endsOn: b.endsOn,
     nickname: b.nickname,
+    guests: b.guests ?? 1,
+    paymentStatus: b.paymentStatus === "paid_demo" ? "paid" : (b.paymentStatus ?? "paid"),
+    paidAt: b.paidAt ?? null,
+    amountRon: b.amountRon ?? travel?.priceRon ?? null,
     createdAt: b.createdAt,
     travel,
   };
+}
+
+function addDaysIso(iso, days) {
+  const d = new Date(`${iso}T12:00:00`);
+  d.setDate(d.getDate() + days);
+  return d.toISOString().slice(0, 10);
 }
 
 function publicPlayer(p) {
@@ -336,15 +346,33 @@ const routes = [
       if (activeBookingFor(user.id)) {
         return [409, { error: "Ai deja o călătorie activă" }];
       }
+      const guestsRaw = Number(body.guests ?? 1);
+      const guests =
+        Number.isFinite(guestsRaw) && guestsRaw >= 1 && guestsRaw <= 20
+          ? Math.round(guestsRaw)
+          : 1;
+      const startsRaw = String(body.startsOn ?? "").slice(0, 10);
+      const startsOn = /^\d{4}-\d{2}-\d{2}$/.test(startsRaw)
+        ? startsRaw
+        : travel.startsOn;
+      const span = Math.max(1, Number(travel.days) || 1) - 1;
+      const endsOn = addDaysIso(startsOn, span);
+      const unit = Number(travel.priceRon) || 0;
+      const amountRon = unit * guests;
+      const now = new Date().toISOString();
       const booking = {
         id: randomUUID(),
         userId: user.id,
         travelId: travel.id,
         status: "confirmed",
-        startsOn: travel.startsOn,
-        endsOn: travel.endsOn,
+        startsOn,
+        endsOn,
         nickname: cleanName(body.nickname || user.name),
-        createdAt: new Date().toISOString(),
+        guests,
+        paymentStatus: "paid",
+        paidAt: now,
+        amountRon,
+        createdAt: now,
       };
       db.bookings.push(booking);
       saveDb();
@@ -382,6 +410,42 @@ const routes = [
       db.bookings = db.bookings.filter((b) => b.id !== active.id);
       saveDb();
       return [200, { ok: true }];
+    },
+  ],
+
+  [
+    "PATCH",
+    /^\/api\/bookings\/mine\/active$/,
+    (_m, body, req) => {
+      const user = requireUser(req);
+      const active = activeBookingFor(user.id);
+      if (!active) return [404, { error: "Nicio călătorie activă" }];
+      const travel = travelById.get(active.travelId);
+      if (!travel) return [404, { error: "Călătorie inexistentă" }];
+
+      const startsOn = String(body.startsOn ?? active.startsOn).slice(0, 10);
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(startsOn)) {
+        return [400, { error: "Data de început e invalidă" }];
+      }
+      const span = Math.max(1, Number(travel.days) || 1) - 1;
+      const end = new Date(`${startsOn}T12:00:00`);
+      end.setDate(end.getDate() + span);
+      const endsOn = end.toISOString().slice(0, 10);
+
+      active.startsOn = startsOn;
+      active.endsOn = endsOn;
+      if (body.nickname != null) {
+        active.nickname = cleanName(body.nickname);
+      }
+      if (body.guests != null) {
+        const guests = Number(body.guests);
+        if (!Number.isFinite(guests) || guests < 1 || guests > 20) {
+          return [400, { error: "Numărul de persoane trebuie să fie între 1 și 20" }];
+        }
+        active.guests = Math.round(guests);
+      }
+      saveDb();
+      return [200, publicBooking(active)];
     },
   ],
 

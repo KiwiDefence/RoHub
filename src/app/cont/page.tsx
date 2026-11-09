@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Contul tău · RoHubTravel",
-  description: "Autentificare și rezervări demo RoHubTravel.",
+  description: "Autentificare și rezervări RoHubTravel.",
   path: "/cont/",
 });
 
@@ -14,7 +14,7 @@ export default function ContPage() {
   return (
     <>
       <Header variant="solid" />
-      <main id="main-content" className="flex-1 pt-20">
+      <main id="main-content" className="flex-1 pt-24 sm:pt-32">
         <AccountHome />
       </main>
       <Footer />

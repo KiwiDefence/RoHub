@@ -254,7 +254,7 @@ export default async function RegionPage({ params }: PageProps) {
                   href={`/calatorie/rezerva/${demoTravel.id}/`}
                   className="mt-8 inline-block rounded-sm bg-dawn px-5 py-3 text-sm font-semibold text-ink transition hover:brightness-110"
                 >
-                  Rezervă demo · {region.name}
+                  Cumpără pachet · {region.name}
                 </Link>
               ) : null}
               <a
@@ -269,7 +269,7 @@ export default async function RegionPage({ params }: PageProps) {
               </a>
               <p className="mt-4 text-sm text-white/70">
                 {demoTravel
-                  ? "Demo fără plată: cont → rezervare → Călătoria mea → Piticot."
+                  ? "Cont → plată → Călătoria mea → Piticot pe telefon."
                   : "Răspundem pe WhatsApp, email sau telefon în maximum o zi lucrătoare."}
               </p>
               <p className="mt-6 text-sm text-white/70">

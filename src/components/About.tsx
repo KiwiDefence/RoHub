@@ -17,7 +17,7 @@ export function About() {
         <Reveal variant="scale" className="relative aspect-[4/5] overflow-hidden sm:aspect-[5/6]">
           <Image
             src={ABOUT_IMAGE}
-            alt="Potecă prin pădure în România, experiență autentică RoHubTravel"
+            alt="Peisaj de toamnă pe dealuri în România, experiență autentică RoHubTravel"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
@@ -70,28 +70,28 @@ export function About() {
             </Link>
           </Reveal>
 
-          <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          <ul className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-5 lg:gap-x-6">
             {preview.map((member, i) => (
               <Reveal
                 key={member.name}
                 as="li"
                 delay={i * 70}
-                className="border-t border-white/15 pt-6"
+                className="text-center"
               >
-                <div className="relative aspect-square overflow-hidden rounded-sm bg-white/10">
+                <div className="relative mx-auto aspect-[4/5] w-full overflow-hidden rounded-[1.25rem] bg-white/10 ring-1 ring-white/15">
                   <Image
                     src={member.image}
                     alt={member.imageAlt}
                     fill
-                    sizes="(max-width: 640px) 50vw, 20vw"
+                    sizes="(max-width: 640px) 45vw, 18vw"
                     className="object-cover"
                     style={{ objectPosition: member.objectPosition }}
                   />
                 </div>
-                <p className="mt-4 font-display text-base font-bold leading-snug">
+                <p className="mt-3 font-display text-sm font-bold leading-snug text-dawn sm:text-base">
                   {member.name}
                 </p>
-                <p className="mt-1 text-sm leading-snug text-white/70">
+                <p className="mt-1 text-xs leading-snug text-white/70 sm:text-sm">
                   {member.role}
                 </p>
               </Reveal>

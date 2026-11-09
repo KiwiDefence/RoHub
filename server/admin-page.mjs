@@ -63,7 +63,7 @@ export function renderAdminPage(tripCode) {
   </div>
   <div class="grid" style="margin-top:28px">
     <section><h2>Conturi</h2><div id="users"></div></section>
-    <section><h2>Rezervări demo</h2><div id="bookings"></div></section>
+    <section><h2>Rezervări</h2><div id="bookings"></div></section>
   </div>
   <div class="bar">
     <span><span class="live" id="live"></span><span id="status">se conectează…</span></span>
@@ -106,7 +106,7 @@ export function renderAdminPage(tripCode) {
     document.getElementById("bookings").innerHTML = bookings?.length
       ? bookings.map((b) => '<div class="event"><b>' + esc(b.travel?.title ?? b.travelId) + "</b> · " +
           esc(b.nickname) + " · " + esc(b.startsOn) + " → " + esc(b.endsOn) + "</div>").join("")
-      : '<p class="empty">Nicio rezervare demo.</p>';
+      : '<p class="empty">Nicio rezervare.</p>';
   }
 
   function render({ stations, players, events }) {
@@ -141,7 +141,7 @@ export function renderAdminPage(tripCode) {
     tick();
   });
   document.getElementById("reset-bookings").addEventListener("click", async () => {
-    if (!confirm("Ștergi toate rezervările demo?")) return;
+    if (!confirm("Ștergi toate rezervările?")) return;
     await fetch("/api/admin/bookings", { method: "DELETE" });
     tick();
   });

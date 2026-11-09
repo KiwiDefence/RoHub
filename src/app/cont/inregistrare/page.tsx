@@ -7,7 +7,7 @@ import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Înregistrare · RoHubTravel",
-  description: "Creează un cont RoHubTravel pentru rezervarea demo.",
+  description: "Creează un cont RoHubTravel pentru rezervare.",
   path: "/cont/inregistrare/",
 });
 
@@ -20,7 +20,7 @@ export default function RegisterPage() {
           Creează cont
         </h1>
         <p className="mx-auto mt-2 max-w-md text-center text-stone">
-          Email + parolă. Apoi rezervi călătoria demo fără plată.
+          Email + parolă. Apoi cumperi pachetul și deschizi Călătoria mea.
         </p>
         <div className="mt-8">
           <Suspense fallback={<p className="text-center text-stone">Se încarcă…</p>}>

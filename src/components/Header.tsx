@@ -1,8 +1,11 @@
 "use client";
 
 import { HashLink } from "@/components/HashLink";
+import { BRAND_LOGO_MARK } from "@/lib/seo";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const links = [
   { href: "/vacante/", label: "Vacanțe" },
@@ -86,10 +89,18 @@ export function Header({ variant = "overlay" }: HeaderProps) {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:h-20 sm:px-8">
         <Link
           href="/"
-          className="inline-flex items-center gap-2.5 font-display text-xl font-extrabold tracking-tight sm:text-2xl"
+          className="inline-flex shrink-0 items-center"
           onClick={() => setOpen(false)}
+          aria-label="RoHubTravel — acasă"
         >
-          RoHubTravel
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`${basePath}${BRAND_LOGO_MARK}`}
+            alt="RoHubTravel"
+            width={220}
+            height={90}
+            className="h-11 w-auto object-contain brightness-0 invert sm:h-[3.25rem]"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">

@@ -4,7 +4,7 @@ import { buildPageMetadata } from "@/lib/seo";
 export const metadata = buildPageMetadata({
   title: "Piticot - circuit gamificat pe telefon",
   description:
-    "Demo Piticot RoHubTravel: scanezi QR printat cu camera telefonului, Piticotul sare pe pietre, la final primești Storybook.",
+    "Piticot RoHubTravel: scanezi QR printat cu camera telefonului, Piticotul sare pe pietre, la final primești Storybook.",
   path: "/inovatie/piticot/",
   keywords: [
     "Piticot",

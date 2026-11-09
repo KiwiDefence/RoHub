@@ -21,7 +21,10 @@ export const SITE_ADDRESS_DISPLAY = "Brașov, România";
 /** Brașov city center approx. */
 export const SITE_GEO = { latitude: 45.6579, longitude: 25.6012 } as const;
 
-export const BRAND_LOGO = "/brand/rohub-logo.png";
+/** Circular badge — icons, footer, OG. */
+export const BRAND_LOGO = "/brand/rohub-logo-circle.png";
+/** Mountains + wordmark on transparent — header / light surfaces. */
+export const BRAND_LOGO_MARK = "/brand/rohub-logo-mark.png";
 export const DEFAULT_OG_IMAGE = "/regions/og-share.jpg";
 export const OG_SHARE_IMAGE = "/regions/og-share.jpg";
 

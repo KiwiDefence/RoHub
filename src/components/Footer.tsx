@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { regions } from "@/lib/content";
 import {
+  BRAND_LOGO_MARK,
   SITE_ADDRESS_DISPLAY,
   SITE_EMAIL,
   SITE_PHONE,
@@ -18,13 +19,13 @@ export function Footer() {
         <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={`${basePath}/brand/rohub-logo.png`}
+            src={`${basePath}${BRAND_LOGO_MARK}`}
             alt="RoHubTravel"
-            width={192}
-            height={192}
-            className="h-48 w-48 rounded-2xl object-cover sm:h-56 sm:w-56 md:h-64 md:w-64"
+            width={220}
+            height={90}
+            className="h-11 w-auto object-contain brightness-0 invert sm:h-[3.25rem]"
           />
-          <p className="mt-2 max-w-sm text-sm text-white/70">
+          <p className="mt-4 max-w-sm text-sm text-white/70">
             Agenție de turism pentru vacanțe și circuite autentice în România -
             Oltenia, Muntenia, Maramureș, Transilvania, Bucovina și Dobrogea.
           </p>

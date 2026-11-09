@@ -22,6 +22,7 @@ import {
   unlockStation,
 } from "@/lib/piticot-storage";
 import { syncProgress } from "@/lib/piticot-sync";
+import { notifyPiticotUnlock } from "@/lib/trip-notification";
 
 type ScanClientProps = {
   stationId: string;
@@ -59,6 +60,7 @@ export function ScanClient({ stationId }: ScanClientProps) {
     if (verdict.kind === "unlock") {
       const next = unlockStation(current, station.id);
       void syncProgress(next);
+      void notifyPiticotUnlock(station.title);
       setUnlockedSet(new Set(next.unlocked));
       setFromIndex(maxOrder);
       setRestingIndex(station.order);

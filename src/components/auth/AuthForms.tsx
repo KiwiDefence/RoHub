@@ -17,6 +17,12 @@ function withNext(href: string, next: string) {
   return `${href}?next=${encodeURIComponent(next)}`;
 }
 
+function ensureApiBase() {
+  if (!getApiBase() && process.env.NEXT_PUBLIC_PITICOT_API) {
+    setApiBase(process.env.NEXT_PUBLIC_PITICOT_API);
+  }
+}
+
 export function LoginForm() {
   const { login } = useAuth();
   const router = useRouter();
@@ -31,7 +37,7 @@ export function LoginForm() {
     setError("");
     setBusy(true);
     try {
-      ensureApiHint();
+      ensureApiBase();
       await login(email.trim(), password);
       router.push(next);
     } catch (err) {
@@ -51,7 +57,6 @@ export function LoginForm() {
         onChange={setPassword}
         autoComplete="current-password"
       />
-      <ApiHint />
       {error ? <p className="text-sm font-semibold text-red-700" role="alert">{error}</p> : null}
       <button
         type="submit"
@@ -88,7 +93,7 @@ export function RegisterForm() {
     setError("");
     setBusy(true);
     try {
-      ensureApiHint();
+      ensureApiBase();
       await register(name.trim(), email.trim(), password);
       router.push(next);
     } catch (err) {
@@ -109,7 +114,6 @@ export function RegisterForm() {
         onChange={setPassword}
         autoComplete="new-password"
       />
-      <ApiHint />
       {error ? <p className="text-sm font-semibold text-red-700" role="alert">{error}</p> : null}
       <button
         type="submit"
@@ -156,35 +160,6 @@ function Field({
         autoComplete={autoComplete}
         required
         className="mt-1.5 w-full rounded-md border border-stone/30 bg-white px-3.5 py-3 text-ink outline-none focus:border-pine focus:ring-2 focus:ring-pine/20"
-      />
-    </label>
-  );
-}
-
-function ensureApiHint() {
-  if (!getApiBase() && process.env.NEXT_PUBLIC_PITICOT_API) {
-    setApiBase(process.env.NEXT_PUBLIC_PITICOT_API);
-  }
-}
-
-function ApiHint() {
-  const [base, setBase] = useState(() =>
-    typeof window !== "undefined" ? getApiBase() : "",
-  );
-
-  return (
-    <label className="block">
-      <span className="text-xs font-bold uppercase tracking-[0.14em] text-stone">
-        Server (LAN)
-      </span>
-      <input
-        value={base}
-        onChange={(e) => {
-          setBase(e.target.value);
-          setApiBase(e.target.value);
-        }}
-        placeholder="http://192.168.x.x:4000"
-        className="mt-1.5 w-full rounded-md border border-dashed border-stone/30 bg-fog/40 px-3.5 py-2 text-sm text-ink outline-none focus:border-pine"
       />
     </label>
   );

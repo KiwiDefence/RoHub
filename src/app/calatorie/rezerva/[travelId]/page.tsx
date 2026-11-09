@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return buildPageMetadata({
     title: travel
       ? `Rezervă ${travel.title} · RoHubTravel`
-      : "Rezervare demo · RoHubTravel",
-    description: travel?.summary ?? "Confirmă rezervarea demo RoHubTravel.",
+      : "Rezervare · RoHubTravel",
+    description: travel?.summary ?? "Confirmă rezervarea RoHubTravel.",
     path: `/calatorie/rezerva/${travelId}/`,
   });
 }
@@ -28,7 +28,7 @@ export default async function RezervaPage({ params }: PageProps) {
   return (
     <>
       <Header variant="solid" />
-      <main id="main-content" className="flex-1 pt-20">
+      <main id="main-content" className="flex-1 pt-24 sm:pt-32">
         <BookTravel travelId={travelId} />
       </main>
       <Footer />

@@ -9,62 +9,165 @@
     "endsOn": "2026-11-16",
     "includesPiticot": true,
     "piticotTripCode": "ROHUB-DEMO",
-    "meetingPoint": "Pensiunea Dealul Verde, Horezu — 09:00",
-    "hostContact": "WhatsApp organizator: +40 724 156 693",
+    "meetingPoint": "Pensiunea Dealul Verde, Str. Olari 12, Horezu",
+    "hostContact": "Telefon / email pe pagina Contact — WhatsApp doar pentru probleme pe traseu",
+    "priceRon": 890,
+    "currency": "RON",
+    "location": {
+      "name": "Pensiunea Dealul Verde",
+      "address": "Str. Olari 12, Horezu 245800, Vâlcea",
+      "lat": 45.1436,
+      "lng": 24.0058
+    },
     "itinerary": [
       {
         "title": "Ziua 1 · Sosire & plecare",
-        "items": [
-          "Check-in și briefing scurt cu echipa RoHub",
-          "Punct de plecare Piticot — scanează primul QR",
-          "Cină tradițională oltenească"
+        "slots": [
+          {
+            "time": "09:00",
+            "title": "Întâlnire & check-in",
+            "detail": "Briefing scurt cu echipa RoHub la pensiune.",
+            "place": "Pensiunea Dealul Verde"
+          },
+          {
+            "time": "10:30",
+            "title": "Punct de plecare Piticot",
+            "detail": "Scanează primul QR și pornești pe tablă.",
+            "place": "Curtea pensiunii"
+          },
+          {
+            "time": "13:00",
+            "title": "Prânz liber",
+            "detail": "Recomandăm o ciorbă oltenească în Horezu."
+          },
+          {
+            "time": "19:00",
+            "title": "Cină tradițională",
+            "detail": "Masă oltenească la gazdă, cu povești din zonă.",
+            "place": "Sala de mese"
+          }
         ]
       },
       {
         "title": "Ziua 2 · Cramă, comoară, casă",
-        "items": [
-          "Degustare la cramă (QR Piticot)",
-          "Vânătoare de comori pe ulițe",
-          "Vizită la Casa scriitorului"
+        "slots": [
+          {
+            "time": "09:30",
+            "title": "Degustare la cramă",
+            "detail": "Oprire Piticot — scanează QR-ul de la cramă.",
+            "place": "Crama locală"
+          },
+          {
+            "time": "12:00",
+            "title": "Vânătoare de comori",
+            "detail": "Pe ulițele din Horezu, cu indicii din joc.",
+            "place": "Centrul vechi"
+          },
+          {
+            "time": "15:30",
+            "title": "Casa scriitorului",
+            "detail": "Vizită + scan QR pentru capitolul din poveste.",
+            "place": "Casa memorială"
+          },
+          {
+            "time": "19:30",
+            "title": "Seară liberă",
+            "detail": "Odihnă la pensiune sau plimbare în oraș."
+          }
         ]
       },
       {
         "title": "Ziua 3 · Masă & final",
-        "items": [
-          "Masă la gazdă locală",
-          "Finalul drumului — deschide povestea Piticot",
-          "Check-out și drum spre casă"
+        "slots": [
+          {
+            "time": "10:00",
+            "title": "Masă la gazdă locală",
+            "detail": "Ultima oprire culinară din circuit.",
+            "place": "Gospodărie locală"
+          },
+          {
+            "time": "12:30",
+            "title": "Finalul drumului",
+            "detail": "Scanează QR-ul final și deschide povestea Piticot.",
+            "place": "Punctul de sosire"
+          },
+          {
+            "time": "14:00",
+            "title": "Check-out",
+            "detail": "La revedere și drum bun spre casă.",
+            "place": "Pensiunea Dealul Verde"
+          }
         ]
       }
     ],
     "tips": [
       "Ține telefonul încărcat — QR-urile Piticot se scanează pe teren.",
       "Poartă încălțăminte comodă pentru ulițe și curți.",
-      "Notificarea din aplicație te duce rapid la itinerariu și la Piticot."
+      "Folosește Google Maps sau Waze ca să ajungi la punctul de întâlnire."
     ]
   },
   {
     "id": "transilvania-escape",
     "regionSlug": "transilvania",
     "title": "Escapadă Transilvania",
-    "summary": "Weekend cultural în Transilvania. Fără Piticot pe acest pachet demo — rezervă Oltenia pentru joc.",
+    "summary": "Weekend cultural în Transilvania. Fără Piticot pe acest pachet — rezervă Oltenia pentru joc.",
     "days": 2,
     "startsOn": "2026-11-21",
     "endsOn": "2026-11-22",
     "includesPiticot": false,
     "piticotTripCode": "",
-    "meetingPoint": "Piața Sfatului, Brașov — 10:00",
-    "hostContact": "WhatsApp organizator: +40 724 156 693",
+    "meetingPoint": "Piața Sfatului, Brașov",
+    "hostContact": "Telefon / email pe pagina Contact — WhatsApp doar pentru probleme pe traseu",
+    "priceRon": 650,
+    "currency": "RON",
+    "location": {
+      "name": "Piața Sfatului",
+      "address": "Piața Sfatului, Brașov 500007",
+      "lat": 45.6427,
+      "lng": 25.5887
+    },
     "itinerary": [
       {
         "title": "Ziua 1 · Brașov",
-        "items": ["Tur al centrului istoric", "Cină regională"]
+        "slots": [
+          {
+            "time": "10:00",
+            "title": "Întâlnire în Piața Sfatului",
+            "detail": "Punct de start pentru turul centrului istoric.",
+            "place": "Piața Sfatului"
+          },
+          {
+            "time": "10:30",
+            "title": "Tur al centrului istoric",
+            "detail": "Străzi, biserici și povești brașovene."
+          },
+          {
+            "time": "19:00",
+            "title": "Cină regională",
+            "detail": "Masă cu specific ardelenesc."
+          }
+        ]
       },
       {
         "title": "Ziua 2 · Bran & peisaj",
-        "items": ["Castelul Bran", "Întoarcere organizată"]
+        "slots": [
+          {
+            "time": "09:30",
+            "title": "Castelul Bran",
+            "detail": "Vizită ghidată și timp liber pe deal.",
+            "place": "Castelul Bran"
+          },
+          {
+            "time": "14:00",
+            "title": "Întoarcere organizată",
+            "detail": "Transfer înapoi spre Brașov / punctul de plecare."
+          }
+        ]
       }
     ],
-    "tips": ["Rezervarea e demo — fără plată reală."]
+    "tips": [
+      "Deschide locația în Maps sau Waze înainte de întâlnire.",
+      "Pentru probleme pe traseu, folosește WhatsApp din Călătoria mea."
+    ]
   }
 ]

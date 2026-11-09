@@ -2,11 +2,53 @@ const API_KEY = "rohub-piticot-api";
 const TOKEN_KEY = "rohub-auth-token";
 const TIMEOUT_MS = 8000;
 
-export function getApiBase(): string {
+function isNativeShell(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    // Capacitor injects this on the WebView; hostname is often localhost there.
+    const cap = (
+      window as Window & {
+        Capacitor?: { isNativePlatform?: () => boolean };
+      }
+    ).Capacitor;
+    if (cap?.isNativePlatform?.()) return true;
+  } catch {
+    /* ignore */
+  }
+  return (
+    window.location.protocol === "capacitor:" ||
+    document.documentElement.classList.contains("native-app")
+  );
+}
+
+/** Env → saved override → sensible local default (never phone loopback in the app). */
+function defaultApiBase(): string {
+  const fromEnv = (process.env.NEXT_PUBLIC_PITICOT_API ?? "").trim();
+  if (fromEnv) return fromEnv.replace(/\/+$/, "");
   if (typeof window === "undefined") return "";
-  const saved = window.localStorage.getItem(API_KEY);
-  const base = saved ?? process.env.NEXT_PUBLIC_PITICOT_API ?? "";
-  return base.trim().replace(/\/+$/, "");
+
+  // Inside the APK, localhost is the phone — only the baked env URL works.
+  if (isNativeShell()) return "";
+
+  const host = window.location.hostname;
+  if (host === "localhost" || host === "127.0.0.1") {
+    return "http://127.0.0.1:4000";
+  }
+  if (/^(192\.168\.|10\.|172\.(1[6-9]|2\d|3[0-1])\.)/.test(host)) {
+    return `http://${host}:4000`;
+  }
+  return "";
+}
+
+export function getApiBase(): string {
+  if (typeof window === "undefined") return defaultApiBase();
+  const saved = (window.localStorage.getItem(API_KEY) ?? "").trim();
+  // Ignore stale loopback saved on a phone from older builds.
+  if (saved && isNativeShell() && /^(https?:\/\/)?(127\.0\.0\.1|localhost)(:|\/|$)/i.test(saved)) {
+    return defaultApiBase();
+  }
+  const base = saved || defaultApiBase();
+  return base.replace(/\/+$/, "");
 }
 
 export function setApiBase(url: string): void {
@@ -53,7 +95,12 @@ export async function apiRequest<T>(
   init?: RequestInit & { auth?: boolean },
 ): Promise<T> {
   const base = getApiBase();
-  if (!base) throw new ApiError(0, "Configurează adresa serverului RoHub.");
+  if (!base) {
+    throw new ApiError(
+      0,
+      "Serverul RoHub nu e disponibil. Pornește API-ul local sau reinstalează aplicația cu adresa corectă.",
+    );
+  }
 
   const headers = new Headers(init?.headers);
   if (!headers.has("Content-Type") && init?.body) {

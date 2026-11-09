@@ -31,7 +31,7 @@
 - [x] Address/geo = Brașov; Romanian-only `availableLanguage`
 - [x] Dead analytics-in-`<style>` removed
 
-## Tech innovation (pitch demo)
+## Tech innovation (pitch)
 
 - [x] `/inovatie/` hub + Piticot gamified board + Mystery Box booking/clues (static, localStorage)
 

@@ -184,7 +184,7 @@ export function MysteryBoxApp() {
           </h2>
           <p className="mt-2 text-sm text-stone">
             Indiciul 1 e imediat. Următoarele se „deblochează” ca pe WhatsApp —
-            în demo, cu un countdown scurt pe scenă.
+            pe scenă, cu un countdown scurt.
           </p>
           <ol className="mt-8 space-y-4">
             {theme.clues.map((clue, index) => {

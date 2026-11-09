@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Călătoria mea · RoHubTravel",
-  description: "Itinerariu, info rapidă și acces la Circuitul Piticotului.",
+  description: "Itinerariul zilei și acces rapid la jocul Piticot.",
   path: "/calatorie/",
 });
 
@@ -14,7 +14,7 @@ export default function CalatoriePage() {
   return (
     <>
       <Header variant="solid" />
-      <main id="main-content" className="flex-1 pt-20">
+      <main id="main-content" className="flex-1">
         <TravelHub />
       </main>
       <Footer />

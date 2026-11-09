@@ -39,7 +39,7 @@ export default function MysteryBoxPage() {
         <section className="bg-ink text-white">
           <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-dawn">
-              Demo interactiv
+              Experiență interactivă
             </p>
             <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
               Mystery Box

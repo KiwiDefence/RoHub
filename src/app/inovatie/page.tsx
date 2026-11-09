@@ -82,7 +82,7 @@ export default function InovatiePage() {
                 href="/inovatie/piticot/"
                 className="mt-8 inline-flex min-h-12 items-center justify-center rounded-md bg-pine px-6 py-3.5 text-sm font-semibold text-white shadow-md transition hover:bg-moss"
               >
-                Deschide demo Piticot
+                Deschide Piticot
               </Link>
             </Reveal>
 
@@ -105,7 +105,7 @@ export default function InovatiePage() {
               <ul className="mt-6 space-y-2 text-sm text-ink/80">
                 <li className="border-l-2 border-dawn pl-3">Teme fără oraș</li>
                 <li className="border-l-2 border-dawn pl-3">
-                  Indicii tip drip (demo pe site)
+                  Indicii tip drip pe site
                 </li>
                 <li className="border-l-2 border-dawn pl-3">
                   Rezervare pe email / WhatsApp

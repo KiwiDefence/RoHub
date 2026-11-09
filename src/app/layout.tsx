@@ -5,7 +5,6 @@ import { FloatingActions } from "@/components/FloatingActions";
 import { JsonLd } from "@/components/JsonLd";
 import { NativeShell } from "@/components/NativeShell";
 import { ScrollToHash } from "@/components/ScrollToHash";
-import { TravelBanner } from "@/components/TravelBanner";
 import {
   CORE_KEYWORDS,
   DEFAULT_OG_IMAGE,
@@ -45,7 +44,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
-      { url: "/brand/rohub-logo.png", sizes: "1024x1024", type: "image/png" },
+      { url: "/brand/rohub-logo-circle.png", sizes: "1024x1024", type: "image/png" },
       { url: "/icons/favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png" },
       { url: "/icons/icon-512x512.png", sizes: "512x512", type: "image/png" },
@@ -117,7 +116,6 @@ export default function RootLayout({
 
         <AuthProvider>
           <ScrollToHash />
-          <TravelBanner />
           {children}
 
           <FloatingActions />
