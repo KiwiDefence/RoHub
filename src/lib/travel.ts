@@ -2,6 +2,13 @@ import { apiRequest } from "@/lib/api";
 import type { DemoTravel } from "@/lib/demo-travels";
 import { DEMO_TRAVELS, getDemoTravel } from "@/lib/demo-travels";
 
+export type BookingTraveler = {
+  name: string;
+  phone: string;
+  /** ISO date YYYY-MM-DD — used to confirm age for age-restricted trips. */
+  birthDate: string;
+};
+
 export type BookingWithTravel = {
   id: string;
   travelId: string;
@@ -10,12 +17,26 @@ export type BookingWithTravel = {
   endsOn: string;
   nickname: string;
   guests?: number;
+  travelers?: BookingTraveler[];
+  agesConfirmed?: boolean;
   paymentStatus?: "paid" | string;
   paidAt?: string | null;
   amountRon?: number | null;
   createdAt: string;
   travel: DemoTravel | null;
 };
+
+export function ageOnDate(birthDate: string, onIso: string): number {
+  const birth = new Date(`${birthDate}T12:00:00`);
+  const on = new Date(`${onIso}T12:00:00`);
+  if (!Number.isFinite(birth.getTime()) || !Number.isFinite(on.getTime())) {
+    return -1;
+  }
+  let age = on.getFullYear() - birth.getFullYear();
+  const m = on.getMonth() - birth.getMonth();
+  if (m < 0 || (m === 0 && on.getDate() < birth.getDate())) age -= 1;
+  return age;
+}
 
 export function listLocalTravels(): DemoTravel[] {
   return DEMO_TRAVELS;
@@ -45,6 +66,8 @@ export async function createBooking(input: {
   nickname?: string;
   guests?: number;
   startsOn?: string;
+  travelers: BookingTraveler[];
+  agesConfirmed: boolean;
 }): Promise<BookingWithTravel> {
   return apiRequest<BookingWithTravel>("/api/bookings", {
     method: "POST",
@@ -67,6 +90,8 @@ export async function updateActiveBooking(input: {
   startsOn: string;
   nickname?: string;
   guests?: number;
+  travelers?: BookingTraveler[];
+  agesConfirmed?: boolean;
 }): Promise<BookingWithTravel> {
   return apiRequest<BookingWithTravel>("/api/bookings/mine/active", {
     method: "PATCH",

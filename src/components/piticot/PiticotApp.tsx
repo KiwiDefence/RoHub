@@ -137,8 +137,8 @@ export function PiticotApp() {
             </h1>
             <p className="mt-3 text-[1.05rem] leading-snug">
               {hasOtherTrip
-                ? "Călătoria ta actuală nu include jocul. Alege un pachet cu Piticot din Călătoria mea."
-                : "Piticotul se deschide după ce rezervi o călătorie cu circuit pe traseu."}
+                ? "Reîncarcă Călătoria mea — toate pachetele includ Piticot."
+                : "Piticotul se deschide după ce rezervi o călătorie."}
             </p>
             <Link
               href="/calatorie/"

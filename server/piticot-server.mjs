@@ -22,7 +22,11 @@ const APK_FILE = join(HERE, "..", "private", "app", "RoHubTravel.apk");
 const SESSION_DAYS = 30;
 const DEMO_TRAVELS = JSON.parse(
   readFileSync(join(HERE, "../src/lib/demo-travels.json"), "utf8"),
-);
+).map((t) => ({
+  ...t,
+  includesPiticot: true,
+  piticotTripCode: String(t.piticotTripCode ?? "").trim() || PITICOT_DEMO_CODE,
+}));
 
 const stations = getOrderedStations().map(({ id, title, accent, order }) => ({
   id,
@@ -108,7 +112,9 @@ function publicBooking(b) {
     startsOn: b.startsOn,
     endsOn: b.endsOn,
     nickname: b.nickname,
-    guests: b.guests ?? 1,
+    guests: b.guests ?? (b.travelers?.length ?? 1),
+    travelers: b.travelers ?? [],
+    agesConfirmed: Boolean(b.agesConfirmed),
     paymentStatus: b.paymentStatus === "paid_demo" ? "paid" : (b.paymentStatus ?? "paid"),
     paidAt: b.paidAt ?? null,
     amountRon: b.amountRon ?? travel?.priceRon ?? null,
@@ -121,6 +127,60 @@ function addDaysIso(iso, days) {
   const d = new Date(`${iso}T12:00:00`);
   d.setDate(d.getDate() + days);
   return d.toISOString().slice(0, 10);
+}
+
+function ageOnDate(birthDate, onIso) {
+  const birth = new Date(`${birthDate}T12:00:00`);
+  const on = new Date(`${onIso}T12:00:00`);
+  if (!Number.isFinite(birth.getTime()) || !Number.isFinite(on.getTime())) return -1;
+  let age = on.getFullYear() - birth.getFullYear();
+  const m = on.getMonth() - birth.getMonth();
+  if (m < 0 || (m === 0 && on.getDate() < birth.getDate())) age -= 1;
+  return age;
+}
+
+function cleanPhone(phone) {
+  return String(phone ?? "").replace(/[^\d+]/g, "").slice(0, 20);
+}
+
+/** @returns {{ ok: true, travelers: object[] } | { ok: false, error: string }} */
+function parseTravelers(raw, travel, startsOn) {
+  if (!Array.isArray(raw) || raw.length < 1 || raw.length > 20) {
+    return { ok: false, error: "Adaugă între 1 și 20 de persoane." };
+  }
+  const minAge = Number(travel.minAge);
+  const hasMin = Number.isFinite(minAge) && minAge > 0;
+  const travelers = [];
+  for (let i = 0; i < raw.length; i++) {
+    const row = raw[i] ?? {};
+    const name = cleanName(row.name);
+    const phone = cleanPhone(row.phone);
+    const birthDate = String(row.birthDate ?? "").slice(0, 10);
+    if (!name || name === "Explorator") {
+      return { ok: false, error: `Persoana ${i + 1}: completează numele.` };
+    }
+    if (phone.replace(/\D/g, "").length < 8) {
+      return { ok: false, error: `Persoana ${i + 1}: telefon invalid.` };
+    }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(birthDate)) {
+      return { ok: false, error: `Persoana ${i + 1}: data nașterii e obligatorie.` };
+    }
+    if (birthDate > startsOn) {
+      return { ok: false, error: `Persoana ${i + 1}: data nașterii e invalidă.` };
+    }
+    const age = ageOnDate(birthDate, startsOn);
+    if (age < 0 || age > 120) {
+      return { ok: false, error: `Persoana ${i + 1}: vârsta nu poate fi calculată.` };
+    }
+    if (hasMin && age < minAge) {
+      return {
+        ok: false,
+        error: `Persoana ${i + 1} are ${age} ani — minimul pentru acest pachet e ${minAge} ani.`,
+      };
+    }
+    travelers.push({ name, phone, birthDate, age });
+  }
+  return { ok: true, travelers };
 }
 
 function publicPlayer(p) {
@@ -346,15 +406,22 @@ const routes = [
       if (activeBookingFor(user.id)) {
         return [409, { error: "Ai deja o călătorie activă" }];
       }
-      const guestsRaw = Number(body.guests ?? 1);
-      const guests =
-        Number.isFinite(guestsRaw) && guestsRaw >= 1 && guestsRaw <= 20
-          ? Math.round(guestsRaw)
-          : 1;
       const startsRaw = String(body.startsOn ?? "").slice(0, 10);
       const startsOn = /^\d{4}-\d{2}-\d{2}$/.test(startsRaw)
         ? startsRaw
         : travel.startsOn;
+      const parsed = parseTravelers(body.travelers, travel, startsOn);
+      if (!parsed.ok) return [400, { error: parsed.error }];
+      if (!body.agesConfirmed) {
+        return [
+          400,
+          {
+            error:
+              "Confirmă că datele de naștere sunt corecte pentru fiecare persoană.",
+          },
+        ];
+      }
+      const guests = parsed.travelers.length;
       const span = Math.max(1, Number(travel.days) || 1) - 1;
       const endsOn = addDaysIso(startsOn, span);
       const unit = Number(travel.priceRon) || 0;
@@ -367,8 +434,10 @@ const routes = [
         status: "confirmed",
         startsOn,
         endsOn,
-        nickname: cleanName(body.nickname || user.name),
+        nickname: cleanName(body.nickname || parsed.travelers[0]?.name || user.name),
         guests,
+        travelers: parsed.travelers,
+        agesConfirmed: true,
         paymentStatus: "paid",
         paidAt: now,
         amountRon,
@@ -437,7 +506,24 @@ const routes = [
       if (body.nickname != null) {
         active.nickname = cleanName(body.nickname);
       }
-      if (body.guests != null) {
+      if (body.travelers != null) {
+        const parsed = parseTravelers(body.travelers, travel, startsOn);
+        if (!parsed.ok) return [400, { error: parsed.error }];
+        if (!body.agesConfirmed && !active.agesConfirmed) {
+          return [
+            400,
+            {
+              error:
+                "Confirmă că datele de naștere sunt corecte pentru fiecare persoană.",
+            },
+          ];
+        }
+        active.travelers = parsed.travelers;
+        active.guests = parsed.travelers.length;
+        active.agesConfirmed = true;
+        const unit = Number(travel.priceRon) || 0;
+        active.amountRon = unit * active.guests;
+      } else if (body.guests != null) {
         const guests = Number(body.guests);
         if (!Number.isFinite(guests) || guests < 1 || guests > 20) {
           return [400, { error: "Numărul de persoane trebuie să fie între 1 și 20" }];

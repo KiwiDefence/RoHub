@@ -1,78 +1,101 @@
 [
   {
-    "id": "oltenia-weekend",
-    "regionSlug": "oltenia",
-    "title": "Weekend Oltenia · Circuitul Piticotului",
-    "summary": "3 zile în Oltenia: cramă, comoară pe ulițe, masă la gazdă. Piticotul e inclus pe traseu.",
+    "id": "muntenia-weekend",
+    "regionSlug": "muntenia",
+    "title": "Weekend Muntenia · Circuitul Piticotului",
+    "summary": "3 zile pe Valea Prahovei: Peleș, cramă pe Dealu Mare, masă la gazdă. Piticotul e inclus pe traseu.",
     "days": 3,
     "startsOn": "2026-11-14",
     "endsOn": "2026-11-16",
     "includesPiticot": true,
     "piticotTripCode": "ROHUB-DEMO",
-    "meetingPoint": "Pensiunea Dealul Verde, Str. Olari 12, Horezu",
+    "meetingPoint": "Hotel Caraiman, Bd. Carol I 4, Sinaia",
     "hostContact": "Telefon / email pe pagina Contact — WhatsApp doar pentru probleme pe traseu",
     "priceRon": 890,
     "currency": "RON",
+    "minAge": 6,
     "location": {
-      "name": "Pensiunea Dealul Verde",
-      "address": "Str. Olari 12, Horezu 245800, Vâlcea",
-      "lat": 45.1436,
-      "lng": 24.0058
+      "name": "Hotel Caraiman",
+      "address": "Bd. Carol I 4, Sinaia 106100, Prahova",
+      "lat": 45.35,
+      "lng": 25.5514,
+      "photos": [
+        {
+          "src": "/travels/muntenia-peles.jpg",
+          "alt": "Peisaj montan și obiective pe Valea Prahovei",
+          "caption": "Castelul Peleș & Sinaia"
+        },
+        {
+          "src": "/travels/muntenia-vineyard.jpg",
+          "alt": "Rânduri de vie pe dealuri",
+          "caption": "Dealu Mare"
+        },
+        {
+          "src": "/travels/muntenia-grapes.jpg",
+          "alt": "Struguri pe viță",
+          "caption": "Degustare la cramă"
+        },
+        {
+          "src": "/travels/muntenia-countryside.jpg",
+          "alt": "Dealuri la poalele muntelui",
+          "caption": "Peisaj de munte"
+        }
+      ]
     },
     "itinerary": [
       {
-        "title": "Ziua 1 · Sosire & plecare",
+        "title": "Ziua 1 · Sosire & Sinaia",
         "slots": [
           {
             "time": "09:00",
             "title": "Întâlnire & check-in",
-            "detail": "Briefing scurt cu echipa RoHub la pensiune.",
-            "place": "Pensiunea Dealul Verde"
+            "detail": "Briefing scurt cu echipa RoHub la hotel.",
+            "place": "Hotel Caraiman"
           },
           {
             "time": "10:30",
             "title": "Punct de plecare Piticot",
             "detail": "Scanează primul QR și pornești pe tablă.",
-            "place": "Curtea pensiunii"
+            "place": "Curtea hotelului"
           },
           {
             "time": "13:00",
             "title": "Prânz liber",
-            "detail": "Recomandăm o ciorbă oltenească în Horezu."
+            "detail": "Recomandăm o ciorbă de burtă sau specialități de munte în Sinaia."
           },
           {
             "time": "19:00",
             "title": "Cină tradițională",
-            "detail": "Masă oltenească la gazdă, cu povești din zonă.",
+            "detail": "Masă cu specific muntenesc, cu povești din zonă.",
             "place": "Sala de mese"
           }
         ]
       },
       {
-        "title": "Ziua 2 · Cramă, comoară, casă",
+        "title": "Ziua 2 · Peleș, cramă, comoară",
         "slots": [
           {
             "time": "09:30",
-            "title": "Degustare la cramă",
+            "title": "Castelul Peleș",
+            "detail": "Vizită ghidată + oprire Piticot — scanează QR-ul de la peisaj.",
+            "place": "Castelul Peleș"
+          },
+          {
+            "time": "13:00",
+            "title": "Degustare pe Dealu Mare",
             "detail": "Oprire Piticot — scanează QR-ul de la cramă.",
-            "place": "Crama locală"
+            "place": "Cramă Dealu Mare"
           },
           {
-            "time": "12:00",
+            "time": "16:00",
             "title": "Vânătoare de comori",
-            "detail": "Pe ulițele din Horezu, cu indicii din joc.",
-            "place": "Centrul vechi"
-          },
-          {
-            "time": "15:30",
-            "title": "Casa scriitorului",
-            "detail": "Vizită + scan QR pentru capitolul din poveste.",
-            "place": "Casa memorială"
+            "detail": "Pe promenada din Sinaia, cu indicii din joc.",
+            "place": "Centrul Sinaiei"
           },
           {
             "time": "19:30",
             "title": "Seară liberă",
-            "detail": "Odihnă la pensiune sau plimbare în oraș."
+            "detail": "Odihnă la hotel sau plimbare pe Bd. Carol I."
           }
         ]
       },
@@ -95,36 +118,54 @@
             "time": "14:00",
             "title": "Check-out",
             "detail": "La revedere și drum bun spre casă.",
-            "place": "Pensiunea Dealul Verde"
+            "place": "Hotel Caraiman"
           }
         ]
       }
     ],
     "tips": [
       "Ține telefonul încărcat — QR-urile Piticot se scanează pe teren.",
-      "Poartă încălțăminte comodă pentru ulițe și curți.",
-      "Folosește Google Maps sau Waze ca să ajungi la punctul de întâlnire."
+      "Poartă încălțăminte comodă pentru promenadă și curți.",
+      "Transportul pe traseu e asigurat de RoHubTravel — pe hartă vezi doar unde ajungi."
     ]
   },
   {
     "id": "transilvania-escape",
     "regionSlug": "transilvania",
     "title": "Escapadă Transilvania",
-    "summary": "Weekend cultural în Transilvania. Fără Piticot pe acest pachet — rezervă Oltenia pentru joc.",
+    "summary": "Weekend cultural în Transilvania, cu Piticot inclus pe traseu: scanezi QR-urile și avansezi pe tablă.",
     "days": 2,
     "startsOn": "2026-11-21",
     "endsOn": "2026-11-22",
-    "includesPiticot": false,
-    "piticotTripCode": "",
+    "includesPiticot": true,
+    "piticotTripCode": "ROHUB-DEMO",
     "meetingPoint": "Piața Sfatului, Brașov",
     "hostContact": "Telefon / email pe pagina Contact — WhatsApp doar pentru probleme pe traseu",
     "priceRon": 650,
     "currency": "RON",
+    "minAge": 12,
     "location": {
       "name": "Piața Sfatului",
       "address": "Piața Sfatului, Brașov 500007",
       "lat": 45.6427,
-      "lng": 25.5887
+      "lng": 25.5887,
+      "photos": [
+        {
+          "src": "/travels/brasov-square.jpg",
+          "alt": "Piața Sfatului din Brașov",
+          "caption": "Piața Sfatului"
+        },
+        {
+          "src": "/travels/brasov-streets.jpg",
+          "alt": "Străzi istorice în Brașov",
+          "caption": "Centrul istoric"
+        },
+        {
+          "src": "/travels/bran-castle.jpg",
+          "alt": "Castelul Bran toamna",
+          "caption": "Castelul Bran"
+        }
+      ]
     },
     "itinerary": [
       {
@@ -139,7 +180,7 @@
           {
             "time": "10:30",
             "title": "Tur al centrului istoric",
-            "detail": "Străzi, biserici și povești brașovene."
+            "detail": "Străzi, biserici și povești brașovene. Oprire Piticot — scanează QR-ul din piață."
           },
           {
             "time": "19:00",
@@ -154,19 +195,20 @@
           {
             "time": "09:30",
             "title": "Castelul Bran",
-            "detail": "Vizită ghidată și timp liber pe deal.",
+            "detail": "Vizită ghidată și timp liber pe deal. Scanează QR-ul Piticot de la poartă.",
             "place": "Castelul Bran"
           },
           {
             "time": "14:00",
             "title": "Întoarcere organizată",
-            "detail": "Transfer înapoi spre Brașov / punctul de plecare."
+            "detail": "Transfer înapoi spre Brașov / punctul de plecare. Scanează QR-ul final Piticot."
           }
         ]
       }
     ],
     "tips": [
-      "Deschide locația în Maps sau Waze înainte de întâlnire.",
+      "Transportul pe traseu e asigurat de RoHubTravel — pe hartă vezi doar unde ajungi.",
+      "Ține telefonul încărcat — QR-urile Piticot se scanează pe teren.",
       "Pentru probleme pe traseu, folosește WhatsApp din Călătoria mea."
     ]
   }

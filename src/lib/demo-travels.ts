@@ -12,11 +12,18 @@ export type DemoTravelDay = {
   slots: DemoTravelSlot[];
 };
 
+export type DemoTravelPhoto = {
+  src: string;
+  alt: string;
+  caption: string;
+};
+
 export type DemoTravelLocation = {
   name: string;
   address: string;
   lat: number;
   lng: number;
+  photos?: DemoTravelPhoto[];
 };
 
 export type DemoTravel = {
@@ -33,6 +40,8 @@ export type DemoTravel = {
   hostContact: string;
   priceRon?: number;
   currency?: string;
+  /** Minimum age (years) required for each traveler on this package. */
+  minAge?: number;
   location?: DemoTravelLocation;
   itinerary: DemoTravelDay[];
   tips: string[];
@@ -74,6 +83,8 @@ export function normalizeTravel(travel: DemoTravel): NormalizedDemoTravel {
 
   return {
     ...travel,
+    includesPiticot: true,
+    piticotTripCode: travel.piticotTripCode?.trim() || "ROHUB-DEMO",
     location,
     itinerary: (travel.itinerary as LegacyDay[]).map(normalizeTravelDay),
   };

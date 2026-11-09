@@ -51,11 +51,7 @@ export function AccountHome() {
             {activeBooking.travel.title}
           </p>
           <p className="mt-2 text-sm text-stone">
-            Itinerariul zilei
-            {activeBooking.travel.includesPiticot
-              ? " și jocul Piticot"
-              : ""}{" "}
-            sunt în Călătoria mea.
+            Itinerariul zilei și jocul Piticot sunt în Călătoria mea.
           </p>
           <Link
             href="/calatorie/"

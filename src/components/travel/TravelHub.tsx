@@ -12,27 +12,56 @@ import {
 } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { ApiError } from "@/lib/api";
-import { regions } from "@/lib/content";
+import { asset, regions } from "@/lib/content";
 import {
   DEMO_TRAVELS,
+  getDemoTravel,
   googleMapsDirUrl,
   googleMapsUrl,
   normalizeTravel,
   wazeUrl,
   type DemoTravel,
   type DemoTravelDay,
+  type DemoTravelPhoto,
   type DemoTravelSlot,
 } from "@/lib/demo-travels";
+import { BirthDateFields } from "@/components/travel/BirthDateFields";
+import { PiticotFigure } from "@/components/piticot/PiticotFigure";
 import {
+  ageOnDate,
   cancelActiveBooking,
   dayRelation,
   slotState,
   travelDayIndex,
   tripPhase,
   updateActiveBooking,
+  type BookingTraveler,
   type DayRelation,
   type SlotState,
 } from "@/lib/travel";
+
+type TravelerDraft = {
+  name: string;
+  phone: string;
+  birthDate: string;
+};
+
+function emptyTraveler(name = ""): TravelerDraft {
+  return { name, phone: "", birthDate: "" };
+}
+
+function resizeTravelers(
+  list: TravelerDraft[],
+  count: number,
+  leadName: string,
+): TravelerDraft[] {
+  const next = list.slice(0, count);
+  while (next.length < count) {
+    next.push(emptyTraveler(next.length === 0 ? leadName : ""));
+  }
+  if (next[0] && !next[0].name) next[0] = { ...next[0], name: leadName };
+  return next;
+}
 import { isNativeApp } from "@/lib/native";
 import { SITE_PHONE_DISPLAY, SITE_WHATSAPP } from "@/lib/seo";
 import {
@@ -85,7 +114,9 @@ export function TravelHub() {
   const native = useSyncExternalStore(noopSubscribe, isNativeApp, () => false);
   const [editStartsOn, setEditStartsOn] = useState("");
   const [editNickname, setEditNickname] = useState("");
-  const [editGuests, setEditGuests] = useState("2");
+  const [editGuests, setEditGuests] = useState(2);
+  const [editTravelers, setEditTravelers] = useState<TravelerDraft[]>([]);
+  const [editAgesConfirmed, setEditAgesConfirmed] = useState(false);
 
   useEffect(() => {
     if (!ready) return;
@@ -135,13 +166,51 @@ export function TravelHub() {
 
   const location = travel.location;
   const mapsEmbed = `https://maps.google.com/maps?q=${location.lat},${location.lng}&z=15&output=embed`;
+  const placePhotos: DemoTravelPhoto[] =
+    location.photos?.length
+      ? location.photos
+      : (getDemoTravel(travel.id)?.location?.photos ?? []);
 
   const openModify = () => {
+    const count = Math.max(
+      1,
+      activeBooking.travelers?.length ?? activeBooking.guests ?? 1,
+    );
+    const existing: TravelerDraft[] = (activeBooking.travelers ?? []).map(
+      (t: BookingTraveler) => ({
+        name: t.name,
+        phone: t.phone,
+        birthDate: t.birthDate,
+      }),
+    );
     setEditStartsOn(activeBooking.startsOn);
     setEditNickname(activeBooking.nickname);
-    setEditGuests(String(activeBooking.guests ?? 2));
+    setEditGuests(count);
+    setEditTravelers(
+      resizeTravelers(existing, count, activeBooking.nickname || user.name),
+    );
+    setEditAgesConfirmed(Boolean(activeBooking.agesConfirmed));
     setShowModify(true);
     setNote("");
+  };
+
+  const setEditCount = (n: number) => {
+    const count = Math.min(20, Math.max(1, n));
+    setEditGuests(count);
+    setEditTravelers((prev) =>
+      resizeTravelers(prev, count, activeBooking?.nickname || user?.name || ""),
+    );
+    setEditAgesConfirmed(false);
+  };
+
+  const updateEditTraveler = (
+    index: number,
+    field: keyof TravelerDraft,
+    value: string,
+  ) => {
+    setEditTravelers((prev) =>
+      prev.map((row, i) => (i === index ? { ...row, [field]: value } : row)),
+    );
   };
 
   const saveModify = async (e: FormEvent) => {
@@ -150,15 +219,55 @@ export function TravelHub() {
       setNote("Alege data de început.");
       return;
     }
+    const minAge = travel.minAge;
+    const people: BookingTraveler[] = [];
+    for (let i = 0; i < editGuests; i++) {
+      const row = editTravelers[i];
+      if (!row?.name.trim()) {
+        setNote(`Persoana ${i + 1}: completează numele.`);
+        return;
+      }
+      if (row.phone.replace(/\D/g, "").length < 8) {
+        setNote(`Persoana ${i + 1}: completează un telefon valid.`);
+        return;
+      }
+      if (!row.birthDate) {
+        setNote(`Persoana ${i + 1}: completează data nașterii.`);
+        return;
+      }
+      const age = ageOnDate(row.birthDate, editStartsOn);
+      if (age < 0) {
+        setNote(`Persoana ${i + 1}: data nașterii e invalidă.`);
+        return;
+      }
+      if (minAge != null && age < minAge) {
+        setNote(
+          `Persoana ${i + 1} are ${age} ani — minimul pentru acest pachet e ${minAge} ani.`,
+        );
+        return;
+      }
+      people.push({
+        name: row.name.trim(),
+        phone: row.phone.trim(),
+        birthDate: row.birthDate,
+      });
+    }
+    if (!editAgesConfirmed) {
+      setNote(
+        "Bifează confirmarea vârstelor pe baza datelor de naștere.",
+      );
+      return;
+    }
     setBusy(true);
     setNote("");
     try {
       const updated = await updateActiveBooking({
         startsOn: editStartsOn,
-        nickname: travel.includesPiticot
-          ? editNickname.trim() || activeBooking.nickname
-          : activeBooking.nickname,
-        guests: Number(editGuests) || 1,
+        nickname:
+          editNickname.trim() || people[0]?.name || activeBooking.nickname,
+        guests: people.length,
+        travelers: people,
+        agesConfirmed: true,
       });
       await refresh();
       await syncTripNotificationSchedule(updated);
@@ -217,6 +326,7 @@ export function TravelHub() {
             {activeBooking.guests
               ? ` · ${activeBooking.guests} ${activeBooking.guests === 1 ? "persoană" : "persoane"}`
               : ""}
+            {travel.minAge != null ? ` · minim ${travel.minAge} ani` : ""}
           </p>
           {activeBooking.paymentStatus === "paid" ||
           activeBooking.paymentStatus === "paid_demo" ||
@@ -230,6 +340,19 @@ export function TravelHub() {
                 ? ` · #${activeBooking.id.slice(0, 8).toUpperCase()}`
                 : ""}
             </p>
+          ) : null}
+          {activeBooking.travelers?.length ? (
+            <ul className="mt-4 space-y-1.5 text-sm text-stone">
+              {activeBooking.travelers.map((t) => (
+                <li key={`${t.name}-${t.phone}-${t.birthDate}`}>
+                  <span className="font-semibold text-ink">{t.name}</span>
+                  {" · "}
+                  {t.phone}
+                  {" · "}
+                  {ageOnDate(t.birthDate, activeBooking.startsOn)} ani
+                </li>
+              ))}
+            </ul>
           ) : null}
         </div>
         <div className="flex flex-wrap gap-3">
@@ -282,50 +405,59 @@ export function TravelHub() {
       {showModify ? (
         <form
           onSubmit={(e) => void saveModify(e)}
-          className="mt-6 grid gap-4 border border-stone/15 bg-white p-5 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-6 space-y-5 border border-stone/15 bg-white p-5"
         >
-          <div className="sm:col-span-2 lg:col-span-4">
+          <div>
             <h3 className="font-display text-lg font-bold text-ink">
               Datele rezervării
             </h3>
             <p className="mt-1 text-sm text-stone">
               Pachetul rămâne <b>{travel.title}</b>. Schimbi perioada și
-              detaliile.
+              persoanele
+              {travel.minAge != null
+                ? ` (minim ${travel.minAge} ani la data plecării)`
+                : ""}
+              .
             </p>
           </div>
-          <label className="block">
-            <span className="text-xs font-bold uppercase tracking-[0.14em] text-stone">
-              Data începerii
-            </span>
-            <input
-              type="date"
-              value={editStartsOn}
-              onChange={(e) => setEditStartsOn(e.target.value)}
-              className="mt-1.5 w-full rounded-md border border-stone/30 bg-fog px-3.5 py-3 outline-none focus:border-pine focus:ring-2 focus:ring-pine/20"
-              required
-            />
-          </label>
-          <div className="rounded-sm bg-mist/80 px-3 py-3 text-sm text-stone">
-            <p className="text-xs font-bold uppercase tracking-wide">Sfârșit</p>
-            <p className="mt-1 font-semibold text-ink">
-              {formatDateRo(previewEndsOn)} · {travel.days} zile
-            </p>
-          </div>
-          <label className="block">
-            <span className="text-xs font-bold uppercase tracking-[0.14em] text-stone">
-              Număr persoane
-            </span>
-            <input
-              type="number"
-              min={1}
-              max={20}
-              value={editGuests}
-              onChange={(e) => setEditGuests(e.target.value)}
-              className="mt-1.5 w-full rounded-md border border-stone/30 bg-fog px-3.5 py-3 outline-none focus:border-pine focus:ring-2 focus:ring-pine/20"
-              required
-            />
-          </label>
-          {travel.includesPiticot ? (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <label className="block">
+              <span className="text-xs font-bold uppercase tracking-[0.14em] text-stone">
+                Data începerii
+              </span>
+              <input
+                type="date"
+                value={editStartsOn}
+                onChange={(e) => {
+                  setEditStartsOn(e.target.value);
+                  setEditAgesConfirmed(false);
+                }}
+                className="mt-1.5 w-full rounded-md border border-stone/30 bg-fog px-3.5 py-3 outline-none focus:border-pine focus:ring-2 focus:ring-pine/20"
+                required
+              />
+            </label>
+            <div className="rounded-sm bg-mist/80 px-3 py-3 text-sm text-stone">
+              <p className="text-xs font-bold uppercase tracking-wide">
+                Sfârșit
+              </p>
+              <p className="mt-1 font-semibold text-ink">
+                {formatDateRo(previewEndsOn)} · {travel.days} zile
+              </p>
+            </div>
+            <label className="block">
+              <span className="text-xs font-bold uppercase tracking-[0.14em] text-stone">
+                Număr persoane
+              </span>
+              <input
+                type="number"
+                min={1}
+                max={20}
+                value={editGuests}
+                onChange={(e) => setEditCount(Number(e.target.value) || 1)}
+                className="mt-1.5 w-full rounded-md border border-stone/30 bg-fog px-3.5 py-3 outline-none focus:border-pine focus:ring-2 focus:ring-pine/20"
+                required
+              />
+            </label>
             <label className="block">
               <span className="text-xs font-bold uppercase tracking-[0.14em] text-stone">
                 Porecla în Piticot
@@ -337,18 +469,85 @@ export function TravelHub() {
                 required
               />
             </label>
-          ) : (
-            <div />
-          )}
-          <div className="sm:col-span-2 lg:col-span-4">
-            <button
-              type="submit"
-              disabled={busy}
-              className="rounded-sm bg-pine px-5 py-3 text-sm font-semibold text-white disabled:opacity-60"
-            >
-              {busy ? "Se salvează…" : "Salvează modificările"}
-            </button>
           </div>
+
+          <div className="space-y-4">
+            <h4 className="font-display text-base font-bold text-ink">
+              Persoane pe rezervare
+            </h4>
+            {editTravelers.slice(0, editGuests).map((row, index) => (
+                <fieldset
+                  key={index}
+                  className="grid gap-3 rounded-sm border border-stone/15 bg-fog/60 p-4 sm:grid-cols-3"
+                >
+                  <legend className="px-1 text-sm font-bold text-ink">
+                    Persoana {index + 1}
+                    {index === 0 ? " · titular" : ""}
+                  </legend>
+                  <label className="block sm:col-span-1">
+                    <span className="text-xs font-bold uppercase tracking-[0.14em] text-stone">
+                      Nume
+                    </span>
+                    <input
+                      value={row.name}
+                      onChange={(e) =>
+                        updateEditTraveler(index, "name", e.target.value)
+                      }
+                      className="mt-1.5 w-full rounded-md border border-stone/30 bg-white px-3.5 py-3 outline-none focus:border-pine focus:ring-2 focus:ring-pine/20"
+                      required
+                    />
+                  </label>
+                  <label className="block sm:col-span-1">
+                    <span className="text-xs font-bold uppercase tracking-[0.14em] text-stone">
+                      Telefon
+                    </span>
+                    <input
+                      type="tel"
+                      value={row.phone}
+                      onChange={(e) =>
+                        updateEditTraveler(index, "phone", e.target.value)
+                      }
+                      className="mt-1.5 w-full rounded-md border border-stone/30 bg-white px-3.5 py-3 outline-none focus:border-pine focus:ring-2 focus:ring-pine/20"
+                      required
+                    />
+                  </label>
+                  <div className="block sm:col-span-1">
+                    <BirthDateFields
+                      idPrefix={`edit-p${index}`}
+                      value={row.birthDate}
+                      maxIso={editStartsOn}
+                      onChange={(iso) => {
+                        updateEditTraveler(index, "birthDate", iso);
+                        setEditAgesConfirmed(false);
+                      }}
+                    />
+                  </div>
+                </fieldset>
+              ))}
+          </div>
+
+          <label className="flex items-start gap-3 rounded-sm bg-mist/80 px-4 py-3 text-sm text-ink">
+            <input
+              type="checkbox"
+              checked={editAgesConfirmed}
+              onChange={(e) => setEditAgesConfirmed(e.target.checked)}
+              className="mt-1 h-4 w-4 accent-pine"
+              required
+            />
+            <span>
+              Confirm că datele de naștere sunt corecte și că fiecare persoană
+              îndeplinește vârsta minimă
+              {travel.minAge != null ? ` (${travel.minAge}+ ani)` : ""}.
+            </span>
+          </label>
+
+          <button
+            type="submit"
+            disabled={busy}
+            className="rounded-sm bg-pine px-5 py-3 text-sm font-semibold text-white disabled:opacity-60"
+          >
+            {busy ? "Se salvează…" : "Salvează modificările"}
+          </button>
         </form>
       ) : null}
 
@@ -416,6 +615,37 @@ export function TravelHub() {
               />
             ) : null}
           </section>
+
+          {placePhotos.length > 0 ? (
+            <section>
+              <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">
+                Locurile pe care le vei vedea
+              </h2>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-stone">
+                Imagini din zonele pe unde trece circuitul — te ducem noi cu
+                transportul RoHubTravel.
+              </p>
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                {placePhotos.map((photo) => (
+                  <li
+                    key={photo.src}
+                    className="relative aspect-[16/10] overflow-hidden rounded-[1rem] bg-mist shadow-sm"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={asset(photo.src)}
+                      alt={photo.alt}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                    <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 via-ink/35 to-transparent px-4 pb-3 pt-12 text-sm font-semibold text-white">
+                      {photo.caption}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
         </div>
 
         <aside className="space-y-5 lg:sticky lg:top-28">
@@ -434,16 +664,26 @@ export function TravelHub() {
           ) : null}
 
           <section className="bg-white p-5 ring-1 ring-stone/15">
-            <h2 className="font-display text-xl font-bold text-ink">Locație</h2>
-            <p className="mt-1 font-semibold text-ink">{location.name}</p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-pine">
+              Transport inclus
+            </p>
+            <h2 className="mt-2 font-display text-xl font-bold text-ink">
+              Vezi unde vei ajunge
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-stone">
+              Transportul pe traseu e asigurat de RoHubTravel. Nu trebuie să
+              conduci între opriri — harta e ca să vezi destinația și punctul de
+              întâlnire.
+            </p>
+            <p className="mt-4 font-semibold text-ink">{location.name}</p>
             <p className="text-sm text-stone">{location.address}</p>
             <p className="mt-1 text-sm text-stone">
-              Întâlnire: {travel.meetingPoint}
+              Punct de întâlnire: {travel.meetingPoint}
             </p>
 
             <div className="mt-3 overflow-hidden rounded-sm ring-1 ring-stone/15">
               <iframe
-                title={`Hartă ${location.name}`}
+                title={`Destinație ${location.name}`}
                 src={mapsEmbed}
                 className="h-48 w-full border-0 bg-mist lg:h-56"
                 loading="lazy"
@@ -452,9 +692,12 @@ export function TravelHub() {
               />
             </div>
 
-            <div className="mt-3 grid grid-cols-2 gap-2">
+            <p className="mt-3 text-xs font-medium uppercase tracking-wide text-stone">
+              Deschide destinația
+            </p>
+            <div className="mt-2 grid grid-cols-2 gap-2">
               <a
-                href={googleMapsDirUrl(location)}
+                href={googleMapsUrl(location)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-sm bg-pine px-3 py-3 text-center text-sm font-semibold text-white"
@@ -471,33 +714,31 @@ export function TravelHub() {
               </a>
             </div>
             <a
-              href={googleMapsUrl(location)}
+              href={googleMapsDirUrl(location)}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 inline-block text-sm text-pine underline decoration-dotted underline-offset-4"
             >
-              Vezi locația pe hartă
+              Indicații către punctul de întâlnire
             </a>
           </section>
 
-          {travel.includesPiticot ? (
-            <section className="bg-pine px-5 py-5 text-white">
-              <h2 className="font-display text-xl font-bold">Piticot</h2>
-              <p className="mt-1.5 text-sm leading-relaxed text-white/85">
-                Jocul de pe traseu al lui{" "}
-                <span className="font-semibold text-white">
-                  {activeBooking.nickname}
-                </span>
-                . La fiecare oprire scanezi QR-ul și avansezi pe tablă.
-              </p>
-              <Link
-                href="/inovatie/piticot/"
-                className="mt-4 inline-flex w-full items-center justify-center rounded-sm bg-dawn px-5 py-3 text-center text-sm font-semibold text-ink"
-              >
-                Deschide tabla Piticot
-              </Link>
-            </section>
-          ) : null}
+          <section className="bg-pine px-5 py-5 text-white">
+            <h2 className="font-display text-xl font-bold">Piticot</h2>
+            <p className="mt-1.5 text-sm leading-relaxed text-white/85">
+              Jocul de pe traseu al lui{" "}
+              <span className="font-semibold text-white">
+                {activeBooking.nickname}
+              </span>
+              . La fiecare oprire scanezi QR-ul și avansezi pe tablă.
+            </p>
+            <Link
+              href="/inovatie/piticot/"
+              className="mt-4 inline-flex w-full items-center justify-center rounded-sm bg-dawn px-5 py-3 text-center text-sm font-semibold text-ink"
+            >
+              Deschide tabla Piticot
+            </Link>
+          </section>
 
           <section className="bg-white p-5 ring-1 ring-stone/15">
             <h2 className="font-display text-lg font-bold text-ink">Ajutor</h2>
@@ -527,6 +768,24 @@ export function TravelHub() {
           </section>
         </aside>
       </div>
+
+      <Link
+        href="/inovatie/piticot/"
+        className={`group fixed left-4 z-[55] flex flex-col items-center sm:left-6 ${
+          native ? "bottom-20 sm:bottom-24" : "bottom-5 sm:bottom-7"
+        }`}
+        aria-label="Deschide Piticot"
+      >
+        <span className="mb-1 rounded-sm bg-pine px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide text-white opacity-90 shadow-sm transition group-hover:opacity-100">
+          Piticot
+        </span>
+        <span className="relative block h-[5.5rem] w-[3.75rem] drop-shadow-[0_10px_18px_rgba(15,31,26,0.35)] transition duration-300 group-hover:-translate-y-1 sm:h-28 sm:w-[4.5rem]">
+          <span className="absolute bottom-0 left-1/2 h-2 w-10 -translate-x-1/2 rounded-full bg-ink/25 blur-[2px]" />
+          <span className="relative block h-full w-full origin-bottom animate-[pt-breathe_3.2s_ease-in-out_infinite]">
+            <PiticotFigure />
+          </span>
+        </span>
+      </Link>
 
       {showCancelModal ? (
         <div
@@ -667,7 +926,7 @@ function EmptyTravelPicker() {
             {
               n: "02",
               title: "Urmărești ziua",
-              text: "Program pe ore, locație pe hartă, Maps și Waze.",
+              text: "Program pe ore și destinația pe hartă — transportul e al nostru.",
             },
             {
               n: "03",
@@ -724,15 +983,9 @@ function PackagePick({
       />
       <div className="relative z-10 flex h-full min-h-[28rem] flex-col justify-end p-6 sm:p-8 lg:min-h-[inherit]">
         <div className="flex flex-wrap items-center gap-2">
-          {travel.includesPiticot ? (
-            <span className="bg-dawn px-2.5 py-1 text-[0.7rem] font-bold uppercase tracking-wide text-ink">
-              Include Piticot
-            </span>
-          ) : (
-            <span className="bg-white/15 px-2.5 py-1 text-[0.7rem] font-bold uppercase tracking-wide text-white/90">
-              Fără Piticot
-            </span>
-          )}
+          <span className="bg-dawn px-2.5 py-1 text-[0.7rem] font-bold uppercase tracking-wide text-ink">
+            Include Piticot
+          </span>
           <span className="text-xs font-semibold uppercase tracking-wide text-white/70">
             {travel.days} zile
           </span>
