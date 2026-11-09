@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Reveal } from "@/components/Reveal";
 import { ABOUT_IMAGE, experiences } from "@/lib/content";
 import { teamMembers } from "@/lib/team";
 
@@ -13,7 +14,7 @@ export function About() {
         aria-hidden
       />
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-2 lg:items-center lg:gap-16">
-        <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[5/6]">
+        <Reveal variant="scale" className="relative aspect-[4/5] overflow-hidden sm:aspect-[5/6]">
           <Image
             src={ABOUT_IMAGE}
             alt="Potecă prin pădure în România, experiență autentică RoHubTravel"
@@ -21,9 +22,9 @@ export function About() {
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
           />
-        </div>
+        </Reveal>
 
-        <div>
+        <Reveal delay={100}>
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-dawn">
             Despre RoHubTravel
           </p>
@@ -38,21 +39,21 @@ export function About() {
           </p>
 
           <ul className="mt-10 space-y-6">
-            {experiences.map((item) => (
-              <li key={item.title} className="border-t border-white/15 pt-6">
+            {experiences.map((item, i) => (
+              <Reveal key={item.title} as="li" delay={160 + i * 90} className="border-t border-white/15 pt-6">
                 <h3 className="font-display text-xl font-bold">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/80 sm:text-base">
                   {item.text}
                 </p>
-              </li>
+              </Reveal>
             ))}
           </ul>
-        </div>
+        </Reveal>
       </div>
 
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16">
-          <div className="flex flex-wrap items-end justify-between gap-4">
+          <Reveal className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-dawn">
                 Echipa
@@ -67,11 +68,16 @@ export function About() {
             >
               Vezi pagina echipei
             </Link>
-          </div>
+          </Reveal>
 
           <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-            {preview.map((member) => (
-              <li key={member.name} className="border-t border-white/15 pt-6">
+            {preview.map((member, i) => (
+              <Reveal
+                key={member.name}
+                as="li"
+                delay={i * 70}
+                className="border-t border-white/15 pt-6"
+              >
                 <div className="relative aspect-square overflow-hidden rounded-sm bg-white/10">
                   <Image
                     src={member.image}
@@ -88,7 +94,7 @@ export function About() {
                 <p className="mt-1 text-sm leading-snug text-white/70">
                   {member.role}
                 </p>
-              </li>
+              </Reveal>
             ))}
           </ul>
         </div>

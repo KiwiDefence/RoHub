@@ -149,7 +149,7 @@ export function PiticotApp() {
     if (result.kind === "station") {
       const verdict = evaluateScan(progress, result.stationId);
       if (verdict.kind === "unlock") {
-        router.push(`/inovatie/piticot/scan/${result.stationId}/`);
+        router.replace(`/inovatie/piticot/scan/${result.stationId}/`);
         return;
       }
       setScanNote(verdict.message);

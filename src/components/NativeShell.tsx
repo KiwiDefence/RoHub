@@ -6,7 +6,10 @@ import { useEffect, useSyncExternalStore, type ReactNode } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { isNativeApp } from "@/lib/native";
 import { normalizePiticotDeepLink } from "@/lib/open-in-app";
-import { bindTripNotificationOpen } from "@/lib/trip-notification";
+import {
+  bindTripNotificationLifecycle,
+  bindTripNotificationOpen,
+} from "@/lib/trip-notification";
 
 const noopSubscribe = () => () => {};
 
@@ -23,6 +26,17 @@ function routeFromUrl(raw: string): string | null {
   } catch {
     return null;
   }
+}
+
+function isPiticotScanPath(path: string): boolean {
+  return (
+    path.includes("/inovatie/piticot/scan/") ||
+    path.includes("/inovatie/piticot/go/")
+  );
+}
+
+function isPiticotBoardPath(path: string): boolean {
+  return /^\/inovatie\/piticot\/?$/.test(path);
 }
 
 type Tab = { href: string; label: string; match: (p: string) => boolean; icon: ReactNode };
@@ -51,6 +65,7 @@ export function NativeShell() {
     let disposed = false;
     const handles: { remove: () => Promise<void> }[] = [];
     let unbindNotif = () => {};
+    let unbindLifecycle = () => {};
 
     void (async () => {
       const [{ App }, { SplashScreen }] = await Promise.all([
@@ -58,12 +73,24 @@ export function NativeShell() {
         import("@capacitor/splash-screen"),
       ]);
       if (disposed) return;
+
+      // replace — avoid stacking /go → /scan → /scan (back showed "Ești deja aici")
       const open = (url: string) => {
         const route = routeFromUrl(url);
-        if (route) router.push(route);
+        if (route) router.replace(route);
       };
+
       handles.push(
         await App.addListener("backButton", ({ canGoBack }) => {
+          const path = window.location.pathname;
+          if (isPiticotScanPath(path)) {
+            router.replace("/inovatie/piticot/");
+            return;
+          }
+          if (isPiticotBoardPath(path)) {
+            router.replace(onTrip ? "/calatorie/" : "/");
+            return;
+          }
           if (canGoBack) window.history.back();
           else void App.exitApp();
         }),
@@ -72,15 +99,19 @@ export function NativeShell() {
       const launch = await App.getLaunchUrl();
       if (launch?.url) open(launch.url);
       void SplashScreen.hide();
-      unbindNotif = await bindTripNotificationOpen((path) => router.push(path));
+      unbindNotif = await bindTripNotificationOpen((path) =>
+        router.replace(path),
+      );
+      unbindLifecycle = await bindTripNotificationLifecycle();
     })();
 
     return () => {
       disposed = true;
       handles.forEach((h) => void h.remove());
       unbindNotif();
+      unbindLifecycle();
     };
-  }, [native, router]);
+  }, [native, router, onTrip]);
 
   if (!native || pathname.startsWith("/inovatie/piticot")) return null;
 

@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Reveal } from "@/components/Reveal";
 import { regions } from "@/lib/content";
 
 export function Destinations() {
   return (
     <section id="destinatii" className="bg-fog py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">
             Vacanțe în România
           </p>
@@ -18,11 +19,11 @@ export function Destinations() {
             Bucovina și Dobrogea - locuri unde încă se trăiește, nu doar se
             vizitează.
           </p>
-        </div>
+        </Reveal>
 
         <ul className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {regions.map((place, index) => (
-            <li key={place.slug} className="group" style={{ animationDelay: `${index * 100}ms` }}>
+            <Reveal key={place.slug} as="li" className="group" delay={index * 80}>
               <Link
                 href={`/vacante/${place.slug}/`}
                 className="block overflow-hidden rounded-sm ring-1 ring-stone/20 transition hover:shadow-lg"
@@ -47,18 +48,18 @@ export function Destinations() {
                   </p>
                 </div>
               </Link>
-            </li>
+            </Reveal>
           ))}
         </ul>
 
-        <p className="mt-10 text-center text-sm">
+        <Reveal className="mt-10 text-center text-sm" delay={120}>
           <Link
             href="/vacante/"
             className="font-semibold text-moss underline-offset-4 hover:underline"
           >
             Vezi toate vacanțele în România
           </Link>
-        </p>
+        </Reveal>
       </div>
     </section>
   );

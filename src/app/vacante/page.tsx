@@ -5,6 +5,7 @@ import { FaqSection } from "@/components/FaqSection";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
+import { Reveal } from "@/components/Reveal";
 import { regions } from "@/lib/content";
 import {
   VACANTE_FAQS,
@@ -64,23 +65,25 @@ export default function VacanteIndexPage() {
               { name: "Vacanțe" },
             ]}
           />
-          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-moss">
-            Vacanțe în România
-          </p>
-          <h1 className="mt-3 max-w-3xl font-display text-4xl font-extrabold tracking-tight text-ink sm:text-6xl">
-            Regiuni pe care le poți trăi, nu doar vizita
-          </h1>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-stone sm:text-lg">
-            Fiecare pagină e un circuit RoHubTravel pe regiune - făcut pentru
-            oameni care vor povești locale, gastronomie, crame și natură în
-            Oltenia, Muntenia, Maramureș, Transilvania, Bucovina sau Dobrogea.
-          </p>
+          <Reveal>
+            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-moss">
+              Vacanțe în România
+            </p>
+            <h1 className="mt-3 max-w-3xl font-display text-4xl font-extrabold tracking-tight text-ink sm:text-6xl">
+              Regiuni pe care le poți trăi, nu doar vizita
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-stone sm:text-lg">
+              Fiecare pagină e un circuit RoHubTravel pe regiune - făcut pentru
+              oameni care vor povești locale, gastronomie, crame și natură în
+              Oltenia, Muntenia, Maramureș, Transilvania, Bucovina sau Dobrogea.
+            </p>
+          </Reveal>
         </section>
 
         <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8 sm:pb-28">
           <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {regions.map((region, index) => (
-              <li key={region.slug} style={{ animationDelay: `${index * 100}ms` }}>
+              <Reveal key={region.slug} as="li" delay={index * 80}>
                 <Link
                   href={`/vacante/${region.slug}/`}
                   className="group block h-full"
@@ -112,7 +115,7 @@ export default function VacanteIndexPage() {
                     </div>
                   </article>
                 </Link>
-              </li>
+              </Reveal>
             ))}
           </ul>
         </section>

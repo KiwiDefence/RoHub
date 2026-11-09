@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { GameScreen } from "@/components/piticot/GameScreen";
 import { PiticotBoard } from "@/components/piticot/PiticotBoard";
@@ -30,6 +30,7 @@ type ScanClientProps = {
 type Phase = "boot" | "jump" | "reveal" | "blocked" | "invalid";
 
 export function ScanClient({ stationId }: ScanClientProps) {
+  const router = useRouter();
   const station = getStation(stationId);
   const stations = useMemo(() => getOrderedStations(), []);
   const [phase, setPhase] = useState<Phase>("boot");
@@ -38,6 +39,7 @@ export function ScanClient({ stationId }: ScanClientProps) {
   const [restingIndex, setRestingIndex] = useState(-1);
   const [unlockedSet, setUnlockedSet] = useState<Set<string>>(new Set());
   const scanned = useRef(false);
+  const backToBoard = () => router.replace("/inovatie/piticot/");
 
   useEffect(() => {
     if (scanned.current) return;
@@ -79,9 +81,9 @@ export function ScanClient({ stationId }: ScanClientProps) {
         </div>
         <h1 className="mt-4 text-3xl font-extrabold">Codul ăsta nu e pe tablă</h1>
         <p className="mt-2 text-lg italic">Piticotul nu cunoaște oprirea asta.</p>
-        <Link href="/inovatie/piticot/" className="pt-btn mt-6 px-6 py-2.5 text-lg">
+        <button type="button" onClick={backToBoard} className="pt-btn mt-6 px-6 py-2.5 text-lg">
           Înapoi la joc
-        </Link>
+        </button>
       </div>
     );
   }
@@ -111,9 +113,9 @@ export function ScanClient({ stationId }: ScanClientProps) {
                 Următoarea oprire e <b>{nextStop.title}</b>.
               </p>
             ) : null}
-            <Link href="/inovatie/piticot/" className="pt-btn mt-3 w-full py-2.5 text-lg">
+            <button type="button" onClick={backToBoard} className="pt-btn mt-3 w-full py-2.5 text-lg">
               Înapoi la tablă
-            </Link>
+            </button>
           </div>
         }
       />
@@ -167,9 +169,9 @@ export function ScanClient({ stationId }: ScanClientProps) {
                 ? "Ai strâns toate opririle! Povestea ta te așteaptă pe tablă."
                 : station.blurb}
             </p>
-            <Link href="/inovatie/piticot/" className="pt-btn mt-3 w-full py-2.5 text-lg">
+            <button type="button" onClick={backToBoard} className="pt-btn mt-3 w-full py-2.5 text-lg">
               {complete ? "Deschide povestea" : "Continuă pe tablă"}
-            </Link>
+            </button>
           </div>
         )
       }

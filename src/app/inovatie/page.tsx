@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { Reveal } from "@/components/Reveal";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
@@ -36,23 +37,25 @@ export default function InovatiePage() {
 
         <section className="bg-ink text-white">
           <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-dawn">
-              Tech innovation
-            </p>
-            <h1 className="mt-3 max-w-3xl font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
-              Nu vindem doar drumuri. Construim jocul și misterul.
-            </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
-              Două produse digitale pentru juriu și pentru clienți: un Piticot
-              gamificat pe traseu și Mystery Box — rezervare fără destinație
-              cunoscută, doar indicii.
-            </p>
+            <Reveal>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-dawn">
+                Tech innovation
+              </p>
+              <h1 className="mt-3 max-w-3xl font-display text-4xl font-extrabold tracking-tight sm:text-6xl">
+                Nu vindem doar drumuri. Construim jocul și misterul.
+              </h1>
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+                Două produse digitale pentru juriu și pentru clienți: un Piticot
+                gamificat pe traseu și Mystery Box — rezervare fără destinație
+                cunoscută, doar indicii.
+              </p>
+            </Reveal>
           </div>
         </section>
 
         <section className="bg-fog py-16 sm:py-24">
           <div className="mx-auto grid max-w-6xl gap-8 px-5 sm:px-8 lg:grid-cols-2">
-            <article className="flex flex-col rounded-xl border border-pine/20 bg-white p-6 shadow-sm sm:p-8">
+            <Reveal as="article" className="flex flex-col rounded-xl border border-pine/20 bg-white p-6 shadow-sm sm:p-8">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-dawn">
                 01 · Piticot
               </p>
@@ -81,9 +84,13 @@ export default function InovatiePage() {
               >
                 Deschide demo Piticot
               </Link>
-            </article>
+            </Reveal>
 
-            <article className="flex flex-col rounded-xl border border-pine/20 bg-white p-6 shadow-sm sm:p-8">
+            <Reveal
+              as="article"
+              delay={120}
+              className="flex flex-col rounded-xl border border-pine/20 bg-white p-6 shadow-sm sm:p-8"
+            >
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-dawn">
                 02 · Mystery Box
               </p>
@@ -110,7 +117,7 @@ export default function InovatiePage() {
               >
                 Deschide Mystery Box
               </Link>
-            </article>
+            </Reveal>
           </div>
         </section>
       </main>

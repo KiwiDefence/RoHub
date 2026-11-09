@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { JsonLd } from "@/components/JsonLd";
+import { Reveal } from "@/components/Reveal";
 import { SiteTagline } from "@/components/SiteTagline";
 import {
   HOME_FAQS,
@@ -43,7 +44,7 @@ export default function Home() {
         <section className="bg-fog py-16 sm:py-24">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="grid gap-12 lg:grid-cols-2">
-              <div>
+              <Reveal>
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">
                   Problema
                 </p>
@@ -67,9 +68,9 @@ export default function Home() {
                   </a>
                   ) — au nevoie de o vacanță care să îi deconecteze cu adevărat.
                 </p>
-              </div>
+              </Reveal>
 
-              <div>
+              <Reveal delay={120}>
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">
                   Soluția
                 </p>
@@ -82,7 +83,7 @@ export default function Home() {
                 <p className="mt-4 text-xl font-semibold leading-snug text-pine sm:text-2xl">
                   <SiteTagline />
                 </p>
-              </div>
+              </Reveal>
             </div>
           </div>
         </section>

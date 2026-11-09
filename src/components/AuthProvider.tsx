@@ -19,7 +19,7 @@ import {
 } from "@/lib/auth";
 import { getApiBase, getAuthToken } from "@/lib/api";
 import type { BookingWithTravel } from "@/lib/travel";
-import { syncTripNotification } from "@/lib/trip-notification";
+import { setTripNotificationBooking } from "@/lib/trip-notification";
 
 type AuthContextValue = {
   ready: boolean;
@@ -44,7 +44,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const apply = useCallback((session: AuthSession | null) => {
     setUser(session?.user ?? null);
     setActiveBooking(session?.activeBooking ?? null);
-    void syncTripNotification(session?.activeBooking ?? null);
+    setTripNotificationBooking(session?.activeBooking ?? null);
   }, []);
 
   const refresh = useCallback(async () => {

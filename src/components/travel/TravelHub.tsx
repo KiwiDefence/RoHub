@@ -10,7 +10,7 @@ import {
   cancelActiveBooking,
   travelDayIndex,
 } from "@/lib/travel";
-import { syncTripNotification } from "@/lib/trip-notification";
+import { setTripNotificationBooking } from "@/lib/trip-notification";
 
 export function TravelHub() {
   const { ready, user, activeBooking, refresh, logout } = useAuth();
@@ -23,7 +23,7 @@ export function TravelHub() {
       router.replace("/cont/autentificare/?next=/calatorie/");
       return;
     }
-    void syncTripNotification(activeBooking);
+    setTripNotificationBooking(activeBooking);
   }, [ready, user, activeBooking, router]);
 
   if (!ready || !user) {

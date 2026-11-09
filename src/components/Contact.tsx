@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { Reveal } from "@/components/Reveal";
 import {
   SITE_ADDRESS_DISPLAY,
   SITE_EMAIL,
@@ -89,7 +90,7 @@ export function Contact({ defaultDestination = "" }: ContactProps) {
   return (
     <section id="contact" className="bg-mist py-16 sm:py-24">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-        <div>
+        <Reveal>
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">
             Contact
           </p>
@@ -137,8 +138,9 @@ export function Contact({ defaultDestination = "" }: ContactProps) {
               <dd className="text-stone">{SITE_ADDRESS_DISPLAY}</dd>
             </div>
           </dl>
-        </div>
+        </Reveal>
 
+        <Reveal delay={100}>
         <form
           onSubmit={onSubmit}
           className="rounded-xl border border-pine/20 bg-white p-6 shadow-sm sm:p-8"
@@ -263,6 +265,7 @@ export function Contact({ defaultDestination = "" }: ContactProps) {
             </button>
           </div>
         </form>
+        </Reveal>
       </div>
     </section>
   );

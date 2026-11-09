@@ -1,3 +1,5 @@
+import { Reveal } from "@/components/Reveal";
+
 type Faq = {
   question: string;
   answer: string;
@@ -21,19 +23,22 @@ export function FaqSection({
       aria-labelledby="faq-heading"
     >
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">
-          {eyebrow}
-        </p>
-        <h2
-          id="faq-heading"
-          className="mt-3 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl"
-        >
-          {title}
-        </h2>
+        <Reveal>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-moss">
+            {eyebrow}
+          </p>
+          <h2
+            id="faq-heading"
+            className="mt-3 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl"
+          >
+            {title}
+          </h2>
+        </Reveal>
         <dl className="mt-10 space-y-6">
-          {faqs.map((faq) => (
-            <div
+          {faqs.map((faq, i) => (
+            <Reveal
               key={faq.question}
+              delay={i * 70}
               className="border-b border-stone/15 pb-6 last:border-0 last:pb-0"
             >
               <dt className="font-display text-lg font-bold text-ink sm:text-xl">
@@ -42,7 +47,7 @@ export function FaqSection({
               <dd className="mt-3 text-base leading-relaxed text-stone">
                 {faq.answer}
               </dd>
-            </div>
+            </Reveal>
           ))}
         </dl>
       </div>

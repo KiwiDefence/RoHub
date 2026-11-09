@@ -7,6 +7,7 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
+import { Reveal } from "@/components/Reveal";
 import { getAllRegionSlugs, getRegion, regions } from "@/lib/content";
 import { getDemoTravelByRegion } from "@/lib/demo-travels";
 import {
@@ -104,118 +105,140 @@ export default async function RegionPage({ params }: PageProps) {
         <section className="bg-fog py-16 sm:py-24">
           <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-[1.4fr_0.8fr] lg:gap-16">
             <div>
-              <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-                Trăiește {region.name} cu RoHubTravel
-              </h2>
-              <div className="mt-5 space-y-4 text-base leading-relaxed text-stone sm:text-lg">
-                {region.intro.map((paragraph) => (
-                  <p key={paragraph.slice(0, 48)}>{paragraph}</p>
-                ))}
-              </div>
+              <Reveal>
+                <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+                  Trăiește {region.name} cu RoHubTravel
+                </h2>
+                <div className="mt-5 space-y-4 text-base leading-relaxed text-stone sm:text-lg">
+                  {region.intro.map((paragraph) => (
+                    <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+                  ))}
+                </div>
+              </Reveal>
 
-              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
-                De ce {region.name}
-              </h3>
-              <ul className="mt-6 space-y-6">
-                {region.highlights.map((item) => (
-                  <li key={item.title} className="border-l-2 border-dawn pl-4">
-                    <p className="font-semibold text-ink">{item.title}</p>
-                    <p className="mt-1 text-base leading-relaxed text-stone">
-                      {item.text}
-                    </p>
-                  </li>
-                ))}
-              </ul>
+              <Reveal className="mt-12">
+                <h3 className="font-display text-2xl font-bold text-ink">
+                  De ce {region.name}
+                </h3>
+                <ul className="mt-6 space-y-6">
+                  {region.highlights.map((item) => (
+                    <li key={item.title} className="border-l-2 border-dawn pl-4">
+                      <p className="font-semibold text-ink">{item.title}</p>
+                      <p className="mt-1 text-base leading-relaxed text-stone">
+                        {item.text}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
 
-              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
-                Pentru ce e renumită {region.name}
-              </h3>
-              <ul className="mt-4 space-y-3">
-                {region.famousFor.map((item) => (
-                  <li
-                    key={item}
-                    className="border-l-2 border-moss pl-4 text-stone"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <Reveal className="mt-12">
+                <h3 className="font-display text-2xl font-bold text-ink">
+                  Pentru ce e renumită {region.name}
+                </h3>
+                <ul className="mt-4 space-y-3">
+                  {region.famousFor.map((item) => (
+                    <li
+                      key={item}
+                      className="border-l-2 border-moss pl-4 text-stone"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
 
-              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
-                Ce să vezi în {region.name}
-              </h3>
-              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                {region.attractions.map((item) => (
-                  <li
-                    key={item}
-                    className="bg-mist px-4 py-3 text-sm leading-relaxed text-ink"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <Reveal className="mt-12">
+                <h3 className="font-display text-2xl font-bold text-ink">
+                  Ce să vezi în {region.name}
+                </h3>
+                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {region.attractions.map((item) => (
+                    <li
+                      key={item}
+                      className="bg-mist px-4 py-3 text-sm leading-relaxed text-ink"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
 
-              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
-                Mâncare și băutură în {region.name}
-              </h3>
-              <ul className="mt-4 space-y-3">
-                {region.food.map((item) => (
-                  <li
-                    key={item}
-                    className="border-l-2 border-dawn pl-4 text-stone"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <Reveal className="mt-12">
+                <h3 className="font-display text-2xl font-bold text-ink">
+                  Mâncare și băutură în {region.name}
+                </h3>
+                <ul className="mt-4 space-y-3">
+                  {region.food.map((item) => (
+                    <li
+                      key={item}
+                      className="border-l-2 border-dawn pl-4 text-stone"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
 
-              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
-                Experiențe pe care le organizăm
-              </h3>
-              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                {region.experiences.map((item) => (
-                  <li
-                    key={item}
-                    className="bg-white px-4 py-3 text-sm leading-relaxed text-ink ring-1 ring-stone/15"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <Reveal className="mt-12">
+                <h3 className="font-display text-2xl font-bold text-ink">
+                  Experiențe pe care le organizăm
+                </h3>
+                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {region.experiences.map((item) => (
+                    <li
+                      key={item}
+                      className="bg-white px-4 py-3 text-sm leading-relaxed text-ink ring-1 ring-stone/15"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
 
-              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
-                Exemplu de program
-              </h3>
-              <ol className="mt-4 space-y-3">
-                {region.sampleDays.map((item, index) => (
-                  <li
-                    key={item}
-                    className="flex gap-3 text-base leading-relaxed text-stone"
-                  >
-                    <span className="font-semibold text-pine">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ol>
+              <Reveal className="mt-12">
+                <h3 className="font-display text-2xl font-bold text-ink">
+                  Exemplu de program
+                </h3>
+                <ol className="mt-4 space-y-3">
+                  {region.sampleDays.map((item, index) => (
+                    <li
+                      key={item}
+                      className="flex gap-3 text-base leading-relaxed text-stone"
+                    >
+                      <span className="font-semibold text-pine">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ol>
+              </Reveal>
 
-              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
-                Când să mergi
-              </h3>
-              <p className="mt-4 text-base leading-relaxed text-stone sm:text-lg">
-                {region.whenToGo}
-              </p>
+              <Reveal className="mt-12">
+                <h3 className="font-display text-2xl font-bold text-ink">
+                  Când să mergi
+                </h3>
+                <p className="mt-4 text-base leading-relaxed text-stone sm:text-lg">
+                  {region.whenToGo}
+                </p>
+              </Reveal>
 
-              <h3 className="mt-12 font-display text-2xl font-bold text-ink">
-                Cum lucrăm cu tine
-              </h3>
-              <p className="mt-4 text-base leading-relaxed text-stone sm:text-lg">
-                {region.howWeWork}
-              </p>
+              <Reveal className="mt-12">
+                <h3 className="font-display text-2xl font-bold text-ink">
+                  Cum lucrăm cu tine
+                </h3>
+                <p className="mt-4 text-base leading-relaxed text-stone sm:text-lg">
+                  {region.howWeWork}
+                </p>
+              </Reveal>
             </div>
 
-            <aside className="h-fit bg-pine px-6 py-8 text-white lg:sticky lg:top-24">
+            <Reveal
+              as="aside"
+              delay={80}
+              className="h-fit bg-pine px-6 py-8 text-white lg:sticky lg:top-24"
+            >
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-dawn">
                 Pentru cine e
               </p>
@@ -266,13 +289,13 @@ export default async function RegionPage({ params }: PageProps) {
                 </Link>
                 .
               </p>
-            </aside>
+            </Reveal>
           </div>
         </section>
 
         <section className="border-t border-stone/15 bg-white py-16">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <div className="flex flex-wrap items-end justify-between gap-4">
+            <Reveal className="flex flex-wrap items-end justify-between gap-4">
               <h2 className="font-display text-2xl font-bold text-ink sm:text-3xl">
                 Alte regiuni de vacanță în România
               </h2>
@@ -282,10 +305,10 @@ export default async function RegionPage({ params }: PageProps) {
               >
                 Toate vacanțele
               </Link>
-            </div>
+            </Reveal>
             <ul className="mt-8 grid gap-6 sm:grid-cols-3">
-              {others.map((item) => (
-                <li key={item.slug}>
+              {others.map((item, i) => (
+                <Reveal key={item.slug} as="li" delay={i * 80}>
                   <Link href={`/vacante/${item.slug}/`} className="group block">
                     <div className="relative aspect-[16/10] overflow-hidden">
                       <Image
@@ -301,7 +324,7 @@ export default async function RegionPage({ params }: PageProps) {
                     </p>
                     <p className="mt-1 text-sm text-stone">{item.blurb}</p>
                   </Link>
-                </li>
+                </Reveal>
               ))}
             </ul>
           </div>

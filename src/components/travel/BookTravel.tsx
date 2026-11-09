@@ -7,7 +7,7 @@ import { useAuth } from "@/components/AuthProvider";
 import { ApiError } from "@/lib/api";
 import { getDemoTravel } from "@/lib/demo-travels";
 import { createBooking } from "@/lib/travel";
-import { syncTripNotification } from "@/lib/trip-notification";
+import { setTripNotificationBooking } from "@/lib/trip-notification";
 
 export function BookTravel({ travelId }: { travelId: string }) {
   const travel = getDemoTravel(travelId);
@@ -58,7 +58,7 @@ export function BookTravel({ travelId }: { travelId: string }) {
       });
       await refresh();
       setSession({ user, activeBooking: booking });
-      await syncTripNotification(booking);
+      setTripNotificationBooking(booking);
       router.push("/calatorie/");
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Rezervare eșuată");
